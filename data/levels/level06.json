@@ -1,0 +1,280 @@
+{
+  "level": 6,
+  "title": "క్లిష్ట అక్షరాలు",
+  "concept": "క్ష, జ్ఞ, శ్ర, శ్చ, ష్ట, ష్ఠ, మూడు హల్లుల కలయికలు, సంధి / విసర్గ రూపాలు",
+  "taskType": "word",
+  "passMark": 24,
+  "threshold": 0.85,
+  "questions": [
+    {
+      "id": "L06-Q01",
+      "difficulty": "easy",
+      "text": "రక్ష",
+      "split": "ర + క్ష",
+      "accept": [
+        "రక్ష"
+      ]
+    },
+    {
+      "id": "L06-Q02",
+      "difficulty": "easy",
+      "text": "పక్షి",
+      "split": "ప + క్షి",
+      "accept": [
+        "పక్షి"
+      ]
+    },
+    {
+      "id": "L06-Q03",
+      "difficulty": "easy",
+      "text": "క్షమ",
+      "split": "క్ష + మ",
+      "accept": [
+        "క్షమ"
+      ]
+    },
+    {
+      "id": "L06-Q04",
+      "difficulty": "easy",
+      "text": "వృక్షం",
+      "split": "వృ + క్షం",
+      "accept": [
+        "వృక్షం"
+      ]
+    },
+    {
+      "id": "L06-Q05",
+      "difficulty": "easy",
+      "text": "జ్ఞానం",
+      "split": "జ్ఞా + నం",
+      "accept": [
+        "జ్ఞానం"
+      ]
+    },
+    {
+      "id": "L06-Q06",
+      "difficulty": "easy",
+      "text": "ఆజ్ఞ",
+      "split": "ఆ + జ్ఞ",
+      "accept": [
+        "ఆజ్ఞ"
+      ]
+    },
+    {
+      "id": "L06-Q07",
+      "difficulty": "easy",
+      "text": "శ్రమ",
+      "split": "శ్ర + మ",
+      "accept": [
+        "శ్రమ"
+      ]
+    },
+    {
+      "id": "L06-Q08",
+      "difficulty": "easy",
+      "text": "కష్టం",
+      "split": "క + ష్టం",
+      "accept": [
+        "కష్టం"
+      ]
+    },
+    {
+      "id": "L06-Q09",
+      "difficulty": "easy",
+      "text": "ప్రశ్న",
+      "split": "ప్ర + శ్న",
+      "accept": [
+        "ప్రశ్న"
+      ]
+    },
+    {
+      "id": "L06-Q10",
+      "difficulty": "easy",
+      "text": "నిష్ఠ",
+      "split": "ని + ష్ఠ",
+      "accept": [
+        "నిష్ఠ"
+      ]
+    },
+    {
+      "id": "L06-Q11",
+      "difficulty": "medium",
+      "text": "లక్ష్యం",
+      "split": "ల + క్ష్యం",
+      "accept": [
+        "లక్ష్యం"
+      ]
+    },
+    {
+      "id": "L06-Q12",
+      "difficulty": "medium",
+      "text": "విజ్ఞానం",
+      "split": "వి + జ్ఞా + నం",
+      "accept": [
+        "విజ్ఞానం"
+      ]
+    },
+    {
+      "id": "L06-Q13",
+      "difficulty": "medium",
+      "text": "కృతజ్ఞత",
+      "split": "కృ + త + జ్ఞ + త",
+      "accept": [
+        "కృతజ్ఞత"
+      ]
+    },
+    {
+      "id": "L06-Q14",
+      "difficulty": "medium",
+      "text": "ఆశ్చర్యం",
+      "split": "ఆ + శ్చ + ర్యం",
+      "accept": [
+        "ఆశ్చర్యం"
+      ]
+    },
+    {
+      "id": "L06-Q15",
+      "difficulty": "medium",
+      "text": "దృశ్యం",
+      "split": "దృ + శ్యం",
+      "accept": [
+        "దృశ్యం"
+      ]
+    },
+    {
+      "id": "L06-Q16",
+      "difficulty": "medium",
+      "text": "రాష్ట్రం",
+      "split": "రా + ష్ట్రం",
+      "accept": [
+        "రాష్ట్రం"
+      ]
+    },
+    {
+      "id": "L06-Q17",
+      "difficulty": "medium",
+      "text": "స్త్రీ",
+      "split": "స్త్రీ",
+      "accept": [
+        "స్త్రీ"
+      ]
+    },
+    {
+      "id": "L06-Q18",
+      "difficulty": "medium",
+      "text": "శాస్త్రం",
+      "split": "శా + స్త్రం",
+      "accept": [
+        "శాస్త్రం"
+      ]
+    },
+    {
+      "id": "L06-Q19",
+      "difficulty": "medium",
+      "text": "నమస్తే",
+      "split": "న + మ + స్తే",
+      "accept": [
+        "నమస్తే"
+      ]
+    },
+    {
+      "id": "L06-Q20",
+      "difficulty": "medium",
+      "text": "మనస్తాపం",
+      "split": "మ + న + స్తా + పం",
+      "accept": [
+        "మనస్తాపం"
+      ]
+    },
+    {
+      "id": "L06-Q21",
+      "difficulty": "hard",
+      "text": "జ్యోత్స్న",
+      "split": "జ్యో + త్స్న",
+      "accept": [
+        "జ్యోత్స్న"
+      ]
+    },
+    {
+      "id": "L06-Q22",
+      "difficulty": "hard",
+      "text": "స్వాతంత్ర్యం",
+      "split": "స్వా + తం + త్ర్యం",
+      "accept": [
+        "స్వాతంత్ర్యం"
+      ]
+    },
+    {
+      "id": "L06-Q23",
+      "difficulty": "hard",
+      "text": "లక్ష్మణుడు",
+      "split": "ల + క్ష్మ + ణు + డు",
+      "accept": [
+        "లక్ష్మణుడు"
+      ]
+    },
+    {
+      "id": "L06-Q24",
+      "difficulty": "hard",
+      "text": "వాగ్దానం",
+      "split": "వా + గ్దా + నం",
+      "accept": [
+        "వాగ్దానం"
+      ]
+    },
+    {
+      "id": "L06-Q25",
+      "difficulty": "hard",
+      "text": "పునఃప్రారంభం",
+      "split": "పు + నః + ప్రా + రం + భం",
+      "accept": [
+        "పునఃప్రారంభం"
+      ]
+    },
+    {
+      "id": "L06-Q26",
+      "difficulty": "hard",
+      "text": "ప్రాతఃకాలం",
+      "split": "ప్రా + తః + కా + లం",
+      "accept": [
+        "ప్రాతఃకాలం"
+      ]
+    },
+    {
+      "id": "L06-Q27",
+      "difficulty": "hard",
+      "text": "విజ్ఞానశాస్త్రం",
+      "split": "వి + జ్ఞా + న + శా + స్త్రం",
+      "accept": [
+        "విజ్ఞానశాస్త్రం"
+      ]
+    },
+    {
+      "id": "L06-Q28",
+      "difficulty": "hard",
+      "text": "ఉపాధ్యాయుడు",
+      "split": "ఉ + పా + ధ్యా + యు + డు",
+      "accept": [
+        "ఉపాధ్యాయుడు"
+      ]
+    },
+    {
+      "id": "L06-Q29",
+      "difficulty": "hard",
+      "text": "ఉద్యోగస్థుడు",
+      "split": "ఉ + ద్యో + గ + స్థు + డు",
+      "accept": [
+        "ఉద్యోగస్థుడు"
+      ]
+    },
+    {
+      "id": "L06-Q30",
+      "difficulty": "hard",
+      "text": "దౌర్భాగ్యం",
+      "split": "దౌ + ర్భా + గ్యం",
+      "accept": [
+        "దౌర్భాగ్యం"
+      ]
+    }
+  ]
+}

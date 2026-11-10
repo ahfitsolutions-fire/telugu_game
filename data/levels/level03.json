@@ -1,0 +1,280 @@
+{
+  "level": 3,
+  "title": "సరళ పదాలు",
+  "concept": "2 నుండి 5+ అక్షరాల పదాలు (వత్తులు లేకుండా)",
+  "taskType": "word",
+  "passMark": 24,
+  "threshold": 0.8,
+  "questions": [
+    {
+      "id": "L03-Q01",
+      "difficulty": "easy",
+      "text": "నది",
+      "split": "న + ది",
+      "accept": [
+        "నది"
+      ]
+    },
+    {
+      "id": "L03-Q02",
+      "difficulty": "easy",
+      "text": "కథ",
+      "split": "క + థ",
+      "accept": [
+        "కథ"
+      ]
+    },
+    {
+      "id": "L03-Q03",
+      "difficulty": "easy",
+      "text": "రథం",
+      "split": "ర + థం",
+      "accept": [
+        "రథం"
+      ]
+    },
+    {
+      "id": "L03-Q04",
+      "difficulty": "easy",
+      "text": "వల",
+      "split": "వ + ల",
+      "accept": [
+        "వల"
+      ]
+    },
+    {
+      "id": "L03-Q05",
+      "difficulty": "easy",
+      "text": "గుడి",
+      "split": "గు + డి",
+      "accept": [
+        "గుడి"
+      ]
+    },
+    {
+      "id": "L03-Q06",
+      "difficulty": "easy",
+      "text": "బడి",
+      "split": "బ + డి",
+      "accept": [
+        "బడి"
+      ]
+    },
+    {
+      "id": "L03-Q07",
+      "difficulty": "easy",
+      "text": "ఆకు",
+      "split": "ఆ + కు",
+      "accept": [
+        "ఆకు"
+      ]
+    },
+    {
+      "id": "L03-Q08",
+      "difficulty": "easy",
+      "text": "మేక",
+      "split": "మే + క",
+      "accept": [
+        "మేక"
+      ]
+    },
+    {
+      "id": "L03-Q09",
+      "difficulty": "easy",
+      "text": "నీరు",
+      "split": "నీ + రు",
+      "accept": [
+        "నీరు"
+      ]
+    },
+    {
+      "id": "L03-Q10",
+      "difficulty": "easy",
+      "text": "పాలు",
+      "split": "పా + లు",
+      "accept": [
+        "పాలు"
+      ]
+    },
+    {
+      "id": "L03-Q11",
+      "difficulty": "medium",
+      "text": "పలక",
+      "split": "ప + ల + క",
+      "accept": [
+        "పలక"
+      ]
+    },
+    {
+      "id": "L03-Q12",
+      "difficulty": "medium",
+      "text": "కమలం",
+      "split": "క + మ + లం",
+      "accept": [
+        "కమలం"
+      ]
+    },
+    {
+      "id": "L03-Q13",
+      "difficulty": "medium",
+      "text": "తామర",
+      "split": "తా + మ + ర",
+      "accept": [
+        "తామర"
+      ]
+    },
+    {
+      "id": "L03-Q14",
+      "difficulty": "medium",
+      "text": "మామిడి",
+      "split": "మా + మి + డి",
+      "accept": [
+        "మామిడి"
+      ]
+    },
+    {
+      "id": "L03-Q15",
+      "difficulty": "medium",
+      "text": "గులాబీ",
+      "split": "గు + లా + బీ",
+      "accept": [
+        "గులాబీ"
+      ]
+    },
+    {
+      "id": "L03-Q16",
+      "difficulty": "medium",
+      "text": "సరోవరం",
+      "split": "స + రో + వ + రం",
+      "accept": [
+        "సరోవరం"
+      ]
+    },
+    {
+      "id": "L03-Q17",
+      "difficulty": "medium",
+      "text": "కనుమరుగు",
+      "split": "క + ను + మ + రు + గు",
+      "accept": [
+        "కనుమరుగు"
+      ]
+    },
+    {
+      "id": "L03-Q18",
+      "difficulty": "medium",
+      "text": "నెమలి",
+      "split": "నె + మ + లి",
+      "accept": [
+        "నెమలి"
+      ]
+    },
+    {
+      "id": "L03-Q19",
+      "difficulty": "medium",
+      "text": "తాబేలు",
+      "split": "తా + బే + లు",
+      "accept": [
+        "తాబేలు"
+      ]
+    },
+    {
+      "id": "L03-Q20",
+      "difficulty": "medium",
+      "text": "పావురం",
+      "split": "పా + వు + రం",
+      "accept": [
+        "పావురం"
+      ]
+    },
+    {
+      "id": "L03-Q21",
+      "difficulty": "hard",
+      "text": "ఆకాశవాణి",
+      "split": "ఆ + కా + శ + వా + ణి",
+      "accept": [
+        "ఆకాశవాణి"
+      ]
+    },
+    {
+      "id": "L03-Q22",
+      "difficulty": "hard",
+      "text": "పాఠశాల",
+      "split": "పా + ఠ + శా + ల",
+      "accept": [
+        "పాఠశాల"
+      ]
+    },
+    {
+      "id": "L03-Q23",
+      "difficulty": "hard",
+      "text": "సమావేశం",
+      "split": "స + మా + వే + శం",
+      "accept": [
+        "సమావేశం"
+      ]
+    },
+    {
+      "id": "L03-Q24",
+      "difficulty": "hard",
+      "text": "సీతాకోకచిలుక",
+      "split": "సీ + తా + కో + క + చి + లు + క",
+      "accept": [
+        "సీతాకోకచిలుక"
+      ]
+    },
+    {
+      "id": "L03-Q25",
+      "difficulty": "hard",
+      "text": "పరిసరాలు",
+      "split": "ప + రి + స + రా + లు",
+      "accept": [
+        "పరిసరాలు"
+      ]
+    },
+    {
+      "id": "L03-Q26",
+      "difficulty": "hard",
+      "text": "జలపాతం",
+      "split": "జ + ల + పా + తం",
+      "accept": [
+        "జలపాతం"
+      ]
+    },
+    {
+      "id": "L03-Q27",
+      "difficulty": "hard",
+      "text": "వానాకాలం",
+      "split": "వా + నా + కా + లం",
+      "accept": [
+        "వానాకాలం"
+      ]
+    },
+    {
+      "id": "L03-Q28",
+      "difficulty": "hard",
+      "text": "తెలుగుదనం",
+      "split": "తె + లు + గు + ద + నం",
+      "accept": [
+        "తెలుగుదనం"
+      ]
+    },
+    {
+      "id": "L03-Q29",
+      "difficulty": "hard",
+      "text": "మహాభారతం",
+      "split": "మ + హా + భా + ర + తం",
+      "accept": [
+        "మహాభారతం"
+      ]
+    },
+    {
+      "id": "L03-Q30",
+      "difficulty": "hard",
+      "text": "రామాయణం",
+      "split": "రా + మా + య + ణం",
+      "accept": [
+        "రామాయణం"
+      ]
+    }
+  ]
+}

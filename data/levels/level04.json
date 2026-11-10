@@ -1,0 +1,280 @@
+{
+  "level": 4,
+  "title": "ద్విత్వాక్షరాలు",
+  "concept": "క్క, గ్గ, చ్చ, జ్జ, ట్ట, డ్డ, ణ్ణ, త్త, ద్ద, న్న, ప్ప, బ్బ, మ్మ, య్య, ల్ల, వ్వ, స్స, ళ్ళ",
+  "taskType": "word",
+  "passMark": 24,
+  "threshold": 0.85,
+  "questions": [
+    {
+      "id": "L04-Q01",
+      "difficulty": "easy",
+      "text": "అక్క",
+      "split": "అ + క్క",
+      "accept": [
+        "అక్క"
+      ]
+    },
+    {
+      "id": "L04-Q02",
+      "difficulty": "easy",
+      "text": "మొగ్గ",
+      "split": "మొ + గ్గ",
+      "accept": [
+        "మొగ్గ"
+      ]
+    },
+    {
+      "id": "L04-Q03",
+      "difficulty": "easy",
+      "text": "పచ్చ",
+      "split": "ప + చ్చ",
+      "accept": [
+        "పచ్చ"
+      ]
+    },
+    {
+      "id": "L04-Q04",
+      "difficulty": "easy",
+      "text": "గజ్జె",
+      "split": "గ + జ్జె",
+      "accept": [
+        "గజ్జె"
+      ]
+    },
+    {
+      "id": "L04-Q05",
+      "difficulty": "easy",
+      "text": "పెట్టె",
+      "split": "పె + ట్టె",
+      "accept": [
+        "పెట్టె"
+      ]
+    },
+    {
+      "id": "L04-Q06",
+      "difficulty": "easy",
+      "text": "గుడ్డ",
+      "split": "గు + డ్డ",
+      "accept": [
+        "గుడ్డ"
+      ]
+    },
+    {
+      "id": "L04-Q07",
+      "difficulty": "easy",
+      "text": "కత్తి",
+      "split": "క + త్తి",
+      "accept": [
+        "కత్తి"
+      ]
+    },
+    {
+      "id": "L04-Q08",
+      "difficulty": "easy",
+      "text": "అన్న",
+      "split": "అ + న్న",
+      "accept": [
+        "అన్న"
+      ]
+    },
+    {
+      "id": "L04-Q09",
+      "difficulty": "easy",
+      "text": "పెద్ద",
+      "split": "పె + ద్ద",
+      "accept": [
+        "పెద్ద"
+      ]
+    },
+    {
+      "id": "L04-Q10",
+      "difficulty": "easy",
+      "text": "పప్పు",
+      "split": "ప + ప్పు",
+      "accept": [
+        "పప్పు"
+      ]
+    },
+    {
+      "id": "L04-Q11",
+      "difficulty": "medium",
+      "text": "డబ్బు",
+      "split": "డ + బ్బు",
+      "accept": [
+        "డబ్బు"
+      ]
+    },
+    {
+      "id": "L04-Q12",
+      "difficulty": "medium",
+      "text": "అమ్మ",
+      "split": "అ + మ్మ",
+      "accept": [
+        "అమ్మ"
+      ]
+    },
+    {
+      "id": "L04-Q13",
+      "difficulty": "medium",
+      "text": "అయ్య",
+      "split": "అ + య్య",
+      "accept": [
+        "అయ్య"
+      ]
+    },
+    {
+      "id": "L04-Q14",
+      "difficulty": "medium",
+      "text": "పిల్లి",
+      "split": "పి + ల్లి",
+      "accept": [
+        "పిల్లి"
+      ]
+    },
+    {
+      "id": "L04-Q15",
+      "difficulty": "medium",
+      "text": "నవ్వు",
+      "split": "న + వ్వు",
+      "accept": [
+        "నవ్వు"
+      ]
+    },
+    {
+      "id": "L04-Q16",
+      "difficulty": "medium",
+      "text": "బొమ్మ",
+      "split": "బొ + మ్మ",
+      "accept": [
+        "బొమ్మ"
+      ]
+    },
+    {
+      "id": "L04-Q17",
+      "difficulty": "medium",
+      "text": "చెట్టు",
+      "split": "చె + ట్టు",
+      "accept": [
+        "చెట్టు"
+      ]
+    },
+    {
+      "id": "L04-Q18",
+      "difficulty": "medium",
+      "text": "గిన్నె",
+      "split": "గి + న్నె",
+      "accept": [
+        "గిన్నె"
+      ]
+    },
+    {
+      "id": "L04-Q19",
+      "difficulty": "medium",
+      "text": "రొట్టె",
+      "split": "రొ + ట్టె",
+      "accept": [
+        "రొట్టె"
+      ]
+    },
+    {
+      "id": "L04-Q20",
+      "difficulty": "medium",
+      "text": "కళ్ళు",
+      "split": "క + ళ్ళు",
+      "accept": [
+        "కళ్ళు"
+      ]
+    },
+    {
+      "id": "L04-Q21",
+      "difficulty": "hard",
+      "text": "కొబ్బరి",
+      "split": "కొ + బ్బ + రి",
+      "accept": [
+        "కొబ్బరి"
+      ]
+    },
+    {
+      "id": "L04-Q22",
+      "difficulty": "hard",
+      "text": "కుక్కపిల్ల",
+      "split": "కు + క్క + పి + ల్ల",
+      "accept": [
+        "కుక్కపిల్ల"
+      ]
+    },
+    {
+      "id": "L04-Q23",
+      "difficulty": "hard",
+      "text": "అక్కచెల్లెళ్ళు",
+      "split": "అ + క్క + చె + ల్లె + ళ్ళు",
+      "accept": [
+        "అక్కచెల్లెళ్ళు"
+      ]
+    },
+    {
+      "id": "L04-Q24",
+      "difficulty": "hard",
+      "text": "పిచ్చుక",
+      "split": "పి + చ్చు + క",
+      "accept": [
+        "పిచ్చుక"
+      ]
+    },
+    {
+      "id": "L04-Q25",
+      "difficulty": "hard",
+      "text": "ఉల్లిపాయ",
+      "split": "ఉ + ల్లి + పా + య",
+      "accept": [
+        "ఉల్లిపాయ"
+      ]
+    },
+    {
+      "id": "L04-Q26",
+      "difficulty": "hard",
+      "text": "బుట్టబొమ్మ",
+      "split": "బు + ట్ట + బొ + మ్మ",
+      "accept": [
+        "బుట్టబొమ్మ"
+      ]
+    },
+    {
+      "id": "L04-Q27",
+      "difficulty": "hard",
+      "text": "తమ్ముడు",
+      "split": "త + మ్ము + డు",
+      "accept": [
+        "తమ్ముడు"
+      ]
+    },
+    {
+      "id": "L04-Q28",
+      "difficulty": "hard",
+      "text": "మల్లెపువ్వు",
+      "split": "మ + ల్లె + పు + వ్వు",
+      "accept": [
+        "మల్లెపువ్వు"
+      ]
+    },
+    {
+      "id": "L04-Q29",
+      "difficulty": "hard",
+      "text": "గుమ్మడికాయ",
+      "split": "గు + మ్మ + డి + కా + య",
+      "accept": [
+        "గుమ్మడికాయ"
+      ]
+    },
+    {
+      "id": "L04-Q30",
+      "difficulty": "hard",
+      "text": "ఎద్దుబండి",
+      "split": "ఎ + ద్దు + బం + డి",
+      "accept": [
+        "ఎద్దుబండి"
+      ]
+    }
+  ]
+}

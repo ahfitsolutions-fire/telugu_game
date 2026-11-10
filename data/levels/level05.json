@@ -1,0 +1,280 @@
+{
+  "level": 5,
+  "title": "సంయుక్తాక్షరాలు",
+  "concept": "ర, య, వ, ల, న, మ, ణ వత్తులు, రేఫ, మహాప్రాణ వత్తులు (చ్ఛ, ద్ధ, భ్య, ధ్య)",
+  "taskType": "word",
+  "passMark": 24,
+  "threshold": 0.85,
+  "questions": [
+    {
+      "id": "L05-Q01",
+      "difficulty": "easy",
+      "text": "చక్రం",
+      "split": "చ + క్రం",
+      "accept": [
+        "చక్రం"
+      ]
+    },
+    {
+      "id": "L05-Q02",
+      "difficulty": "easy",
+      "text": "ప్రేమ",
+      "split": "ప్రే + మ",
+      "accept": [
+        "ప్రేమ"
+      ]
+    },
+    {
+      "id": "L05-Q03",
+      "difficulty": "easy",
+      "text": "గ్రామం",
+      "split": "గ్రా + మం",
+      "accept": [
+        "గ్రామం"
+      ]
+    },
+    {
+      "id": "L05-Q04",
+      "difficulty": "easy",
+      "text": "త్రాసు",
+      "split": "త్రా + సు",
+      "accept": [
+        "త్రాసు"
+      ]
+    },
+    {
+      "id": "L05-Q05",
+      "difficulty": "easy",
+      "text": "విద్య",
+      "split": "వి + ద్య",
+      "accept": [
+        "విద్య"
+      ]
+    },
+    {
+      "id": "L05-Q06",
+      "difficulty": "easy",
+      "text": "సత్యం",
+      "split": "స + త్యం",
+      "accept": [
+        "సత్యం"
+      ]
+    },
+    {
+      "id": "L05-Q07",
+      "difficulty": "easy",
+      "text": "స్వరం",
+      "split": "స్వ + రం",
+      "accept": [
+        "స్వరం"
+      ]
+    },
+    {
+      "id": "L05-Q08",
+      "difficulty": "easy",
+      "text": "ద్వారం",
+      "split": "ద్వా + రం",
+      "accept": [
+        "ద్వారం"
+      ]
+    },
+    {
+      "id": "L05-Q09",
+      "difficulty": "easy",
+      "text": "ధ్వని",
+      "split": "ధ్వ + ని",
+      "accept": [
+        "ధ్వని"
+      ]
+    },
+    {
+      "id": "L05-Q10",
+      "difficulty": "easy",
+      "text": "త్వరగా",
+      "split": "త్వ + ర + గా",
+      "accept": [
+        "త్వరగా"
+      ]
+    },
+    {
+      "id": "L05-Q11",
+      "difficulty": "medium",
+      "text": "శుక్లం",
+      "split": "శు + క్లం",
+      "accept": [
+        "శుక్లం"
+      ]
+    },
+    {
+      "id": "L05-Q12",
+      "difficulty": "medium",
+      "text": "విప్లవం",
+      "split": "వి + ప్ల + వం",
+      "accept": [
+        "విప్లవం"
+      ]
+    },
+    {
+      "id": "L05-Q13",
+      "difficulty": "medium",
+      "text": "శ్లోకం",
+      "split": "శ్లో + కం",
+      "accept": [
+        "శ్లోకం"
+      ]
+    },
+    {
+      "id": "L05-Q14",
+      "difficulty": "medium",
+      "text": "అగ్ని",
+      "split": "అ + గ్ని",
+      "accept": [
+        "అగ్ని"
+      ]
+    },
+    {
+      "id": "L05-Q15",
+      "difficulty": "medium",
+      "text": "పద్మం",
+      "split": "ప + ద్మం",
+      "accept": [
+        "పద్మం"
+      ]
+    },
+    {
+      "id": "L05-Q16",
+      "difficulty": "medium",
+      "text": "ఆత్మ",
+      "split": "ఆ + త్మ",
+      "accept": [
+        "ఆత్మ"
+      ]
+    },
+    {
+      "id": "L05-Q17",
+      "difficulty": "medium",
+      "text": "కృష్ణ",
+      "split": "కృ + ష్ణ",
+      "accept": [
+        "కృష్ణ"
+      ]
+    },
+    {
+      "id": "L05-Q18",
+      "difficulty": "medium",
+      "text": "రత్నం",
+      "split": "ర + త్నం",
+      "accept": [
+        "రత్నం"
+      ]
+    },
+    {
+      "id": "L05-Q19",
+      "difficulty": "medium",
+      "text": "ధర్మం",
+      "split": "ధ + ర్మం",
+      "accept": [
+        "ధర్మం"
+      ]
+    },
+    {
+      "id": "L05-Q20",
+      "difficulty": "medium",
+      "text": "గర్వం",
+      "split": "గ + ర్వం",
+      "accept": [
+        "గర్వం"
+      ]
+    },
+    {
+      "id": "L05-Q21",
+      "difficulty": "hard",
+      "text": "స్వేచ్ఛ",
+      "split": "స్వే + చ్ఛ",
+      "accept": [
+        "స్వేచ్ఛ"
+      ]
+    },
+    {
+      "id": "L05-Q22",
+      "difficulty": "hard",
+      "text": "బుద్ధి",
+      "split": "బు + ద్ధి",
+      "accept": [
+        "బుద్ధి"
+      ]
+    },
+    {
+      "id": "L05-Q23",
+      "difficulty": "hard",
+      "text": "విఘ్నం",
+      "split": "వి + ఘ్నం",
+      "accept": [
+        "విఘ్నం"
+      ]
+    },
+    {
+      "id": "L05-Q24",
+      "difficulty": "hard",
+      "text": "అభ్యాసం",
+      "split": "అ + భ్యా + సం",
+      "accept": [
+        "అభ్యాసం"
+      ]
+    },
+    {
+      "id": "L05-Q25",
+      "difficulty": "hard",
+      "text": "ముఖ్యం",
+      "split": "ము + ఖ్యం",
+      "accept": [
+        "ముఖ్యం"
+      ]
+    },
+    {
+      "id": "L05-Q26",
+      "difficulty": "hard",
+      "text": "వ్యాపారం",
+      "split": "వ్యా + పా + రం",
+      "accept": [
+        "వ్యాపారం"
+      ]
+    },
+    {
+      "id": "L05-Q27",
+      "difficulty": "hard",
+      "text": "సూర్యుడు",
+      "split": "సూ + ర్యు + డు",
+      "accept": [
+        "సూర్యుడు"
+      ]
+    },
+    {
+      "id": "L05-Q28",
+      "difficulty": "hard",
+      "text": "కర్తవ్యం",
+      "split": "క + ర్త + వ్యం",
+      "accept": [
+        "కర్తవ్యం"
+      ]
+    },
+    {
+      "id": "L05-Q29",
+      "difficulty": "hard",
+      "text": "ప్రక్క",
+      "split": "ప్ర + క్క",
+      "accept": [
+        "ప్రక్క"
+      ]
+    },
+    {
+      "id": "L05-Q30",
+      "difficulty": "hard",
+      "text": "సమ్మేళనం",
+      "split": "స + మ్మే + ళ + నం",
+      "accept": [
+        "సమ్మేళనం"
+      ]
+    }
+  ]
+}

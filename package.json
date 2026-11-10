@@ -1,0 +1,11 @@
+{
+  "name": "telugu-pronunciation",
+  "version": "0.1.0",
+  "private": true,
+  "description": "తెలుగు ఉచ్చారణ సాధన – Telugu Pronunciation Ladder (plain HTML/CSS/JS, no build step)",
+  "type": "module",
+  "scripts": {
+    "test": "node --test",
+    "validate": "node tools/validate-content.js"
+  }
+}

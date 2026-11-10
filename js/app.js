@@ -1,0 +1,491 @@
+// Routing and screens: play trail (#/), level (#/level/N), my progress charts (#/progress).
+// Progress lives in this browser (localStorage).
+
+import { splitAksharas, hasTelugu } from './akshara.js?v=6';
+import { scoreAttempt } from './scoring.js?v=6';
+import * as P from './progress.js?v=6';
+import { listen, speechSupport } from './speech.js?v=6';
+import { speak } from './tts.js?v=6';
+import { renderProgress } from './progress-view.js?v=6';
+
+const app = document.getElementById('app');
+const TYPE_MODE = new URLSearchParams(location.search).has('type');
+const REDUCED_MOTION = globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+
+let UI = {};
+let LEVELS = [];
+let TOTAL = 10;
+let progress = P.emptyProgress();
+let activeListen = null;
+const levelCache = new Map();
+
+// ---------- helpers ----------
+
+function t(key, vars = {}) {
+  let s = UI[key] ?? key;
+  for (const [k, v] of Object.entries(vars)) s = s.replaceAll(`{${k}}`, String(v));
+  return s;
+}
+
+function h(tag, attrs = {}, ...kids) {
+  const el = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs ?? {})) {
+    if (v === null || v === undefined || v === false) continue;
+    if (k === 'class') el.className = v;
+    else if (k.startsWith('on') && typeof v === 'function') el.addEventListener(k.slice(2), v);
+    else if (v === true) el.setAttribute(k, '');
+    else el.setAttribute(k, v);
+  }
+  for (const kid of kids.flat(Infinity)) {
+    if (kid === null || kid === undefined || kid === false) continue;
+    el.append(kid instanceof Node ? kid : document.createTextNode(String(kid)));
+  }
+  return el;
+}
+
+const pad = (n) => String(n).padStart(2, '0');
+const starText = (n) => '★'.repeat(n) + '☆'.repeat(3 - n);
+const pick = (list) => (Array.isArray(list) ? list[Math.floor(Math.random() * list.length)] : list);
+const meta = (n) => LEVELS.find((l) => l.level === n) ?? { emoji: '⭐', color: '#3b8fe8', title: '' };
+
+function save() {
+  P.recordDay(progress, new Date(), TOTAL);
+  return P.saveProgress(progress);
+}
+
+function show(...nodes) {
+  app.replaceChildren(...nodes.flat(Infinity).filter((x) => x !== null && x !== undefined && x !== false));
+  window.scrollTo(0, 0);
+}
+
+async function loadJSON(url) {
+  const res = await fetch(url, { cache: 'no-cache' });
+  if (!res.ok) throw new Error(`${url}: ${res.status}`);
+  return res.json();
+}
+
+async function loadLevel(n) {
+  if (!levelCache.has(n)) levelCache.set(n, await loadJSON(`data/levels/level${pad(n)}.json`));
+  return levelCache.get(n);
+}
+
+function stopListening() {
+  activeListen?.stop();
+  activeListen = null;
+}
+
+function supportNotice() {
+  const s = speechSupport();
+  if (s === 'ok') return null;
+  return h('div', { class: 'card notice', role: 'alert' }, t(s === 'insecure' ? 'insecure' : 'notSupported'));
+}
+
+function backLink() {
+  return h('a', { href: '#/', class: 'btn link-btn' }, `← ${t('backToMap')}`);
+}
+
+/** Emoji confetti burst (skipped when the user prefers reduced motion). */
+function confetti(count = 26) {
+  if (REDUCED_MOTION) return;
+  const layer = h('div', { class: 'confetti', 'aria-hidden': 'true' });
+  const bits = ['⭐', '🌟', '🎉', '🎈', '✨', '🍬', '🌈'];
+  for (let i = 0; i < count; i++) {
+    layer.append(h('span', {
+      style: `left:${Math.random() * 100}%;animation-delay:${Math.random() * 0.4}s;animation-duration:${1.6 + Math.random() * 1.2}s;font-size:${18 + Math.random() * 18}px`,
+    }, pick(bits)));
+  }
+  document.body.append(layer);
+  setTimeout(() => layer.remove(), 3200);
+}
+
+/** The parrot buddy with a speech bubble. mood: '' | 'happy' | 'sad' | 'listen' */
+function buddy(text, mood = '') {
+  const bubble = h('div', { class: 'bubble', 'aria-live': 'polite' }, text);
+  const el = h('div', { class: `buddy ${mood}` }, h('span', { class: 'buddy-face', 'aria-hidden': 'true' }, '🦜'), bubble);
+  el.say = (msg, m = '') => { bubble.replaceChildren(...[msg].flat()); el.className = `buddy ${m}`; };
+  return el;
+}
+
+function topBar(active) {
+  const tab = (href, key, name, icon) => h('a', { href, class: active === name ? 'tab active' : 'tab', 'aria-current': active === name ? 'page' : null }, `${icon} ${t(key)}`);
+  const nameInput = h('input', {
+    id: 'student-name', type: 'text', value: progress.student ?? '', placeholder: t('namePlaceholder'), maxlength: '40', autocomplete: 'off',
+    onchange: (e) => { progress.student = e.target.value.trim(); save(); },
+  });
+  return h('header', { class: 'top' },
+    h('div', { class: 'top-row' },
+      h('h1', { class: 'logo' }, h('span', { class: 'logo-mark', 'aria-hidden': 'true' }, 'అ'), t('appTitle')),
+      h('label', { class: 'name-field', for: 'student-name' }, `${t('nameLabel')}:`, nameInput)),
+    h('nav', { class: 'tabs', 'aria-label': 'menu' },
+      tab('#/', 'navLevels', 'map', '🗺️'),
+      tab('#/progress', 'navProgress', 'progress', '📊')));
+}
+
+// ---------- play trail (level map) ----------
+
+function renderMap() {
+  const done = P.passedCount(progress, TOTAL);
+  const current = P.currentLevel(progress, TOTAL);
+  const name = progress.student?.trim();
+  let stars = 0;
+  for (let n = 1; n <= TOTAL; n++) stars += progress.levels[n]?.stars ?? 0;
+
+  const greeting = done === TOTAL
+    ? t('greetDone', { name: name || '' })
+    : name ? t('greet', { name, n: current }) : t('greetNew');
+
+  const cards = LEVELS.map(({ level: n, title, concept, emoji, color }) => {
+    const passed = P.isPassed(progress, n);
+    const unlocked = P.isUnlocked(progress, n);
+    const state = passed ? 'passed' : unlocked ? 'current' : 'locked';
+    return h('button', {
+      class: `lvl ${state} ${n % 2 ? 'odd' : 'even'}`,
+      style: `--c:${color}`,
+      disabled: !unlocked,
+      'aria-label': `${t('level')} ${n} – ${title}`,
+      onclick: () => { location.hash = `#/level/${n}`; },
+    },
+    state === 'current' ? h('span', { class: 'ribbon' }, t('playHere')) : null,
+    h('span', { class: 'lvl-emoji', 'aria-hidden': 'true' }, emoji),
+    h('span', { class: 'num' }, `${t('level')} ${n}`),
+    h('span', { class: 'lvl-title' }, title),
+    h('span', { class: 'ttl' }, concept),
+    h('span', { class: 'lvl-foot' },
+      passed ? h('span', { class: 'stars' }, starText(progress.levels[n]?.stars ?? 1)) : null,
+      !unlocked ? h('span', { class: 'lock' }, '🔒') : null));
+  });
+
+  const pct = Math.round((done / TOTAL) * 100);
+  show(
+    topBar('map'),
+    supportNotice(),
+    h('section', { class: 'hero card' },
+      buddy(greeting, done === TOTAL ? 'happy' : ''),
+      h('div', { class: 'hero-stats' },
+        h('div', { class: 'jar' }, h('span', { class: 'jar-icon', 'aria-hidden': 'true' }, '⭐'), h('b', {}, String(stars)), h('span', {}, t('starJar'))),
+        h('div', { class: 'trail-meter' },
+          h('div', { class: 'meter-label' }, `${t('overall', { done, total: TOTAL })}`),
+          h('div', { class: 'bar fun', role: 'progressbar', 'aria-valuemin': '0', 'aria-valuemax': String(TOTAL), 'aria-valuenow': String(done) },
+            h('span', { style: `width:${pct}%` }),
+            h('i', { class: 'runner', style: `left:clamp(18px, ${pct}%, calc(100% - 18px))`, 'aria-hidden': 'true' }, meta(Math.min(current, TOTAL)).emoji))))),
+    h('div', { class: 'levels trail' }, cards),
+    h('p', { class: 'muted foot-note' }, t('privacy')),
+  );
+}
+
+// ---------- level intro ----------
+
+async function renderLevel(n) {
+  if (!Number.isInteger(n) || n < 1 || n > TOTAL) { location.hash = '#/'; return; }
+  if (!P.isUnlocked(progress, n)) {
+    show(backLink(), h('div', { class: 'card' }, buddy(t('locked', { p: n - 1 }), 'sad')));
+    return;
+  }
+  show(h('p', { class: 'card' }, t('loading')));
+  let level;
+  try {
+    level = await loadLevel(n);
+  } catch {
+    show(backLink(), h('div', { class: 'card notice' }, t('loadError')));
+    return;
+  }
+  const m = meta(n);
+  const total = level.questions.length;
+  const L = progress.levels[n];
+
+  const begin = () => {
+    P.startAttempt(progress, n, P.orderQuestions(level.questions, { shuffle: level.taskType !== 'paragraph' }));
+    save();
+    renderQuestion(level);
+  };
+  const buttons = L?.current
+    ? [h('button', { class: 'primary big', onclick: () => renderQuestion(level) }, `▶ ${t('resume', { q: L.current.results.length + 1, t: total })}`),
+      h('button', { onclick: begin }, `🔁 ${t('restart')}`)]
+    : [h('button', { class: 'primary big', onclick: begin }, `▶ ${t('start')}`)];
+
+  show(
+    backLink(),
+    supportNotice(),
+    h('section', { class: 'card intro', style: `--c:${m.color}` },
+      h('div', { class: 'intro-emoji', 'aria-hidden': 'true' }, m.emoji),
+      h('h2', {}, `${t('level')} ${n} – ${level.title}`),
+      h('p', { class: 'intro-concept' }, level.concept),
+      h('p', { class: 'muted' }, t('passMarkLabel', { m: level.passMark, t: total })),
+      L?.best ? h('p', { class: 'muted' }, `${t('best')}: ${L.best} / ${total}  ${starText(L.stars ?? 0)}`) : null,
+      h('div', { class: 'row center' }, buttons)),
+  );
+}
+
+// ---------- question ----------
+
+function audioPath(level, q, index) {
+  return q.audio ?? `audio/level${pad(level.level)}/q${pad(index)}.mp3`;
+}
+
+/** Fill `box` with the target text; colour aksharas when a scoring result is given. */
+function paintTarget(box, text, result) {
+  const tokens = text.split(/(\s+)/u);
+  const teluguTokens = tokens.filter((tok) => hasTelugu(tok));
+  const perWord = result && result.words.length === teluguTokens.length;
+  const flat = result ? result.words.flatMap((w) => w.aksharas) : [];
+  let wordIdx = 0;
+  let flatIdx = 0;
+  const nodes = [];
+  for (const tok of tokens) {
+    if (!tok) continue;
+    if (/^\s+$/u.test(tok)) { nodes.push(' '); continue; }
+    const units = splitAksharas(tok);
+    const statuses = perWord ? result.words[wordIdx]?.aksharas ?? [] : null;
+    let unitIdx = 0;
+    for (const u of units) {
+      if (!hasTelugu(u)) { nodes.push(u); continue; }
+      let status = null;
+      if (result) {
+        const list = perWord ? statuses : flat;
+        const k = perWord ? unitIdx : flatIdx;
+        status = list.length ? list[Math.min(k, list.length - 1)].status : 'missing';
+      }
+      nodes.push(h('span', { class: `ak${status ? ` ${status}` : ''}` }, u));
+      unitIdx++;
+      flatIdx++;
+    }
+    if (hasTelugu(tok)) wordIdx++;
+  }
+  box.replaceChildren(...nodes);
+}
+
+function speechErrorText(code) {
+  return {
+    'no-speech': t('errNoSpeech'),
+    'audio-capture': t('errAudioCapture'),
+    'not-allowed': t('errNotAllowed'),
+    'service-not-allowed': t('errNotAllowed'),
+    network: t('errNetwork'),
+    unsupported: t('notSupported'),
+    insecure: t('insecure'),
+  }[code] ?? t('errOther');
+}
+
+function renderQuestion(level) {
+  stopListening();
+  const n = level.level;
+  const m = meta(n);
+  const cur = progress.levels[n]?.current;
+  if (!cur) { renderLevel(n); return; }
+  const total = cur.order.length;
+  const index = cur.results.length;
+  if (index >= total) { finishLevel(level); return; }
+  const q = level.questions.find((x) => x.id === cur.order[index]);
+  if (!q) { // content changed under a saved attempt: start over
+    P.startAttempt(progress, n, P.orderQuestions(level.questions));
+    save();
+    renderQuestion(level);
+    return;
+  }
+
+  let resolved = false;
+  const isWord = level.taskType === 'word';
+
+  const target = h('div', { class: `target${q.text.length > 18 ? ' long' : ''}`, lang: 'te' });
+  paintTarget(target, q.text, null);
+  const passageBox = q.passage
+    ? h('div', { class: 'passage', lang: 'te' },
+      h('div', { class: 'passage-title' }, `📖 ${q.passageTitle ?? ''}`),
+      level.questions.filter((x) => x.passage === q.passage).map((x) =>
+        h('span', { class: x.id === q.id ? 'p-sent now' : 'p-sent' }, `${x.text} `)))
+    : null;
+
+  const hintBox = h('div', { class: 'hint', hidden: true },
+    q.split ? h('div', { class: 'split' }, q.split) : null,
+    q.hint ? h('div', {}, q.hint) : null);
+  const hintBtn = h('button', { class: 'link-btn', 'aria-expanded': 'false', onclick: () => {
+    hintBox.hidden = !hintBox.hidden;
+    hintBtn.textContent = hintBox.hidden ? `💡 ${t('hintShow')}` : `💡 ${t('hintHide')}`;
+    hintBtn.setAttribute('aria-expanded', String(!hintBox.hidden));
+  } }, `💡 ${t('hintShow')}`);
+
+  const pal = buddy(t('buddyReady'));
+  const heardLine = h('p', { class: 'heard' });
+  const wordCard = h('div', { class: 'card stage-card', style: `--c:${m.color}` });
+
+  const listenBtn = h('button', { class: 'btn-listen', onclick: async () => {
+    const ok = await speak(q.text, audioPath(level, q, index + 1));
+    if (!ok) pal.say(t('noAudio'), 'sad');
+  } }, `🔊 ${t('listen')}`);
+  const micBtn = h('button', { class: 'primary mic', onclick: onMic }, `🎤 ${t('speak')}`);
+  const nextBtn = h('button', { class: 'btn-next', onclick: onNext }, `${t('next')} ➜`);
+
+  function setListening(on) {
+    micBtn.classList.toggle('listening', on);
+    micBtn.textContent = on ? `⏹ ${t('stop')}` : `🎤 ${t('speak')}`;
+    if (on) pal.say(t('buddyListen'), 'listen');
+  }
+
+  function resolve(passed, result) {
+    resolved = true;
+    P.recordAnswer(progress, n, { id: q.id, passed, score: result?.score ?? 0, heard: result?.heard ?? '', tries: 1 });
+    save();
+    micBtn.disabled = true;
+    nextBtn.classList.add('primary', 'ready');
+    nextBtn.focus();
+  }
+
+  function handleHeard(alternatives) {
+    if (resolved) return;
+    const result = scoreAttempt(level, q, alternatives);
+    paintTarget(target, q.text, result);
+    heardLine.replaceChildren(`${t('youSaid')} `, h('b', { lang: 'te' }, result.heard || '—'));
+    const pct = Math.round(result.score * 100);
+    if (result.passed) {
+      pal.say(`✅ ${pick(UI.praise)} (${pct}%)`, 'happy');
+      wordCard.classList.add('win');
+      confetti(18);
+    } else {
+      const firstBad = result.words.flatMap((w) => w.aksharas).find((x) => x.status !== 'ok');
+      pal.say([`❌ ${t('buddyWrong')} (${pct}%)`, firstBad ? h('span', { class: 'focus-tip' }, t('wrongAt', { a: firstBad.akshara })) : null], 'sad');
+      wordCard.classList.add('shake');
+      speak(q.text, audioPath(level, q, index + 1));
+    }
+    resolve(result.passed, result);
+  }
+
+  function onMic() {
+    if (resolved) return;
+    if (activeListen) { stopListening(); return; }
+    const handle = listen({
+      lang: 'te-IN',
+      silenceMs: isWord ? 5000 : 20000,
+      maxMs: isWord ? 12000 : 60000,
+      continuous: level.taskType === 'paragraph',
+      onStart: () => setListening(true),
+    });
+    activeListen = handle;
+    handle.promise
+      .then(handleHeard)
+      .catch((code) => {
+        if (code === 'aborted') { pal.say(t('buddyReady')); return; }
+        pal.say(speechErrorText(code), 'sad');
+      })
+      .finally(() => {
+        if (activeListen === handle) activeListen = null;
+        setListening(false);
+        if (resolved) micBtn.disabled = true;
+      });
+  }
+
+  function onNext() {
+    if (!resolved) {
+      if (!confirm(t('skipConfirm'))) return;
+      stopListening();
+      P.recordAnswer(progress, n, { id: q.id, passed: false, score: 0, heard: '', tries: 0, skipped: true });
+      save();
+    }
+    renderQuestion(level);
+  }
+
+  const typeBox = TYPE_MODE
+    ? (() => {
+      const input = h('input', { type: 'text', lang: 'te', placeholder: t('typeMode'), 'aria-label': t('typeMode') });
+      const check = () => { if (input.value.trim()) { handleHeard([input.value]); input.value = ''; } };
+      input.addEventListener('keydown', (e) => { if (e.key === 'Enter') check(); });
+      return h('div', { class: 'type-mode' }, input, h('button', { onclick: check }, t('typeCheck')));
+    })()
+    : null;
+
+  wordCard.append(...[
+    passageBox,
+    q.focus ? h('div', { class: 'focus' }, t('focusLetter'), h('b', { lang: 'te' }, q.focus)) : null,
+    target,
+    hintBtn,
+    hintBox,
+    h('div', { class: 'actions' }, listenBtn, micBtn, nextBtn),
+    typeBox,
+  ].filter(Boolean));
+
+  const pct = Math.round((index / total) * 100);
+  show(
+    backLink(),
+    h('div', { class: 'q-head' },
+      h('span', {}, `${m.emoji} ${t('level')} ${n} • ${t('question')} ${index + 1} / ${total}`),
+      h('span', { class: `diff ${q.difficulty}` }, t(q.difficulty))),
+    h('div', { class: 'bar fun' },
+      h('span', { style: `width:${pct}%` }),
+      h('i', { class: 'runner', style: `left:clamp(18px, ${pct}%, calc(100% - 18px))`, 'aria-hidden': 'true' }, m.emoji)),
+    supportNotice(),
+    wordCard,
+    h('div', { class: 'card feedback' }, pal, heardLine),
+  );
+}
+
+// ---------- result ----------
+
+function finishLevel(level) {
+  const n = level.level;
+  const byId = new Map(level.questions.map((q) => [q.id, q]));
+  const summary = P.finishAttempt(progress, n, level.passMark, level.taskType === 'paragraph'
+    ? { passageOf: (id) => byId.get(id)?.passage ?? id, passageMin: level.passageMin ?? 0.6 }
+    : {});
+  save();
+  const failedTexts = summary.failedIds.map((id) => byId.get(id)?.text).filter(Boolean);
+
+  const retry = () => {
+    P.startAttempt(progress, n, P.orderQuestions(level.questions, { shuffle: level.taskType !== 'paragraph' }));
+    save();
+    renderQuestion(level);
+  };
+  const buttons = [];
+  if (summary.passed && n < TOTAL) {
+    buttons.push(h('button', { class: 'primary big', onclick: () => { location.hash = `#/level/${n + 1}`; } }, `${meta(n + 1).emoji} ${t('nextLevel')} ➜`));
+  }
+  buttons.push(h('button', { class: summary.passed ? '' : 'primary big', onclick: retry }, `🔁 ${t('retry')}`));
+  buttons.push(h('a', { class: 'btn', href: '#/' }, `🗺️ ${t('backToMap')}`));
+
+  const failText = summary.correct >= level.passMark ? t('failedPassage') : t('failed', { m: level.passMark });
+  show(
+    h('section', { class: `card result ${summary.passed ? 'won' : 'tryagain'}` },
+      h('div', { class: 'result-emoji', 'aria-hidden': 'true' }, summary.passed ? (n === TOTAL ? '🏆' : meta(n).emoji) : '🌈'),
+      h('h2', {}, t('resultTitle', { n })),
+      h('div', { class: 'big-score' }, t('score', { c: summary.correct, t: summary.total })),
+      h('div', { class: 'big-stars', 'aria-label': `${summary.stars} / 3` },
+        [0, 1, 2].map((i) => h('span', { class: i < summary.stars ? 'star on' : 'star', style: `animation-delay:${0.25 + i * 0.25}s` }, i < summary.stars ? '★' : '☆'))),
+      buddy(summary.passed ? t('passed') : `${failText} ${t('resultCheer')}`, summary.passed ? 'happy' : 'sad'),
+      !summary.passed && summary.weakPassages?.length
+        ? h('p', { class: 'muted' }, t('passageRule', { p: summary.weakPassages.map((id) => level.questions.find((q) => q.passage === id)?.passageTitle ?? id).join(', ') }))
+        : null),
+    failedTexts.length
+      ? h('div', { class: 'card' }, h('h2', {}, `📝 ${t('practiseAgain')}`), h('ul', { class: 'fail-list', lang: 'te' }, failedTexts.map((x) => h('li', {}, x))))
+      : null,
+    h('div', { class: 'row center' }, buttons),
+  );
+  if (summary.passed) confetti(40);
+}
+
+// ---------- routing ----------
+
+function route() {
+  stopListening();
+  globalThis.speechSynthesis?.cancel();
+  const hash = location.hash;
+  const m = hash.match(/^#\/level\/(\d+)$/u);
+  if (m) renderLevel(Number(m[1]));
+  else if (hash === '#/progress') renderProgress({ h, t, show, topBar, progress, levels: LEVELS, total: TOTAL });
+  else renderMap();
+}
+
+async function init() {
+  try {
+    const [ui, ladder] = await Promise.all([loadJSON('data/ui-text.json'), loadJSON('data/ladder.json')]);
+    UI = ui;
+    LEVELS = ladder.levels;
+    TOTAL = ladder.totalLevels ?? LEVELS.length;
+  } catch {
+    app.textContent = 'పాఠ్యాంశం లోడ్ కాలేదు. ఈ పేజీని Live Server (లేదా https) ద్వారా తెరవండి. / Could not load content – open this page through Live Server or https, not as a file.';
+    return;
+  }
+  document.title = t('appTitle');
+  progress = P.loadProgress();
+  window.addEventListener('hashchange', route);
+  route();
+}
+
+init();

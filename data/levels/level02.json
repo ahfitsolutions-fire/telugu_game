@@ -1,0 +1,280 @@
+{
+  "level": 2,
+  "title": "గుణింతాలు",
+  "concept": "కా కి కీ కు కూ కె కే కై కొ కో కౌ, కం (అనుస్వారం), కః (విసర్గం), కృ",
+  "taskType": "word",
+  "passMark": 24,
+  "threshold": 0.8,
+  "questions": [
+    {
+      "id": "L02-Q01",
+      "difficulty": "easy",
+      "text": "పాప",
+      "split": "పా + ప",
+      "accept": [
+        "పాప"
+      ]
+    },
+    {
+      "id": "L02-Q02",
+      "difficulty": "easy",
+      "text": "కాకి",
+      "split": "కా + కి",
+      "accept": [
+        "కాకి"
+      ]
+    },
+    {
+      "id": "L02-Q03",
+      "difficulty": "easy",
+      "text": "బాల",
+      "split": "బా + ల",
+      "accept": [
+        "బాల"
+      ]
+    },
+    {
+      "id": "L02-Q04",
+      "difficulty": "easy",
+      "text": "చిలక",
+      "split": "చి + ల + క",
+      "accept": [
+        "చిలక"
+      ]
+    },
+    {
+      "id": "L02-Q05",
+      "difficulty": "easy",
+      "text": "మిరప",
+      "split": "మి + ర + ప",
+      "accept": [
+        "మిరప"
+      ]
+    },
+    {
+      "id": "L02-Q06",
+      "difficulty": "easy",
+      "text": "గీత",
+      "split": "గీ + త",
+      "accept": [
+        "గీత"
+      ]
+    },
+    {
+      "id": "L02-Q07",
+      "difficulty": "easy",
+      "text": "పులి",
+      "split": "పు + లి",
+      "accept": [
+        "పులి"
+      ]
+    },
+    {
+      "id": "L02-Q08",
+      "difficulty": "easy",
+      "text": "తులసి",
+      "split": "తు + ల + సి",
+      "accept": [
+        "తులసి"
+      ]
+    },
+    {
+      "id": "L02-Q09",
+      "difficulty": "easy",
+      "text": "పూవు",
+      "split": "పూ + వు",
+      "accept": [
+        "పూవు"
+      ]
+    },
+    {
+      "id": "L02-Q10",
+      "difficulty": "easy",
+      "text": "దూడ",
+      "split": "దూ + డ",
+      "accept": [
+        "దూడ"
+      ]
+    },
+    {
+      "id": "L02-Q11",
+      "difficulty": "medium",
+      "text": "మెడ",
+      "split": "మె + డ",
+      "accept": [
+        "మెడ"
+      ]
+    },
+    {
+      "id": "L02-Q12",
+      "difficulty": "medium",
+      "text": "చేప",
+      "split": "చే + ప",
+      "accept": [
+        "చేప"
+      ]
+    },
+    {
+      "id": "L02-Q13",
+      "difficulty": "medium",
+      "text": "తేనె",
+      "split": "తే + నె",
+      "accept": [
+        "తేనె"
+      ]
+    },
+    {
+      "id": "L02-Q14",
+      "difficulty": "medium",
+      "text": "పైన",
+      "split": "పై + న",
+      "accept": [
+        "పైన"
+      ]
+    },
+    {
+      "id": "L02-Q15",
+      "difficulty": "medium",
+      "text": "వైపు",
+      "split": "వై + పు",
+      "accept": [
+        "వైపు"
+      ]
+    },
+    {
+      "id": "L02-Q16",
+      "difficulty": "medium",
+      "text": "కొడవలి",
+      "split": "కొ + డ + వ + లి",
+      "accept": [
+        "కొడవలి"
+      ]
+    },
+    {
+      "id": "L02-Q17",
+      "difficulty": "medium",
+      "text": "కోట",
+      "split": "కో + ట",
+      "accept": [
+        "కోట"
+      ]
+    },
+    {
+      "id": "L02-Q18",
+      "difficulty": "medium",
+      "text": "తోట",
+      "split": "తో + ట",
+      "accept": [
+        "తోట"
+      ]
+    },
+    {
+      "id": "L02-Q19",
+      "difficulty": "medium",
+      "text": "మౌనం",
+      "split": "మౌ + నం",
+      "accept": [
+        "మౌనం"
+      ]
+    },
+    {
+      "id": "L02-Q20",
+      "difficulty": "medium",
+      "text": "పంట",
+      "split": "పం + ట",
+      "accept": [
+        "పంట"
+      ]
+    },
+    {
+      "id": "L02-Q21",
+      "difficulty": "hard",
+      "text": "దుఃఖం",
+      "split": "దుః + ఖం",
+      "accept": [
+        "దుఃఖం"
+      ]
+    },
+    {
+      "id": "L02-Q22",
+      "difficulty": "hard",
+      "text": "అంతఃపురం",
+      "split": "అం + తః + పు + రం",
+      "accept": [
+        "అంతఃపురం"
+      ]
+    },
+    {
+      "id": "L02-Q23",
+      "difficulty": "hard",
+      "text": "కృప",
+      "split": "కృ + ప",
+      "accept": [
+        "కృప"
+      ]
+    },
+    {
+      "id": "L02-Q24",
+      "difficulty": "hard",
+      "text": "మృగం",
+      "split": "మృ + గం",
+      "accept": [
+        "మృగం"
+      ]
+    },
+    {
+      "id": "L02-Q25",
+      "difficulty": "hard",
+      "text": "గృహం",
+      "split": "గృ + హం",
+      "accept": [
+        "గృహం"
+      ]
+    },
+    {
+      "id": "L02-Q26",
+      "difficulty": "hard",
+      "text": "తృణం",
+      "split": "తృ + ణం",
+      "accept": [
+        "తృణం"
+      ]
+    },
+    {
+      "id": "L02-Q27",
+      "difficulty": "hard",
+      "text": "వృషభం",
+      "split": "వృ + ష + భం",
+      "accept": [
+        "వృషభం"
+      ]
+    },
+    {
+      "id": "L02-Q28",
+      "difficulty": "hard",
+      "text": "పృథివి",
+      "split": "పృ + థి + వి",
+      "accept": [
+        "పృథివి"
+      ]
+    },
+    {
+      "id": "L02-Q29",
+      "difficulty": "hard",
+      "text": "కైలాసం",
+      "split": "కై + లా + సం",
+      "accept": [
+        "కైలాసం"
+      ]
+    },
+    {
+      "id": "L02-Q30",
+      "difficulty": "hard",
+      "text": "సౌరభం",
+      "split": "సౌ + ర + భం",
+      "accept": [
+        "సౌరభం"
+      ]
+    }
+  ]
+}
