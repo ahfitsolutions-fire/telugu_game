@@ -392,3 +392,201 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 4px solid 
   .buddy-face { font-size: 46px; }
   .hero-stats { grid-template-columns: 1fr; }
 }
+
+/* ======================= 3D level carousel (cover-flow) ======================= */
+.carousel { position: relative; margin: 6px -16px 0; }
+.track {
+  --w: min(70vw, 290px);
+  display: flex; overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory;
+  padding: 34px calc(50% - var(--w) / 2) 26px; scrollbar-width: none; cursor: grab; outline: none;
+  -webkit-overflow-scrolling: touch;
+}
+.track::-webkit-scrollbar { display: none; }
+.track.dragging { scroll-snap-type: none; cursor: grabbing; }
+.track:focus-visible { outline: 4px solid var(--gold); outline-offset: -4px; border-radius: 28px; }
+.slide { position: relative; flex: 0 0 var(--w); scroll-snap-align: center; margin-inline: calc(var(--w) * -0.07); }
+.lvl3d {
+  width: 100%; height: 410px; display: flex; flex-direction: column; align-items: stretch; justify-content: flex-start;
+  padding: 0; overflow: hidden; border-radius: 30px; border: 4px solid #ffffff; text-align: left;
+  background: #ffffff; color: #1d2340; font-family: var(--font-read); font-weight: 400;
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.45); will-change: transform, opacity; user-select: none;
+  transition: box-shadow 0.2s;
+}
+.lvl3d:active { box-shadow: 0 18px 36px rgba(0, 0, 0, 0.45); }
+.lvl3d.center { box-shadow: 0 0 0 5px var(--c), 0 0 40px color-mix(in srgb, var(--c) 70%, transparent), 0 22px 44px rgba(0, 0, 0, 0.5); }
+.art {
+  position: relative; flex: 0 0 52%; display: grid; place-items: center; overflow: hidden;
+  background:
+    radial-gradient(circle at 20% 25%, rgba(255, 255, 255, 0.45) 0 8px, transparent 9px),
+    radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.35) 0 12px, transparent 13px),
+    radial-gradient(circle at 70% 20%, rgba(255, 255, 255, 0.30) 0 5px, transparent 6px),
+    radial-gradient(circle at 30% 80%, rgba(255, 255, 255, 0.25) 0 6px, transparent 7px),
+    radial-gradient(circle at 50% 45%, color-mix(in srgb, var(--c) 45%, white), var(--c) 72%);
+}
+.art::after {
+  content: ""; position: absolute; left: -10%; right: -10%; bottom: -38px; height: 70px; border-radius: 50%;
+  background: color-mix(in srgb, var(--c) 60%, black 25%); opacity: 0.35;
+}
+.art-emoji { position: relative; z-index: 1; font-size: 112px; line-height: 1; filter: drop-shadow(0 8px 10px rgba(0, 0, 0, 0.3)); }
+.lvl3d.center .art-emoji { animation: bob 2.2s ease-in-out infinite; }
+.art-num {
+  position: absolute; z-index: 2; top: 12px; left: 12px; padding: 2px 12px; border-radius: 99px;
+  background: rgba(255, 255, 255, 0.92); color: color-mix(in srgb, var(--c) 75%, black 25%);
+  font-family: var(--font-fun); font-weight: 800; font-size: 1rem;
+}
+.art-badge {
+  position: absolute; z-index: 2; top: 10px; right: 12px; width: 40px; height: 40px; border-radius: 50%;
+  display: grid; place-items: center; background: var(--green); color: #fff; font-size: 1.4rem; font-weight: 800;
+  box-shadow: 0 3px 0 var(--green-dark); transform: rotate(10deg);
+}
+.lvl3d .body { flex: 1; display: flex; flex-direction: column; gap: 4px; padding: 14px 16px 16px; }
+.lvl3d .lvl-title { font-family: var(--font-fun); font-size: 1.5rem; font-weight: 800; line-height: 1.2; color: #1d2340; }
+.lvl3d .ttl { font-size: 0.8rem; line-height: 1.4; color: #4f5878; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.lvl3d .stars { color: #e09a00; font-size: 1.3rem; letter-spacing: 3px; }
+.lvl3d .action {
+  margin-top: auto; align-self: stretch; text-align: center; padding: 8px 12px; border-radius: 16px;
+  font-family: var(--font-fun); font-weight: 800; font-size: 1.05rem;
+  background: color-mix(in srgb, var(--c) 15%, white); color: color-mix(in srgb, var(--c) 70%, black 30%);
+}
+.lvl3d.center .action { background: var(--c); color: #fff; box-shadow: 0 4px 0 color-mix(in srgb, var(--c) 70%, black 25%); }
+.lvl3d.locked .art { filter: grayscale(0.9) brightness(0.9); }
+.lvl3d.locked .action { font-size: 0.85rem; }
+.lvl3d.nope { animation: shake 0.45s ease; }
+.nav-arrow {
+  position: absolute; z-index: 300; top: calc(34px + 205px); transform: translateY(-50%);
+  width: 56px; height: 56px; min-height: 0; padding: 0; border-radius: 50%; font-size: 2rem; line-height: 1;
+}
+.nav-arrow:not(:disabled):active { transform: translateY(calc(-50% + 4px)); }
+.nav-arrow.prev { left: 10px; }
+.nav-arrow.next { right: 10px; }
+.dots { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+.dot {
+  width: 12px; height: 12px; min-height: 0; padding: 0; border-radius: 99px; box-shadow: none;
+  background: rgba(255, 255, 255, 0.4); transition: width 0.25s, background 0.25s;
+}
+.dot:not(:disabled):active { transform: none; box-shadow: none; }
+.dot.on { width: 34px; background: var(--c); }
+.swipe-hint { text-align: center; color: var(--on-sky); opacity: 0.85; font-size: 0.9rem; margin: 6px 0 0; }
+@media (max-width: 520px) {
+  .lvl3d { height: 380px; }
+  .art-emoji { font-size: 96px; }
+  .nav-arrow { width: 44px; height: 44px; font-size: 1.6rem; top: calc(34px + 190px); }
+  .nav-arrow.prev { left: 4px; }
+  .nav-arrow.next { right: 4px; }
+}
+
+/* ======================= practice: must-pass flow ======================= */
+.rule {
+  margin: 10px auto; max-width: 560px; padding: 10px 14px; border-radius: 16px; font-weight: 600;
+  background: color-mix(in srgb, var(--c) 14%, var(--card));
+}
+.tries { margin: 4px 0 0; font-weight: 700; }
+.btn-next:disabled { opacity: 0.45; filter: grayscale(0.6); }
+
+/* ======================= level-complete birds ======================= */
+.celebrate {
+  position: fixed; inset: 0; z-index: 60; overflow: hidden; cursor: pointer;
+  background: radial-gradient(circle at 50% 42%, rgba(255, 244, 194, 0.22), rgba(7, 11, 42, 0.72) 70%);
+  animation: fade-in 0.35s ease;
+  transition: opacity 0.35s;
+}
+.celebrate.out { opacity: 0; }
+@keyframes fade-in { from { opacity: 0; } }
+.bird {
+  position: absolute; top: 36%; left: 50%; width: 100px; height: 100px; margin: -50px 0 0 -50px;
+  display: grid; place-items: center; font-size: 88px; line-height: 1;
+  filter: drop-shadow(0 8px 10px rgba(0, 0, 0, 0.35));
+  animation-duration: 6.2s; animation-timing-function: ease-in-out; animation-fill-mode: both;
+}
+.bird.fly-flock, .bird.fly-parade { font-size: 60px; }
+.bird-bubble {
+  position: absolute; left: 50%; top: 56%; transform: translateX(-50%); width: min(90vw, 520px);
+  padding: 16px 22px; border-radius: 26px; background: #ffffff; color: #1d2340; text-align: center;
+  font-family: var(--font-fun); font-size: clamp(1.3rem, 5vw, 1.9rem); font-weight: 800; line-height: 1.35;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35); animation: bubble-in 6.2s ease both;
+}
+.bird-bubble::before {
+  content: ""; position: absolute; left: 50%; top: -14px; margin-left: -14px;
+  border: 14px solid transparent; border-bottom-color: #ffffff; border-top: 0;
+}
+@keyframes bubble-in {
+  0%, 30% { opacity: 0; transform: translateX(-50%) scale(0.6); }
+  38% { opacity: 1; transform: translateX(-50%) scale(1.06); }
+  42%, 82% { opacity: 1; transform: translateX(-50%) scale(1); }
+  92%, 100% { opacity: 0; transform: translateX(-50%) scale(0.9); }
+}
+.fly-hop { animation-name: fly-hop; }
+@keyframes fly-hop {
+  0% { transform: translate(-70vw, 22vh); } 8% { transform: translate(-58vw, 6vh); } 14% { transform: translate(-48vw, 22vh); }
+  22% { transform: translate(-34vw, 4vh); } 28% { transform: translate(-22vw, 18vh); } 36% { transform: translate(-8vw, -4vh); }
+  40% { transform: translate(0, 0) scale(1.1); } 50% { transform: translate(0, -2vh); } 60% { transform: translate(0, 0); }
+  70% { transform: translate(0, -2vh); } 78% { transform: translate(0, 0); }
+  100% { transform: translate(75vw, -60vh) scale(0.6); }
+}
+.fly-loop { animation-name: fly-loop; }
+@keyframes fly-loop {
+  0% { transform: translate(-75vw, 0) rotate(0deg); } 18% { transform: translate(-28vw, 0) rotate(0deg); }
+  24% { transform: translate(-18vw, -16vh) rotate(-120deg); } 30% { transform: translate(-30vw, -18vh) rotate(-240deg); }
+  36% { transform: translate(-8vw, 0) rotate(-360deg); } 40% { transform: translate(0, 0) rotate(-360deg); }
+  78% { transform: translate(0, 0) rotate(-360deg); } 100% { transform: translate(75vw, -35vh) rotate(-380deg); }
+}
+.fly-arc { animation-name: fly-arc; }
+@keyframes fly-arc {
+  0% { transform: translate(70vw, -40vh) scale(0.6); } 20% { transform: translate(35vw, -30vh) scale(0.8); }
+  40% { transform: translate(0, 0) scale(1); } 60% { transform: translate(0, -2vh) scale(1.05); }
+  78% { transform: translate(0, 0) scale(1); } 100% { transform: translate(-70vw, -45vh) scale(0.6); }
+}
+.fly-dive { animation-name: fly-dive; }
+@keyframes fly-dive {
+  0% { transform: translate(35vw, -75vh) rotate(45deg) scale(0.5); } 28% { transform: translate(0, 14vh) rotate(-12deg) scale(1.35); }
+  40% { transform: translate(0, 0) rotate(0deg) scale(1); } 78% { transform: translate(0, 0) rotate(0deg) scale(1); }
+  100% { transform: translate(-30vw, -85vh) rotate(-35deg) scale(0.5); }
+}
+.fly-spiral { animation-name: fly-spiral; }
+@keyframes fly-spiral {
+  0% { transform: rotate(0deg) translateX(45vw) rotate(0deg) translateY(0) scale(0.35); }
+  20% { transform: rotate(200deg) translateX(30vw) rotate(-200deg) translateY(0) scale(0.6); }
+  34% { transform: rotate(330deg) translateX(10vw) rotate(-330deg) translateY(0) scale(0.9); }
+  40% { transform: rotate(360deg) translateX(0) rotate(-360deg) translateY(0) scale(1); }
+  78% { transform: rotate(360deg) translateX(0) rotate(-360deg) translateY(0) scale(1); }
+  100% { transform: rotate(360deg) translateX(0) rotate(-360deg) translateY(-80vh) scale(0.6); }
+}
+.fly-wave { animation-name: fly-wave; }
+@keyframes fly-wave {
+  0% { transform: translate(-75vw, 12vh); } 10% { transform: translate(-58vw, 0); } 20% { transform: translate(-42vw, 12vh); }
+  30% { transform: translate(-22vw, 0); } 40% { transform: translate(0, 0); } 78% { transform: translate(0, 0); }
+  86% { transform: translate(22vw, 10vh); } 93% { transform: translate(45vw, 0); } 100% { transform: translate(75vw, 10vh); }
+}
+.fly-zigzag { animation-name: fly-zigzag; }
+@keyframes fly-zigzag {
+  0% { transform: translate(70vw, 30vh) rotate(10deg); } 10% { transform: translate(48vw, -4vh) rotate(-10deg); }
+  20% { transform: translate(32vw, 24vh) rotate(10deg); } 30% { transform: translate(14vw, -4vh) rotate(-10deg); }
+  40% { transform: translate(0, 0) rotate(0deg); } 78% { transform: translate(0, 0) rotate(0deg); }
+  100% { transform: translate(-75vw, -35vh) rotate(-15deg); }
+}
+.fly-rise { animation-name: fly-rise; }
+@keyframes fly-rise {
+  0% { transform: translate(0, 70vh) rotate(0deg) scale(0.5); } 30% { transform: translate(0, -6vh) rotate(720deg) scale(1.35); }
+  40% { transform: translate(0, 0) rotate(720deg) scale(1); } 55% { transform: translate(0, 0) rotate(720deg) scale(1.12); }
+  65% { transform: translate(0, 0) rotate(720deg) scale(1); } 78% { transform: translate(0, 0) rotate(720deg) scale(1.08); }
+  100% { transform: translate(0, -85vh) rotate(720deg) scale(0.5); }
+}
+.fly-flock { animation-name: fly-flock; }
+@keyframes fly-flock {
+  0% { transform: translate(calc(-85vw + var(--dx)), calc(-12vh + var(--dy))); }
+  40% { transform: translate(var(--dx), var(--dy)); } 60% { transform: translate(var(--dx), calc(var(--dy) - 2vh)); }
+  78% { transform: translate(var(--dx), var(--dy)); }
+  100% { transform: translate(calc(85vw + var(--dx)), calc(-30vh + var(--dy))); }
+}
+.fly-parade { animation-name: fly-parade; animation-timing-function: linear; }
+@keyframes fly-parade {
+  0% { transform: rotate(var(--a)) translateX(70vmin) rotate(calc(var(--a) * -1)) scale(0.5); }
+  35% { transform: rotate(calc(var(--a) + 300deg)) translateX(26vmin) rotate(calc((var(--a) + 300deg) * -1)) scale(1); }
+  80% { transform: rotate(calc(var(--a) + 540deg)) translateX(26vmin) rotate(calc((var(--a) + 540deg) * -1)) scale(1); }
+  100% { transform: rotate(calc(var(--a) + 720deg)) translateX(90vmin) rotate(calc((var(--a) + 720deg) * -1)) scale(0.5); }
+}
+.celebrate.still .bird { animation: none; transform: translate(var(--dx, 0), var(--dy, 0)); }
+.celebrate.still .bird-bubble { animation: none; }
+
+/* result: first-try score fits on phones */
+.result .big-score { font-size: clamp(1.25rem, 5.2vw, 2rem); line-height: 1.35; }

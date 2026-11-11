@@ -1,16 +1,20 @@
-// Routing and screens: play trail (#/), level (#/level/N), my progress charts (#/progress).
+// Routing and screens: level carousel (#/), level (#/level/N), my progress charts (#/progress).
 // Progress lives in this browser (localStorage).
+// Practice rule ("mastery"): a question is finished only when it is read correctly –
+// unlimited tries, "Next" stays locked until then. Stars come from first-try answers.
 
-import { splitAksharas, hasTelugu } from './akshara.js?v=6';
-import { scoreAttempt } from './scoring.js?v=6';
-import * as P from './progress.js?v=6';
-import { listen, speechSupport } from './speech.js?v=6';
-import { speak } from './tts.js?v=6';
-import { renderProgress } from './progress-view.js?v=6';
+import { splitAksharas, hasTelugu } from './akshara.js?v=7';
+import { scoreAttempt } from './scoring.js?v=7';
+import * as P from './progress.js?v=7';
+import { listen, speechSupport } from './speech.js?v=7';
+import { speak } from './tts.js?v=7';
+import { renderProgress } from './progress-view.js?v=7';
+import { celebrate } from './celebrate.js?v=7';
 
 const app = document.getElementById('app');
 const TYPE_MODE = new URLSearchParams(location.search).has('type');
 const REDUCED_MOTION = globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+const HINT_AFTER = 3; // show the akshara split automatically after this many tries
 
 let UI = {};
 let LEVELS = [];
@@ -102,7 +106,7 @@ function confetti(count = 26) {
 function buddy(text, mood = '') {
   const bubble = h('div', { class: 'bubble', 'aria-live': 'polite' }, text);
   const el = h('div', { class: `buddy ${mood}` }, h('span', { class: 'buddy-face', 'aria-hidden': 'true' }, '🦜'), bubble);
-  el.say = (msg, m = '') => { bubble.replaceChildren(...[msg].flat()); el.className = `buddy ${m}`; };
+  el.say = (msg, m = '') => { bubble.replaceChildren(...[msg].flat().filter(Boolean)); el.className = `buddy ${m}`; };
   return el;
 }
 
@@ -121,7 +125,125 @@ function topBar(active) {
       tab('#/progress', 'navProgress', 'progress', '📊')));
 }
 
-// ---------- play trail (level map) ----------
+// ---------- level carousel (home) ----------
+
+function levelCarousel(startIndex) {
+  const slides = [];
+  const cards = [];
+  let active = -1;
+  let dragMoved = false;
+
+  const track = h('div', { class: 'track', tabindex: '0', role: 'group', 'aria-label': t('navLevels') });
+  const dots = h('div', { class: 'dots' });
+
+  LEVELS.forEach(({ level: n, title, concept, emoji, color }, i) => {
+    const passed = P.isPassed(progress, n);
+    const unlocked = P.isUnlocked(progress, n);
+    const inProgress = !!progress.levels[n]?.current;
+    const state = passed ? 'passed' : unlocked ? 'current' : 'locked';
+    const action = !unlocked
+      ? `🔒 ${t('unlockHint', { p: n - 1 })}`
+      : inProgress ? `▶ ${t('continueLevel')}` : passed ? `🔁 ${t('playAgain')}` : `▶ ${t('playNow')}`;
+    const card = h('button', {
+      class: `lvl3d ${state}`,
+      style: `--c:${color}`,
+      'aria-label': `${t('level')} ${n} – ${title}${unlocked ? '' : ' 🔒'}`,
+      onclick: () => onCard(i),
+    },
+    h('span', { class: 'art' },
+      h('span', { class: 'art-num' }, `${t('level')} ${n}`),
+      passed ? h('span', { class: 'art-badge' }, '✓') : null,
+      h('span', { class: 'art-emoji', 'aria-hidden': 'true' }, unlocked ? emoji : '🔒')),
+    h('span', { class: 'body' },
+      h('span', { class: 'lvl-title' }, title),
+      h('span', { class: 'ttl' }, concept),
+      passed ? h('span', { class: 'stars' }, starText(progress.levels[n]?.stars ?? 1)) : null,
+      h('span', { class: 'action' }, action)));
+    cards.push(card);
+    const slide = h('div', { class: 'slide' }, card);
+    slides.push(slide);
+    track.append(slide);
+    dots.append(h('button', { class: 'dot', style: `--c:${color}`, 'aria-label': `${t('level')} ${n}`, onclick: () => goTo(i) }));
+  });
+
+  function goTo(i, smooth = true) {
+    const k = Math.max(0, Math.min(slides.length - 1, i));
+    const s = slides[k];
+    track.scrollTo({ left: s.offsetLeft - (track.clientWidth - s.offsetWidth) / 2, behavior: smooth && !REDUCED_MOTION ? 'smooth' : 'auto' });
+  }
+
+  function update() {
+    const mid = track.scrollLeft + track.clientWidth / 2;
+    let best = 0;
+    let bestDist = Infinity;
+    slides.forEach((s, i) => {
+      const off = (s.offsetLeft + s.offsetWidth / 2 - mid) / s.offsetWidth;
+      const a = Math.abs(off);
+      if (a < bestDist) { bestDist = a; best = i; }
+      const rot = Math.max(-55, Math.min(55, -off * 34));
+      const scale = 1 - Math.min(a, 2) * 0.13;
+      cards[i].style.transform = `perspective(1000px) rotateY(${rot}deg) scale(${scale})`;
+      cards[i].style.opacity = String(Math.max(0.25, 1 - Math.min(a, 3) * 0.24));
+      s.style.zIndex = String(100 - Math.round(a * 10));
+    });
+    if (best !== active) {
+      active = best;
+      cards.forEach((c, i) => c.classList.toggle('center', i === active));
+      [...dots.children].forEach((d, i) => d.classList.toggle('on', i === active));
+    }
+  }
+
+  function onCard(i) {
+    if (dragMoved) return;
+    if (i !== active) { goTo(i); return; }
+    const n = LEVELS[i].level;
+    if (P.isUnlocked(progress, n)) { location.hash = `#/level/${n}`; return; }
+    cards[i].classList.remove('nope');
+    void cards[i].offsetWidth; // restart the shake animation
+    cards[i].classList.add('nope');
+  }
+
+  let ticking = false;
+  track.addEventListener('scroll', () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => { ticking = false; update(); });
+  }, { passive: true });
+  track.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight') { e.preventDefault(); goTo(active + 1); }
+    if (e.key === 'ArrowLeft') { e.preventDefault(); goTo(active - 1); }
+  });
+
+  // drag with the mouse on desktop (touch already swipes natively)
+  let drag = null;
+  track.addEventListener('pointerdown', (e) => {
+    if (e.pointerType !== 'mouse' || e.button !== 0) return;
+    drag = { x: e.clientX, left: track.scrollLeft };
+    dragMoved = false;
+  });
+  window.addEventListener('pointermove', (e) => {
+    if (!drag) return;
+    const dx = e.clientX - drag.x;
+    if (Math.abs(dx) > 6 && !dragMoved) { dragMoved = true; track.classList.add('dragging'); }
+    if (dragMoved) track.scrollLeft = drag.left - dx;
+  });
+  window.addEventListener('pointerup', () => {
+    if (!drag) return;
+    drag = null;
+    if (dragMoved) {
+      track.classList.remove('dragging');
+      goTo(active);
+      setTimeout(() => { dragMoved = false; }, 0);
+    }
+  });
+
+  const prev = h('button', { class: 'nav-arrow prev', 'aria-label': '‹', onclick: () => goTo(active - 1) }, '‹');
+  const next = h('button', { class: 'nav-arrow next', 'aria-label': '›', onclick: () => goTo(active + 1) }, '›');
+  const root = h('section', { class: 'carousel' }, prev, track, next, dots, h('p', { class: 'swipe-hint' }, t('swipeHint')));
+  root.start = () => { goTo(startIndex, false); update(); };
+  window.addEventListener('resize', () => { if (root.isConnected) { goTo(active, false); update(); } });
+  return root;
+}
 
 function renderMap() {
   const done = P.passedCount(progress, TOTAL);
@@ -133,29 +255,9 @@ function renderMap() {
   const greeting = done === TOTAL
     ? t('greetDone', { name: name || '' })
     : name ? t('greet', { name, n: current }) : t('greetNew');
-
-  const cards = LEVELS.map(({ level: n, title, concept, emoji, color }) => {
-    const passed = P.isPassed(progress, n);
-    const unlocked = P.isUnlocked(progress, n);
-    const state = passed ? 'passed' : unlocked ? 'current' : 'locked';
-    return h('button', {
-      class: `lvl ${state} ${n % 2 ? 'odd' : 'even'}`,
-      style: `--c:${color}`,
-      disabled: !unlocked,
-      'aria-label': `${t('level')} ${n} – ${title}`,
-      onclick: () => { location.hash = `#/level/${n}`; },
-    },
-    state === 'current' ? h('span', { class: 'ribbon' }, t('playHere')) : null,
-    h('span', { class: 'lvl-emoji', 'aria-hidden': 'true' }, emoji),
-    h('span', { class: 'num' }, `${t('level')} ${n}`),
-    h('span', { class: 'lvl-title' }, title),
-    h('span', { class: 'ttl' }, concept),
-    h('span', { class: 'lvl-foot' },
-      passed ? h('span', { class: 'stars' }, starText(progress.levels[n]?.stars ?? 1)) : null,
-      !unlocked ? h('span', { class: 'lock' }, '🔒') : null));
-  });
-
   const pct = Math.round((done / TOTAL) * 100);
+  const carousel = levelCarousel(current - 1);
+
   show(
     topBar('map'),
     supportNotice(),
@@ -168,9 +270,10 @@ function renderMap() {
           h('div', { class: 'bar fun', role: 'progressbar', 'aria-valuemin': '0', 'aria-valuemax': String(TOTAL), 'aria-valuenow': String(done) },
             h('span', { style: `width:${pct}%` }),
             h('i', { class: 'runner', style: `left:clamp(18px, ${pct}%, calc(100% - 18px))`, 'aria-hidden': 'true' }, meta(Math.min(current, TOTAL)).emoji))))),
-    h('div', { class: 'levels trail' }, cards),
+    carousel,
     h('p', { class: 'muted foot-note' }, t('privacy')),
   );
+  requestAnimationFrame(() => carousel.start());
 }
 
 // ---------- level intro ----------
@@ -210,7 +313,7 @@ async function renderLevel(n) {
       h('div', { class: 'intro-emoji', 'aria-hidden': 'true' }, m.emoji),
       h('h2', {}, `${t('level')} ${n} – ${level.title}`),
       h('p', { class: 'intro-concept' }, level.concept),
-      h('p', { class: 'muted' }, t('passMarkLabel', { m: level.passMark, t: total })),
+      h('p', { class: 'rule' }, t('masteryRule', { t: total })),
       L?.best ? h('p', { class: 'muted' }, `${t('best')}: ${L.best} / ${total}  ${starText(L.stars ?? 0)}`) : null,
       h('div', { class: 'row center' }, buttons)),
   );
@@ -284,6 +387,7 @@ function renderQuestion(level) {
   }
 
   let resolved = false;
+  let tries = cur.tries ?? 0; // survives a reload
   const isWord = level.taskType === 'word';
 
   const target = h('div', { class: `target${q.text.length > 18 ? ' long' : ''}`, lang: 'te' });
@@ -298,60 +402,76 @@ function renderQuestion(level) {
   const hintBox = h('div', { class: 'hint', hidden: true },
     q.split ? h('div', { class: 'split' }, q.split) : null,
     q.hint ? h('div', {}, q.hint) : null);
-  const hintBtn = h('button', { class: 'link-btn', 'aria-expanded': 'false', onclick: () => {
-    hintBox.hidden = !hintBox.hidden;
-    hintBtn.textContent = hintBox.hidden ? `💡 ${t('hintShow')}` : `💡 ${t('hintHide')}`;
-    hintBtn.setAttribute('aria-expanded', String(!hintBox.hidden));
-  } }, `💡 ${t('hintShow')}`);
+  const hintBtn = h('button', { class: 'link-btn', 'aria-expanded': 'false', onclick: () => setHint(hintBox.hidden) }, `💡 ${t('hintShow')}`);
+  function setHint(open) {
+    hintBox.hidden = !open;
+    hintBtn.textContent = open ? `💡 ${t('hintHide')}` : `💡 ${t('hintShow')}`;
+    hintBtn.setAttribute('aria-expanded', String(open));
+  }
+  if (tries >= HINT_AFTER) setHint(true);
 
-  const pal = buddy(t('buddyReady'));
+  const pal = buddy(tries ? t('buddyRetry') : t('buddyReady'), tries ? 'sad' : '');
   const heardLine = h('p', { class: 'heard' });
+  const triesLine = h('p', { class: 'tries muted' }, tries ? t('attemptN', { n: tries + 1 }) : '');
   const wordCard = h('div', { class: 'card stage-card', style: `--c:${m.color}` });
 
   const listenBtn = h('button', { class: 'btn-listen', onclick: async () => {
     const ok = await speak(q.text, audioPath(level, q, index + 1));
     if (!ok) pal.say(t('noAudio'), 'sad');
   } }, `🔊 ${t('listen')}`);
-  const micBtn = h('button', { class: 'primary mic', onclick: onMic }, `🎤 ${t('speak')}`);
-  const nextBtn = h('button', { class: 'btn-next', onclick: onNext }, `${t('next')} ➜`);
+  const micBtn = h('button', { class: 'primary mic', onclick: onMic });
+  const nextBtn = h('button', { class: 'btn-next', disabled: true, title: t('nextLocked'), onclick: onNext }, `${t('next')} ➜`);
+
+  function micLabel() {
+    micBtn.textContent = tries > 0 ? `🔁 ${t('repeat')}` : `🎤 ${t('speak')}`;
+  }
+  micLabel();
 
   function setListening(on) {
     micBtn.classList.toggle('listening', on);
-    micBtn.textContent = on ? `⏹ ${t('stop')}` : `🎤 ${t('speak')}`;
-    if (on) pal.say(t('buddyListen'), 'listen');
-  }
-
-  function resolve(passed, result) {
-    resolved = true;
-    P.recordAnswer(progress, n, { id: q.id, passed, score: result?.score ?? 0, heard: result?.heard ?? '', tries: 1 });
-    save();
-    micBtn.disabled = true;
-    nextBtn.classList.add('primary', 'ready');
-    nextBtn.focus();
+    if (on) { micBtn.textContent = `⏹ ${t('stop')}`; pal.say(t('buddyListen'), 'listen'); } else micLabel();
   }
 
   function handleHeard(alternatives) {
     if (resolved) return;
     const result = scoreAttempt(level, q, alternatives);
+    tries += 1;
     paintTarget(target, q.text, result);
     heardLine.replaceChildren(`${t('youSaid')} `, h('b', { lang: 'te' }, result.heard || '—'));
     const pct = Math.round(result.score * 100);
+    wordCard.classList.remove('win', 'shake');
+    void wordCard.offsetWidth; // restart animations
     if (result.passed) {
-      pal.say(`✅ ${pick(UI.praise)} (${pct}%)`, 'happy');
+      resolved = true;
+      P.recordAnswer(progress, n, { id: q.id, passed: true, score: result.score, heard: result.heard, tries });
+      save();
+      pal.say(`✅ ${pick(UI.praise)} (${pct}%)${tries > 1 ? ` – ${t('gotItAfter', { n: tries })}` : ''}`, 'happy');
       wordCard.classList.add('win');
+      triesLine.textContent = '';
+      micBtn.disabled = true;
+      micBtn.textContent = '✅';
+      nextBtn.disabled = false;
+      nextBtn.removeAttribute('title');
+      nextBtn.classList.add('primary', 'ready');
+      nextBtn.focus();
       confetti(18);
-    } else {
-      const firstBad = result.words.flatMap((w) => w.aksharas).find((x) => x.status !== 'ok');
-      pal.say([`❌ ${t('buddyWrong')} (${pct}%)`, firstBad ? h('span', { class: 'focus-tip' }, t('wrongAt', { a: firstBad.akshara })) : null], 'sad');
-      wordCard.classList.add('shake');
-      speak(q.text, audioPath(level, q, index + 1));
+      return;
     }
-    resolve(result.passed, result);
+    P.setTries(progress, n, tries);
+    save();
+    const firstBad = result.words.flatMap((w) => w.aksharas).find((x) => x.status !== 'ok');
+    pal.say([`🔁 ${t('buddyRetry')} (${pct}%)`, firstBad ? h('span', { class: 'focus-tip' }, t('wrongAt', { a: firstBad.akshara })) : null], 'sad');
+    wordCard.classList.add('shake');
+    triesLine.textContent = t('attemptN', { n: tries + 1 });
+    if (tries >= HINT_AFTER) setHint(true);
+    micLabel();
+    setTimeout(() => speak(q.text, audioPath(level, q, index + 1)), 500);
   }
 
   function onMic() {
     if (resolved) return;
     if (activeListen) { stopListening(); return; }
+    globalThis.speechSynthesis?.cancel();
     const handle = listen({
       lang: 'te-IN',
       silenceMs: isWord ? 5000 : 20000,
@@ -369,17 +489,12 @@ function renderQuestion(level) {
       .finally(() => {
         if (activeListen === handle) activeListen = null;
         setListening(false);
-        if (resolved) micBtn.disabled = true;
+        if (resolved) { micBtn.disabled = true; micBtn.textContent = '✅'; }
       });
   }
 
   function onNext() {
-    if (!resolved) {
-      if (!confirm(t('skipConfirm'))) return;
-      stopListening();
-      P.recordAnswer(progress, n, { id: q.id, passed: false, score: 0, heard: '', tries: 0, skipped: true });
-      save();
-    }
+    if (!resolved) return; // must read it correctly first
     renderQuestion(level);
   }
 
@@ -413,51 +528,53 @@ function renderQuestion(level) {
       h('i', { class: 'runner', style: `left:clamp(18px, ${pct}%, calc(100% - 18px))`, 'aria-hidden': 'true' }, m.emoji)),
     supportNotice(),
     wordCard,
-    h('div', { class: 'card feedback' }, pal, heardLine),
+    h('div', { class: 'card feedback' }, pal, heardLine, triesLine),
   );
 }
 
-// ---------- result ----------
+// ---------- result + celebration ----------
 
 function finishLevel(level) {
   const n = level.level;
   const byId = new Map(level.questions.map((q) => [q.id, q]));
-  const summary = P.finishAttempt(progress, n, level.passMark, level.taskType === 'paragraph'
-    ? { passageOf: (id) => byId.get(id)?.passage ?? id, passageMin: level.passageMin ?? 0.6 }
-    : {});
+  const summary = P.finishAttempt(progress, n, level.passMark, { mastery: true });
   save();
-  const failedTexts = summary.failedIds.map((id) => byId.get(id)?.text).filter(Boolean);
 
   const retry = () => {
     P.startAttempt(progress, n, P.orderQuestions(level.questions, { shuffle: level.taskType !== 'paragraph' }));
     save();
     renderQuestion(level);
   };
-  const buttons = [];
-  if (summary.passed && n < TOTAL) {
-    buttons.push(h('button', { class: 'primary big', onclick: () => { location.hash = `#/level/${n + 1}`; } }, `${meta(n + 1).emoji} ${t('nextLevel')} ➜`));
+  if (!summary.passed) { // only possible with an attempt saved by an older version
+    show(h('section', { class: 'card result tryagain' }, buddy(t('resultCheer'), 'sad'),
+      h('div', { class: 'row center' }, h('button', { class: 'primary big', onclick: retry }, `🔁 ${t('retry')}`))));
+    return;
   }
-  buttons.push(h('button', { class: summary.passed ? '' : 'primary big', onclick: retry }, `🔁 ${t('retry')}`));
+
+  const name = progress.student?.trim() ?? '';
+  const message = name ? t('congratsName', { name, n }) : t('congratsNoName', { n });
+  const retried = summary.retriedIds.map((id) => byId.get(id)?.text).filter(Boolean);
+
+  const buttons = [];
+  if (n < TOTAL) buttons.push(h('button', { class: 'primary big', onclick: () => { location.hash = `#/level/${n + 1}`; } }, `${meta(n + 1).emoji} ${t('nextLevel')} ➜`));
+  buttons.push(h('button', { onclick: retry }, `🔁 ${t('playAgain')}`));
   buttons.push(h('a', { class: 'btn', href: '#/' }, `🗺️ ${t('backToMap')}`));
 
-  const failText = summary.correct >= level.passMark ? t('failedPassage') : t('failed', { m: level.passMark });
   show(
-    h('section', { class: `card result ${summary.passed ? 'won' : 'tryagain'}` },
-      h('div', { class: 'result-emoji', 'aria-hidden': 'true' }, summary.passed ? (n === TOTAL ? '🏆' : meta(n).emoji) : '🌈'),
-      h('h2', {}, t('resultTitle', { n })),
-      h('div', { class: 'big-score' }, t('score', { c: summary.correct, t: summary.total })),
+    h('section', { class: 'card result won' },
+      h('div', { class: 'result-emoji', 'aria-hidden': 'true' }, n === TOTAL ? '🏆' : meta(n).emoji),
+      h('h2', {}, t('levelDone', { n })),
+      h('div', { class: 'big-score' }, t('firstTryScore', { c: summary.firstTry, t: summary.total })),
       h('div', { class: 'big-stars', 'aria-label': `${summary.stars} / 3` },
         [0, 1, 2].map((i) => h('span', { class: i < summary.stars ? 'star on' : 'star', style: `animation-delay:${0.25 + i * 0.25}s` }, i < summary.stars ? '★' : '☆'))),
-      buddy(summary.passed ? t('passed') : `${failText} ${t('resultCheer')}`, summary.passed ? 'happy' : 'sad'),
-      !summary.passed && summary.weakPassages?.length
-        ? h('p', { class: 'muted' }, t('passageRule', { p: summary.weakPassages.map((id) => level.questions.find((q) => q.passage === id)?.passageTitle ?? id).join(', ') }))
-        : null),
-    failedTexts.length
-      ? h('div', { class: 'card' }, h('h2', {}, `📝 ${t('practiseAgain')}`), h('ul', { class: 'fail-list', lang: 'te' }, failedTexts.map((x) => h('li', {}, x))))
+      buddy(message, 'happy')),
+    retried.length
+      ? h('div', { class: 'card' }, h('h2', {}, `📝 ${t('moreTries')}`), h('ul', { class: 'fail-list', lang: 'te' }, retried.map((x) => h('li', {}, x))))
       : null,
     h('div', { class: 'row center' }, buttons),
   );
-  if (summary.passed) confetti(40);
+  confetti(40);
+  celebrate({ h, level: n, message, name, spoken: message.replace(/[\u{1F300}-\u{1FAFF}☀-➿]/gu, '') });
 }
 
 // ---------- routing ----------

@@ -132,3 +132,28 @@ test('skipped questions do not count as answered', () => {
   P.recordAnswer(p, 1, { id: 'b', passed: true });
   assert.deepEqual(p.stats, { answered: 1, correct: 1 });
 });
+
+test('mastery: every question must be passed; stars from first-try answers', () => {
+  const p = P.emptyProgress();
+  const ids = questions.map((q) => q.id);
+  P.startAttempt(p, 1, ids);
+  // all 30 passed in the end; 4 needed more than one try
+  ids.forEach((id, i) => P.recordAnswer(p, 1, { id, passed: true, tries: i < 4 ? 3 : 1 }));
+  const r = P.finishAttempt(p, 1, 24, { mastery: true });
+  assert.equal(r.passed, true);
+  assert.equal(r.correct, 30);
+  assert.equal(r.firstTry, 26);
+  assert.equal(r.stars, 2);
+  assert.equal(r.retriedIds.length, 4);
+  assert.equal(p.levels[1].best, 26);
+  assert.equal(p.stats.correct, 26); // accuracy counts first-try answers
+  assert.equal(P.isUnlocked(p, 2), true);
+});
+
+test('mastery: an unfinished or failed result does not pass', () => {
+  const p = P.emptyProgress();
+  P.startAttempt(p, 1, ['a', 'b']);
+  P.recordAnswer(p, 1, { id: 'a', passed: true, tries: 1 });
+  P.recordAnswer(p, 1, { id: 'b', passed: false, tries: 1 });
+  assert.equal(P.finishAttempt(p, 1, 1, { mastery: true }).passed, false);
+});

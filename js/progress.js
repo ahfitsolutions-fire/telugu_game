@@ -99,7 +99,7 @@ export function recordAnswer(p, n, { id, passed, score = 0, heard = '', tries = 
   c.tries = 0;
   p.stats ??= { answered: 0, correct: 0 };
   if (!skipped) p.stats.answered += 1;
-  if (r.passed) p.stats.correct += 1;
+  if (r.passed && r.tries <= 1) p.stats.correct += 1; // accuracy = right on the first try
   return r;
 }
 
@@ -115,7 +115,11 @@ export function starsFor(correct, passMark) {
  * Paragraph levels pass passageOf (id → passage id) and passageMin (0..1):
  * every passage must then reach passageMin as well.
  */
-export function finishAttempt(p, n, passMark, { passageOf = null, passageMin = 0 } = {}) {
+/**
+ * mastery: the student must get every question right before moving on (unlimited tries).
+ * The level is passed when all questions are passed; stars and best = right on the first try.
+ */
+export function finishAttempt(p, n, passMark, { passageOf = null, passageMin = 0, mastery = false } = {}) {
   const L = levelEntry(p, n);
   const c = L.current;
   if (!c) throw new Error(`No attempt in progress for level ${n}`);
@@ -132,10 +136,13 @@ export function finishAttempt(p, n, passMark, { passageOf = null, passageMin = 0
     }
     for (const [key, g] of groups) if (g.ok / g.total < passageMin) weakPassages.push(key);
   }
-  const passed = correct >= passMark && weakPassages.length === 0;
-  const stars = passed ? starsFor(correct, passMark) : 0;
+  const firstTry = c.results.filter((r) => r.passed && (r.tries ?? 1) <= 1).length;
+  const passed = mastery
+    ? c.results.length > 0 && correct === c.results.length
+    : correct >= passMark && weakPassages.length === 0;
+  const stars = !passed ? 0 : mastery ? (firstTry >= 28 ? 3 : firstTry >= 25 ? 2 : 1) : starsFor(correct, passMark);
   L.attempts += 1;
-  L.best = Math.max(L.best ?? 0, correct);
+  L.best = Math.max(L.best ?? 0, mastery ? firstTry : correct);
   L.stars = Math.max(L.stars ?? 0, stars);
   if (passed) L.passed = true;
   L.timeMs = (L.timeMs ?? 0) + Math.max(0, Date.now() - (c.startedAt ?? Date.now()));
@@ -144,6 +151,8 @@ export function finishAttempt(p, n, passMark, { passageOf = null, passageMin = 0
     total: c.results.length,
     passed,
     stars,
+    firstTry,
+    retriedIds: c.results.filter((r) => r.passed && (r.tries ?? 1) > 1).map((r) => r.id),
     failedIds: c.results.filter((r) => !r.passed).map((r) => r.id),
     weakPassages,
     at: Date.now(),
