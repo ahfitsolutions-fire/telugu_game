@@ -150,10 +150,24 @@ test('mastery: every question must be passed; stars from first-try answers', () 
   assert.equal(P.isUnlocked(p, 2), true);
 });
 
-test('mastery: an unfinished or failed result does not pass', () => {
+test('mastery: an unfinished attempt does not pass', () => {
+  const p = P.emptyProgress();
+  P.startAttempt(p, 1, ['a', 'b', 'c']);
+  P.recordAnswer(p, 1, { id: 'a', passed: true, tries: 1 });
+  P.recordAnswer(p, 1, { id: 'b', passed: false, tries: 7 });
+  assert.equal(P.finishAttempt(p, 1, 1, { mastery: true }).passed, false);
+  assert.equal(P.isUnlocked(p, 2), false);
+});
+
+test('mastery: reaching the last question opens the next level even with no question passed', () => {
   const p = P.emptyProgress();
   P.startAttempt(p, 1, ['a', 'b']);
-  P.recordAnswer(p, 1, { id: 'a', passed: true, tries: 1 });
-  P.recordAnswer(p, 1, { id: 'b', passed: false, tries: 1 });
-  assert.equal(P.finishAttempt(p, 1, 1, { mastery: true }).passed, false);
+  P.recordAnswer(p, 1, { id: 'a', passed: false, tries: 7 });
+  P.recordAnswer(p, 1, { id: 'b', passed: false, tries: 7 });
+  const r = P.finishAttempt(p, 1, 24, { mastery: true });
+  assert.equal(r.passed, true);
+  assert.equal(r.correct, 0);
+  assert.equal(r.firstTry, 0);
+  assert.deepEqual(r.failedIds, ['a', 'b']);
+  assert.equal(P.isUnlocked(p, 2), true);
 });

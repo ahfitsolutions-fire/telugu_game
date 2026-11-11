@@ -6,8 +6,8 @@
 // `words` has one entry for word tasks and one per target word for sentences,
 // so the UI can colour aksharas the same way in both modes.
 
-import { splitAksharas, levenshtein, diffAksharas } from './akshara.js?v=8';
-import { normalizeText } from './normalize.js?v=8';
+import { splitAksharas, levenshtein, diffAksharas } from './akshara.js?v=9';
+import { normalizeText } from './normalize.js?v=9';
 
 /** 1 − distance / max(len) over akshara arrays. */
 export function similarity(targetAks, heardAks) {

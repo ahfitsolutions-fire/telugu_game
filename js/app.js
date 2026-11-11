@@ -1,22 +1,23 @@
 // Routing and screens: level carousel (#/), level (#/level/N), my progress charts (#/progress).
 // Progress lives in this browser (localStorage).
-// Practice rule ("mastery"): a question is finished only when it is read correctly –
-// unlimited tries, "Next" stays locked until then. Stars come from first-try answers.
+// Practice rule ("mastery"): a question is finished when it is read correctly, or after
+// 7 wrong tries (marked "practise later"). Finishing every question opens the next level. Stars = first-try answers.
 
-import { splitAksharas, hasTelugu } from './akshara.js?v=8';
-import { scoreAttempt } from './scoring.js?v=8';
-import * as P from './progress.js?v=8';
-import { listen, speechSupport } from './speech.js?v=8';
-import { speak } from './tts.js?v=8';
-import { renderProgress } from './progress-view.js?v=8';
-import { celebrate } from './celebrate.js?v=8';
-import { report, syncEnabled } from './sync.js?v=8';
-import { renderTeacher } from './teacher-view.js?v=8';
+import { splitAksharas, hasTelugu } from './akshara.js?v=9';
+import { scoreAttempt } from './scoring.js?v=9';
+import * as P from './progress.js?v=9';
+import { listen, speechSupport } from './speech.js?v=9';
+import { speak } from './tts.js?v=9';
+import { renderProgress } from './progress-view.js?v=9';
+import { celebrate } from './celebrate.js?v=9';
+import { report, syncEnabled } from './sync.js?v=9';
+import { renderTeacher } from './teacher-view.js?v=9';
 
 const app = document.getElementById('app');
 const TYPE_MODE = new URLSearchParams(location.search).has('type');
 const REDUCED_MOTION = globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
 const HINT_AFTER = 3; // show the akshara split automatically after this many tries
+const MAX_TRIES = 7; // after this many wrong tries the question is marked "practise later" and Next opens
 
 let UI = {};
 let LEVELS = [];
@@ -407,6 +408,12 @@ function renderQuestion(level) {
 
   let resolved = false;
   let tries = cur.tries ?? 0; // survives a reload
+  if (tries >= MAX_TRIES) { // saved by an older version with unlimited tries
+    P.recordAnswer(progress, n, { id: q.id, passed: false, tries });
+    save();
+    renderQuestion(level);
+    return;
+  }
   const isWord = level.taskType === 'word';
 
   const target = h('div', { class: `target${q.text.length > 18 ? ' long' : ''}`, lang: 'te' });
@@ -431,7 +438,7 @@ function renderQuestion(level) {
 
   const pal = buddy(tries ? t('buddyRetry') : t('buddyReady'), tries ? 'sad' : '');
   const heardLine = h('p', { class: 'heard' });
-  const triesLine = h('p', { class: 'tries muted' }, tries ? t('attemptN', { n: tries + 1 }) : '');
+  const triesLine = h('p', { class: 'tries muted' }, tries ? t('attemptOfMax', { n: tries + 1, m: MAX_TRIES }) : '');
   const wordCard = h('div', { class: 'card stage-card', style: `--c:${m.color}` });
 
   const listenBtn = h('button', { class: 'btn-listen', onclick: async () => {
@@ -476,12 +483,29 @@ function renderQuestion(level) {
       confetti(18);
       return;
     }
+    if (tries >= MAX_TRIES) { // try limit reached: move on, practise this one later
+      resolved = true;
+      P.recordAnswer(progress, n, { id: q.id, passed: false, score: result.score, heard: result.heard, tries });
+      save();
+      pal.say(`🌟 ${t('maxTriesReached', { n: MAX_TRIES })}`, '');
+      wordCard.classList.add('shake');
+      triesLine.textContent = '';
+      micBtn.disabled = true;
+      micBtn.textContent = '⏭';
+      nextBtn.disabled = false;
+      nextBtn.removeAttribute('title');
+      nextBtn.classList.add('primary', 'ready');
+      nextBtn.focus();
+      setHint(true);
+      setTimeout(() => speak(q.text, audioPath(level, q, index + 1)), 500);
+      return;
+    }
     P.setTries(progress, n, tries);
     save();
     const firstBad = result.words.flatMap((w) => w.aksharas).find((x) => x.status !== 'ok');
     pal.say([`🔁 ${t('buddyRetry')} (${pct}%)`, firstBad ? h('span', { class: 'focus-tip' }, t('wrongAt', { a: firstBad.akshara })) : null], 'sad');
     wordCard.classList.add('shake');
-    triesLine.textContent = t('attemptN', { n: tries + 1 });
+    triesLine.textContent = t('attemptOfMax', { n: tries + 1, m: MAX_TRIES });
     if (tries >= HINT_AFTER) setHint(true);
     micLabel();
     setTimeout(() => speak(q.text, audioPath(level, q, index + 1)), 500);
@@ -573,6 +597,7 @@ function finishLevel(level) {
   const name = progress.student?.trim() ?? '';
   const message = name ? t('congratsName', { name, n }) : t('congratsNoName', { n });
   const retried = summary.retriedIds.map((id) => byId.get(id)?.text).filter(Boolean);
+  const failed = summary.failedIds.map((id) => byId.get(id)?.text).filter(Boolean);
 
   const buttons = [];
   if (n < TOTAL) buttons.push(h('button', { class: 'primary big', onclick: () => { location.hash = `#/level/${n + 1}`; } }, `${meta(n + 1).emoji} ${t('nextLevel')} ➜`));
@@ -587,6 +612,9 @@ function finishLevel(level) {
       h('div', { class: 'big-stars', 'aria-label': `${summary.stars} / 3` },
         [0, 1, 2].map((i) => h('span', { class: i < summary.stars ? 'star on' : 'star', style: `animation-delay:${0.25 + i * 0.25}s` }, i < summary.stars ? '★' : '☆'))),
       buddy(message, 'happy')),
+    failed.length
+      ? h('div', { class: 'card' }, h('h2', {}, `🎯 ${t('practiseLater', { c: failed.length })}`), h('ul', { class: 'fail-list', lang: 'te' }, failed.map((x) => h('li', {}, x))))
+      : null,
     retried.length
       ? h('div', { class: 'card' }, h('h2', {}, `📝 ${t('moreTries')}`), h('ul', { class: 'fail-list', lang: 'te' }, retried.map((x) => h('li', {}, x))))
       : null,

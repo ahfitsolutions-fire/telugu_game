@@ -1,7 +1,7 @@
 // Teacher page (#/teacher): class progress from the Google Sheet (needs the teacher key).
 
-import { fetchClass, syncEnabled } from './sync.js?v=8';
-import { loadChartJs } from './progress-view.js?v=8';
+import { fetchClass, syncEnabled } from './sync.js?v=9';
+import { loadChartJs } from './progress-view.js?v=9';
 
 const KEY = 'telugu-ladder-teacher-key';
 const BANDS = [

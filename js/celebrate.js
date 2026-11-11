@@ -1,7 +1,7 @@
 // Level-complete celebration: a different bird (and flight path) for every level
 // flies in, chirps, says "congratulations, <name>" out loud and flies away.
 
-import { findTeluguVoice } from './tts.js?v=8';
+import { findTeluguVoice } from './tts.js?v=9';
 
 // level → bird emoji(s) and flight style (CSS class fly-<style>)
 export const BIRDS = {

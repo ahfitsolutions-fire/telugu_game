@@ -3,8 +3,8 @@
 // Sent: class code, name, a random device id, current level/question, levels passed, stars,
 // first-try correct, words answered, best score per level. Never audio.
 
-import { SHEET_URL } from './sync-config.js?v=8';
-import * as P from './progress.js?v=8';
+import { SHEET_URL } from './sync-config.js?v=9';
+import * as P from './progress.js?v=9';
 
 const DEVICE_KEY = 'telugu-ladder-device';
 const EVERY_MS = 15000; // word-by-word progress is sent at most this often

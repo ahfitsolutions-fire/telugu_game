@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { buildPayload, syncEnabled, deviceId, report } from '../js/sync.js?v=8';
-import * as P from '../js/progress.js?v=8';
+import { buildPayload, syncEnabled, deviceId, report } from '../js/sync.js?v=9';
+import * as P from '../js/progress.js?v=9';
 
 test('syncEnabled only accepts an Apps Script web-app URL', () => {
   assert.equal(syncEnabled(''), false);

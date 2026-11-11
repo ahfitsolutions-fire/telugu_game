@@ -116,8 +116,10 @@ export function starsFor(correct, passMark) {
  * every passage must then reach passageMin as well.
  */
 /**
- * mastery: the student must get every question right before moving on (unlimited tries).
- * The level is passed when all questions are passed; stars and best = right on the first try.
+ * mastery: the student practises each question until it is right, up to a try limit
+ * (then the question is recorded as not passed and the next one opens).
+ * The level is passed (next level unlocked) once every question has been reached,
+ * even if some were not passed; stars and best = right on the first try.
  */
 export function finishAttempt(p, n, passMark, { passageOf = null, passageMin = 0, mastery = false } = {}) {
   const L = levelEntry(p, n);
@@ -138,7 +140,7 @@ export function finishAttempt(p, n, passMark, { passageOf = null, passageMin = 0
   }
   const firstTry = c.results.filter((r) => r.passed && (r.tries ?? 1) <= 1).length;
   const passed = mastery
-    ? c.results.length > 0 && correct === c.results.length
+    ? c.results.length > 0 && c.results.length >= (c.order?.length ?? 0)
     : correct >= passMark && weakPassages.length === 0;
   const stars = !passed ? 0 : mastery ? (firstTry >= 28 ? 3 : firstTry >= 25 ? 2 : 1) : starsFor(correct, passMark);
   L.attempts += 1;
