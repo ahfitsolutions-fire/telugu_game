@@ -590,3 +590,23 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 4px solid 
 
 /* result: first-try score fits on phones */
 .result .big-score { font-size: clamp(1.25rem, 5.2vw, 2rem); line-height: 1.35; }
+
+/* ======================= Google Sheet sync + teacher page ======================= */
+:root { --series-3: #1baf7a; --series-4: #eda100; --series-5: #e87ba4; }
+@media (prefers-color-scheme: dark) { :root { --series-3: #199e70; --series-4: #c98500; --series-5: #d55181; } }
+.who-fields { display: flex; flex-wrap: wrap; gap: 8px 14px; }
+.name-field input.class-input { width: 110px; text-transform: uppercase; }
+.tip { background: #fff7d6; color: #5a4300; font-weight: 600; }
+.key-row { display: flex; gap: 10px; flex-wrap: wrap; }
+.key-row input { flex: 1; min-width: 200px; font: inherit; min-height: 52px; padding: 6px 14px; border-radius: 16px; border: 3px solid var(--neutral); background: #fff; color: #1d2340; }
+.status { font-weight: 700; margin: 10px 0 0; }
+.status.ok { color: var(--ok); }
+.status.bad { color: var(--bad); }
+.teacher-bar { margin: 14px 0 0; }
+.teacher-bar select { font: inherit; min-height: 52px; padding: 6px 14px; border-radius: 16px; border: 3px solid var(--card-border); background: var(--card); color: var(--text); font-weight: 700; }
+.row.space { justify-content: space-between; }
+.table-wrap { overflow-x: auto; }
+table.roster { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+.roster th, .roster td { text-align: left; padding: 9px 8px; border-bottom: 2px solid color-mix(in srgb, var(--neutral) 50%, transparent); white-space: nowrap; }
+.roster th { color: var(--muted); font-weight: 700; }
+.roster td.name { font-weight: 700; }

@@ -3,13 +3,15 @@
 // Practice rule ("mastery"): a question is finished only when it is read correctly –
 // unlimited tries, "Next" stays locked until then. Stars come from first-try answers.
 
-import { splitAksharas, hasTelugu } from './akshara.js?v=7';
-import { scoreAttempt } from './scoring.js?v=7';
-import * as P from './progress.js?v=7';
-import { listen, speechSupport } from './speech.js?v=7';
-import { speak } from './tts.js?v=7';
-import { renderProgress } from './progress-view.js?v=7';
-import { celebrate } from './celebrate.js?v=7';
+import { splitAksharas, hasTelugu } from './akshara.js?v=8';
+import { scoreAttempt } from './scoring.js?v=8';
+import * as P from './progress.js?v=8';
+import { listen, speechSupport } from './speech.js?v=8';
+import { speak } from './tts.js?v=8';
+import { renderProgress } from './progress-view.js?v=8';
+import { celebrate } from './celebrate.js?v=8';
+import { report, syncEnabled } from './sync.js?v=8';
+import { renderTeacher } from './teacher-view.js?v=8';
 
 const app = document.getElementById('app');
 const TYPE_MODE = new URLSearchParams(location.search).has('type');
@@ -52,9 +54,11 @@ const starText = (n) => '★'.repeat(n) + '☆'.repeat(3 - n);
 const pick = (list) => (Array.isArray(list) ? list[Math.floor(Math.random() * list.length)] : list);
 const meta = (n) => LEVELS.find((l) => l.level === n) ?? { emoji: '⭐', color: '#3b8fe8', title: '' };
 
-function save() {
+function save(event = 'progress') {
   P.recordDay(progress, new Date(), TOTAL);
-  return P.saveProgress(progress);
+  const ok = P.saveProgress(progress);
+  report(progress, event); // to the teacher's Google Sheet, if connected (batched)
+  return ok;
 }
 
 function show(...nodes) {
@@ -114,15 +118,28 @@ function topBar(active) {
   const tab = (href, key, name, icon) => h('a', { href, class: active === name ? 'tab active' : 'tab', 'aria-current': active === name ? 'page' : null }, `${icon} ${t(key)}`);
   const nameInput = h('input', {
     id: 'student-name', type: 'text', value: progress.student ?? '', placeholder: t('namePlaceholder'), maxlength: '40', autocomplete: 'off',
-    onchange: (e) => { progress.student = e.target.value.trim(); save(); },
+    onchange: (e) => { progress.student = e.target.value.trim(); save(); refreshHome(); },
   });
+  const classInput = syncEnabled()
+    ? h('label', { class: 'name-field', for: 'class-code' }, `${t('classLabel')}:`, h('input', {
+      id: 'class-code', type: 'text', value: progress.classCode ?? '', placeholder: t('classPlaceholder'), maxlength: '20', autocomplete: 'off', class: 'class-input',
+      onchange: (e) => { progress.classCode = e.target.value.trim().toUpperCase(); e.target.value = progress.classCode; save(); refreshHome(); },
+    }))
+    : null;
   return h('header', { class: 'top' },
     h('div', { class: 'top-row' },
       h('h1', { class: 'logo' }, h('span', { class: 'logo-mark', 'aria-hidden': 'true' }, 'అ'), t('appTitle')),
-      h('label', { class: 'name-field', for: 'student-name' }, `${t('nameLabel')}:`, nameInput)),
+      h('div', { class: 'who-fields' },
+        h('label', { class: 'name-field', for: 'student-name' }, `${t('nameLabel')}:`, nameInput),
+        classInput)),
     h('nav', { class: 'tabs', 'aria-label': 'menu' },
       tab('#/', 'navLevels', 'map', '🗺️'),
       tab('#/progress', 'navProgress', 'progress', '📊')));
+}
+
+/** Re-draw the home screen after the name / class code changes (greeting + tip). */
+function refreshHome() {
+  if (!location.hash || location.hash === '#/') renderMap();
 }
 
 // ---------- level carousel (home) ----------
@@ -258,9 +275,11 @@ function renderMap() {
   const pct = Math.round((done / TOTAL) * 100);
   const carousel = levelCarousel(current - 1);
 
+  const needWho = syncEnabled() && (!name || !progress.classCode);
   show(
     topBar('map'),
     supportNotice(),
+    needWho ? h('div', { class: 'card tip', role: 'note' }, `✏️ ${t('syncTip')}`) : null,
     h('section', { class: 'hero card' },
       buddy(greeting, done === TOTAL ? 'happy' : ''),
       h('div', { class: 'hero-stats' },
@@ -298,7 +317,7 @@ async function renderLevel(n) {
 
   const begin = () => {
     P.startAttempt(progress, n, P.orderQuestions(level.questions, { shuffle: level.taskType !== 'paragraph' }));
-    save();
+    save('level_start');
     renderQuestion(level);
   };
   const buttons = L?.current
@@ -538,7 +557,7 @@ function finishLevel(level) {
   const n = level.level;
   const byId = new Map(level.questions.map((q) => [q.id, q]));
   const summary = P.finishAttempt(progress, n, level.passMark, { mastery: true });
-  save();
+  save(summary.passed ? 'level_complete' : 'progress');
 
   const retry = () => {
     P.startAttempt(progress, n, P.orderQuestions(level.questions, { shuffle: level.taskType !== 'paragraph' }));
@@ -586,6 +605,7 @@ function route() {
   const m = hash.match(/^#\/level\/(\d+)$/u);
   if (m) renderLevel(Number(m[1]));
   else if (hash === '#/progress') renderProgress({ h, t, show, topBar, progress, levels: LEVELS, total: TOTAL });
+  else if (hash === '#/teacher') renderTeacher({ h, t, show, topBar, total: TOTAL });
   else renderMap();
 }
 
@@ -601,6 +621,9 @@ async function init() {
   }
   document.title = t('appTitle');
   progress = P.loadProgress();
+  const classParam = new URLSearchParams(location.search).get('class');
+  if (classParam && /^[\w-]{1,20}$/.test(classParam)) progress.classCode = classParam.toUpperCase();
+  save('open');
   window.addEventListener('hashchange', route);
   route();
 }

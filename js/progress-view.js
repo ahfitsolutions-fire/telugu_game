@@ -1,13 +1,13 @@
 // "నా ప్రగతి" page (#/progress): the student's own growth, from local progress.
 // Doughnut: levels won / playing now / locked. Bar: best score per level. Line: levels won per day.
 
-import * as P from './progress.js?v=7';
+import * as P from './progress.js?v=8';
 
 const CHART_JS = 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js';
 let chartsLoading = null;
 let charts = [];
 
-function loadChartJs() {
+export function loadChartJs() {
   if (globalThis.Chart) return Promise.resolve(globalThis.Chart);
   chartsLoading ??= new Promise((resolve, reject) => {
     const s = document.createElement('script');

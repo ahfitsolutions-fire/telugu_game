@@ -6,6 +6,8 @@ Full spec: [Telugu_Pronunciation_App_Design_Plan.md](Telugu_Pronunciation_App_De
 
 Plain HTML + CSS + JavaScript ES modules. No framework, no build step.
 
+**Class progress in a Google Sheet** (who is playing, which level, scores) and the teacher page `#/teacher`: see [apps-script/SETUP.md](apps-script/SETUP.md). Nothing is sent until `js/sync-config.js` has the Apps Script URL.
+
 ## Run locally
 
 Use Live Server or any static server: the microphone needs `localhost` or `https`, and `fetch` does not work from `file://`.
@@ -38,6 +40,10 @@ node tools/validate-content.js   # content rules for all 10 level files
 | `js/tts.js` | "విను": browser Telugu voice → `audio/levelNN/qNN.mp3` fallback |
 | `js/progress.js` | localStorage progress, unlock, resume, stars |
 | `js/app.js` | screens: play trail, level, result; parrot buddy, confetti |
+| `js/sync.js` / `js/sync-config.js` | sends progress to the teacher's Google Sheet (when configured) |
+| `js/teacher-view.js` | teacher page: class charts and table from the Sheet |
+| `js/celebrate.js` | level-complete birds, chirp and spoken congratulations |
+| `apps-script/Code.gs` | Google Apps Script web app (paste into the Sheet) |
 | `js/progress-view.js` | “నా ప్రగతి” page: my levels pie, best-score bars, growth line (Chart.js) |
 | `data/ladder.json` | the 10 levels: title and concept |
 | `data/levels/levelNN.json` | one file per level; empty `questions` = not written yet |
