@@ -1,0 +1,310 @@
+{
+  "level": 13,
+  "title": "సామెతలు, జాతీయాలు",
+  "concept": "తెలుగు సామెతలు – అర్థంతో సహా, భావంతో చదవడం",
+  "taskType": "sentence",
+  "passMark": 23,
+  "threshold": 0.8,
+  "questions": [
+    {
+      "id": "L13-Q01",
+      "difficulty": "easy",
+      "text": "ఐకమత్యమే మహాబలం.",
+      "accept": [
+        "ఐకమత్యమే మహాబలం."
+      ],
+      "en": "Unity is strength.",
+      "hi": "एकता में बल है।"
+    },
+    {
+      "id": "L13-Q02",
+      "difficulty": "easy",
+      "text": "పిట్ట కొంచెం కూత ఘనం.",
+      "accept": [
+        "పిట్ట కొంచెం కూత ఘనం."
+      ],
+      "en": "Small bird, big song.",
+      "hi": "छोटी चिड़िया, ऊँची आवाज़।"
+    },
+    {
+      "id": "L13-Q03",
+      "difficulty": "easy",
+      "text": "కలసి ఉంటే కలదు సుఖం.",
+      "accept": [
+        "కలసి ఉంటే కలదు సుఖం."
+      ],
+      "en": "There is happiness in staying together.",
+      "hi": "साथ रहने में सुख है।"
+    },
+    {
+      "id": "L13-Q04",
+      "difficulty": "easy",
+      "text": "చీమలు పెట్టిన పుట్ట పాముల పాలు.",
+      "accept": [
+        "చీమలు పెట్టిన పుట్ట పాముల పాలు."
+      ],
+      "en": "The anthill built by ants goes to the snakes.",
+      "hi": "चींटियों की बनाई बाँबी साँपों के काम आती है।"
+    },
+    {
+      "id": "L13-Q05",
+      "difficulty": "easy",
+      "text": "తీగ లాగితే డొంక కదిలింది.",
+      "accept": [
+        "తీగ లాగితే డొంక కదిలింది."
+      ],
+      "en": "Pull the vine and the whole bush moves.",
+      "hi": "बेल खींची तो पूरी झाड़ी हिल गई।"
+    },
+    {
+      "id": "L13-Q06",
+      "difficulty": "easy",
+      "text": "ఆలస్యం అమృతం విషం.",
+      "accept": [
+        "ఆలస్యం అమృతం విషం."
+      ],
+      "en": "Delay turns nectar into poison.",
+      "hi": "देरी से अमृत भी विष बन जाता है।"
+    },
+    {
+      "id": "L13-Q07",
+      "difficulty": "easy",
+      "text": "దూరపు కొండలు నునుపు.",
+      "accept": [
+        "దూరపు కొండలు నునుపు."
+      ],
+      "en": "Distant hills look smooth.",
+      "hi": "दूर के ढोल सुहावने।"
+    },
+    {
+      "id": "L13-Q08",
+      "difficulty": "easy",
+      "text": "నిదానమే ప్రధానం.",
+      "accept": [
+        "నిదానమే ప్రధానం."
+      ],
+      "en": "Slow and steady is what matters.",
+      "hi": "धीरज ही सबसे ज़रूरी है।"
+    },
+    {
+      "id": "L13-Q09",
+      "difficulty": "easy",
+      "text": "గోరంత దీపం కొండంత వెలుగు.",
+      "accept": [
+        "గోరంత దీపం కొండంత వెలుగు."
+      ],
+      "en": "A tiny lamp gives mountain-sized light.",
+      "hi": "छोटा सा दीपक, पहाड़ जितनी रोशनी।"
+    },
+    {
+      "id": "L13-Q10",
+      "difficulty": "easy",
+      "text": "అతి సర్వత్ర వర్జయేత్.",
+      "accept": [
+        "అతి సర్వత్ర వర్జయేత్."
+      ],
+      "en": "Too much of anything is bad.",
+      "hi": "अति हर जगह वर्जित है।"
+    },
+    {
+      "id": "L13-Q11",
+      "difficulty": "medium",
+      "text": "ఇంట గెలిచి రచ్చ గెలవాలి.",
+      "accept": [
+        "ఇంట గెలిచి రచ్చ గెలవాలి."
+      ],
+      "en": "Win at home first, then win outside.",
+      "hi": "पहले घर जीतो, फिर बाहर जीतो।"
+    },
+    {
+      "id": "L13-Q12",
+      "difficulty": "medium",
+      "text": "అడగందే అమ్మైనా పెట్టదు.",
+      "accept": [
+        "అడగందే అమ్మైనా పెట్టదు."
+      ],
+      "en": "Even mother will not serve unless you ask.",
+      "hi": "बिना माँगे माँ भी खाना नहीं देती।"
+    },
+    {
+      "id": "L13-Q13",
+      "difficulty": "medium",
+      "text": "పరుగెత్తి పాలు తాగడం కంటే నిలబడి నీళ్ళు తాగడం మేలు.",
+      "accept": [
+        "పరుగెత్తి పాలు తాగడం కంటే నిలబడి నీళ్ళు తాగడం మేలు."
+      ],
+      "en": "Better to drink water standing than milk while running.",
+      "hi": "दौड़कर दूध पीने से खड़े होकर पानी पीना अच्छा।"
+    },
+    {
+      "id": "L13-Q14",
+      "difficulty": "medium",
+      "text": "ఏ ఎండకు ఆ గొడుగు పట్టాలి.",
+      "accept": [
+        "ఏ ఎండకు ఆ గొడుగు పట్టాలి."
+      ],
+      "en": "Hold the umbrella that suits the sun.",
+      "hi": "जैसी धूप, वैसा छाता।"
+    },
+    {
+      "id": "L13-Q15",
+      "difficulty": "medium",
+      "text": "చెరపకురా చెడేవు.",
+      "accept": [
+        "చెరపకురా చెడేవు."
+      ],
+      "en": "Do not harm others, or you will be harmed.",
+      "hi": "दूसरों का बुरा करोगे तो खुद बुरा पाओगे।"
+    },
+    {
+      "id": "L13-Q16",
+      "difficulty": "medium",
+      "text": "నిండుకుండ తొణకదు.",
+      "accept": [
+        "నిండుకుండ తొణకదు."
+      ],
+      "en": "A full pot does not spill.",
+      "hi": "भरा घड़ा छलकता नहीं।"
+    },
+    {
+      "id": "L13-Q17",
+      "difficulty": "medium",
+      "text": "వినాశకాలే విపరీత బుద్ధి.",
+      "accept": [
+        "వినాశకాలే విపరీత బుద్ధి."
+      ],
+      "en": "In bad times the mind goes wrong.",
+      "hi": "विनाश काले विपरीत बुद्धि।"
+    },
+    {
+      "id": "L13-Q18",
+      "difficulty": "medium",
+      "text": "అందరికీ శకునం చెప్పే బల్లి కుడితిలో పడింది.",
+      "accept": [
+        "అందరికీ శకునం చెప్పే బల్లి కుడితిలో పడింది."
+      ],
+      "en": "The lizard that told everyone's fortune fell into the trough.",
+      "hi": "सबका शगुन बताने वाली छिपकली खुद नाद में गिरी।"
+    },
+    {
+      "id": "L13-Q19",
+      "difficulty": "medium",
+      "text": "ఆరు నెలలు సావాసం చేస్తే వారు వీరవుతారు.",
+      "accept": [
+        "ఆరు నెలలు సావాసం చేస్తే వారు వీరవుతారు."
+      ],
+      "en": "Six months together and people become alike.",
+      "hi": "छह महीने साथ रहो तो एक जैसे बन जाते हैं।"
+    },
+    {
+      "id": "L13-Q20",
+      "difficulty": "medium",
+      "text": "కోతికి కొబ్బరికాయ దొరికినట్టు.",
+      "accept": [
+        "కోతికి కొబ్బరికాయ దొరికినట్టు."
+      ],
+      "en": "Like a monkey getting a coconut.",
+      "hi": "बंदर के हाथ नारियल लगना।"
+    },
+    {
+      "id": "L13-Q21",
+      "difficulty": "hard",
+      "text": "ఆకలి రుచి ఎరుగదు, నిద్ర సుఖం ఎరుగదు.",
+      "accept": [
+        "ఆకలి రుచి ఎరుగదు, నిద్ర సుఖం ఎరుగదు."
+      ],
+      "en": "Hunger knows no taste, sleep knows no comfort.",
+      "hi": "भूख स्वाद नहीं देखती, नींद आराम नहीं देखती।"
+    },
+    {
+      "id": "L13-Q22",
+      "difficulty": "hard",
+      "text": "విద్య లేనివాడు వింత పశువు.",
+      "accept": [
+        "విద్య లేనివాడు వింత పశువు."
+      ],
+      "en": "A person without learning is like a strange animal.",
+      "hi": "विद्या के बिना मनुष्य पशु समान है।"
+    },
+    {
+      "id": "L13-Q23",
+      "difficulty": "hard",
+      "text": "కృషి ఉంటే మనుషులు ఋషులవుతారు.",
+      "accept": [
+        "కృషి ఉంటే మనుషులు ఋషులవుతారు."
+      ],
+      "en": "With effort people become sages.",
+      "hi": "मेहनत हो तो इंसान ऋषि बन जाता है।"
+    },
+    {
+      "id": "L13-Q24",
+      "difficulty": "hard",
+      "text": "ఉట్టికెగరలేనమ్మ స్వర్గానికి ఎగురుతుందా?",
+      "accept": [
+        "ఉట్టికెగరలేనమ్మ స్వర్గానికి ఎగురుతుందా?"
+      ],
+      "en": "Can one who cannot jump to the hanging pot fly to heaven?",
+      "hi": "जो छींके तक नहीं उछल सकती, वह स्वर्ग तक उड़ेगी?"
+    },
+    {
+      "id": "L13-Q25",
+      "difficulty": "hard",
+      "text": "చెట్టు పేరు చెప్పి కాయలు అమ్ముకున్నట్టు.",
+      "accept": [
+        "చెట్టు పేరు చెప్పి కాయలు అమ్ముకున్నట్టు."
+      ],
+      "en": "Like selling fruits in the name of the tree.",
+      "hi": "पेड़ का नाम लेकर फल बेचना।"
+    },
+    {
+      "id": "L13-Q26",
+      "difficulty": "hard",
+      "text": "ఎద్దు పుండు కాకికి ముద్దు.",
+      "accept": [
+        "ఎద్దు పుండు కాకికి ముద్దు."
+      ],
+      "en": "The bull's wound is a treat for the crow.",
+      "hi": "बैल का घाव कौए को प्यारा।"
+    },
+    {
+      "id": "L13-Q27",
+      "difficulty": "hard",
+      "text": "మెరిసేదంతా బంగారం కాదు.",
+      "accept": [
+        "మెరిసేదంతా బంగారం కాదు."
+      ],
+      "en": "All that glitters is not gold.",
+      "hi": "हर चमकती चीज़ सोना नहीं होती।"
+    },
+    {
+      "id": "L13-Q28",
+      "difficulty": "hard",
+      "text": "గతి లేనమ్మకు గంజే పరమాన్నం.",
+      "accept": [
+        "గతి లేనమ్మకు గంజే పరమాన్నం."
+      ],
+      "en": "For the needy, rice water is a feast.",
+      "hi": "गरीब के लिए माँड़ ही खीर है।"
+    },
+    {
+      "id": "L13-Q29",
+      "difficulty": "hard",
+      "text": "ముందుంది ముసళ్ళ పండుగ.",
+      "accept": [
+        "ముందుంది ముసళ్ళ పండుగ."
+      ],
+      "en": "The crocodiles' festival is still ahead.",
+      "hi": "असली मुसीबत तो अभी आगे है।"
+    },
+    {
+      "id": "L13-Q30",
+      "difficulty": "hard",
+      "text": "అనుభవమే అసలైన గురువు.",
+      "accept": [
+        "అనుభవమే అసలైన గురువు."
+      ],
+      "en": "Experience is the real teacher.",
+      "hi": "अनुभव ही सच्चा गुरु है।"
+    }
+  ]
+}

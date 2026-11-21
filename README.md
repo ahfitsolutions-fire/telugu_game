@@ -1,6 +1,8 @@
 # తెలుగు ఉచ్చారణ సాధన – Telugu Pronunciation Ladder
 
-Speak-aloud reading practice: 10 levels × 30 questions (same concept order as the design plan, compressed).
+Speak-aloud reading practice: 15 levels × 30 questions. Every question is said in three languages, in order:
+**తెలుగు ➜ English ➜ हिंदी** (7 tries per language; after 7 the language is marked "practise later").
+The website itself can be shown in Telugu, English or Hindi (chosen on the first visit; 🌐 to change).
 Full spec: [Telugu_Pronunciation_App_Design_Plan.md](Telugu_Pronunciation_App_Design_Plan.md).
 
 
@@ -24,8 +26,8 @@ A text box appears under the buttons; whatever you type is scored as if it had b
 ## Commands
 
 ```
-node --test                      # unit tests (akshara split, normalise, scoring, progress)
-node tools/validate-content.js   # content rules for all 10 level files
+node --test                      # unit tests (akshara split, scoring, English/Hindi scoring, progress, birds)
+node tools/validate-content.js   # content rules for all 15 level files (incl. en / hi translations)
 ```
 
 ## Layout
@@ -35,19 +37,20 @@ node tools/validate-content.js   # content rules for all 10 level files
 | `index.html` | single page; `#/` = level map, `#/level/N` = level |
 | `js/akshara.js` | Telugu akshara splitter, Levenshtein, akshara diff |
 | `js/normalize.js` | NFC, punctuation / zero-width / digit removal, final ము ≈ ం |
-| `js/scoring.js` | word and sentence scoring, best of 5 alternatives |
-| `js/speech.js` | Web Speech API wrapper, `te-IN`, silence timeout |
-| `js/tts.js` | "విను": browser Telugu voice → `audio/levelNN/qNN.mp3` fallback |
+| `js/scoring.js` | Telugu word and sentence scoring, best of 5 alternatives |
+| `js/translate-score.js` | English / Hindi scoring (numbers, nukta, chandrabindu, articles, contractions) |
+| `js/speech.js` | Web Speech API wrapper (`te-IN`, `en-IN`, `hi-IN`), silence timeout |
+| `js/tts.js` | 🔊: browser te / en / hi voice; Telugu falls back to `audio/levelNN/qNN.mp3` |
 | `js/progress.js` | localStorage progress, unlock, resume, stars |
 | `js/app.js` | screens: play trail, level, result; parrot buddy, confetti |
 | `js/sync.js` / `js/sync-config.js` | sends progress to the teacher's Google Sheet (when configured) |
 | `js/teacher-view.js` | teacher page: class charts and table from the Sheet |
-| `js/celebrate.js` | level-complete birds, chirp and spoken congratulations |
+| `js/celebrate.js` | a different bird on every question; level-complete birds, chirp, spoken congratulations |
 | `apps-script/Code.gs` | Google Apps Script web app (paste into the Sheet) |
 | `js/progress-view.js` | “నా ప్రగతి” page: my levels pie, best-score bars, growth line (Chart.js) |
-| `data/ladder.json` | the 10 levels: title and concept |
+| `data/ladder.json` | the 15 levels: title and concept (+ `i18n.en` / `i18n.hi`) |
 | `data/levels/levelNN.json` | one file per level; empty `questions` = not written yet |
-| `data/ui-text.json` | all Telugu UI text |
+| `data/ui-text.json`, `ui-text.en.json`, `ui-text.hi.json` | website text in Telugu / English / Hindi |
 | `tools/validate-content.js` | 30 items, 10/10/10, unique ids/texts, no untaught concepts |
 
 ## Editing content
@@ -56,8 +59,11 @@ Each question in `data/levels/levelNN.json`:
 
 ```json
 { "id": "L01-Q05", "difficulty": "easy", "text": "ఉడుత", "focus": "ఉ",
-  "split": "ఉ + డు + త", "hint": "…", "accept": ["ఉడుత"] }
+  "split": "ఉ + డు + త", "hint": "…", "accept": ["ఉడుత"],
+  "en": "squirrel", "hi": "गिलहरी", "hintEn": "…", "hintHi": "…" }
 ```
+
+- `en` / `hi`: the translation the student says after the Telugu. `enAccept` / `hiAccept`: other answers that count (e.g. `["mouse"]` for "rat").
 
 - `accept`: other spellings that count as correct (recogniser variants). A final ము/ం difference is already accepted automatically.
 - `focus`: Stage A only. The letter shown big above the word.

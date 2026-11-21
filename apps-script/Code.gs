@@ -14,7 +14,7 @@
 const TEACHER_KEY = 'CHANGE-ME';   // teacher-page password: change it before deploying (8+ characters)
 const CLASS_CODES = [];            // e.g. ['7B', '8A']. Empty = accept any class code.
 
-const LEVELS = 10;
+const LEVELS = 15;
 const STUDENTS = 'Students';
 const LOG = 'Log';
 const HEAD = [

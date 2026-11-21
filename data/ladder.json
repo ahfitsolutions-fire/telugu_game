@@ -1,5 +1,5 @@
 {
-  "totalLevels": 10,
+  "totalLevels": 15,
   "questionsPerLevel": 30,
   "levels": [
     {
@@ -7,70 +7,255 @@
       "title": "అక్షరాలు",
       "concept": "అచ్చులు, హల్లులు, పోలిక అక్షరాలు (బ/భ, ద/ధ, ప/ఫ, ట/ఠ, శ/ష/స, న/ణ, ల/ళ)",
       "emoji": "🐣",
-      "color": "#ff8a5b"
+      "color": "#ff8a5b",
+      "i18n": {
+        "en": {
+          "title": "Letters",
+          "concept": "Vowels, consonants and look-alike letters (బ/భ, ద/ధ, ప/ఫ, ట/ఠ, శ/ష/స, న/ణ, ల/ళ)"
+        },
+        "hi": {
+          "title": "अक्षर",
+          "concept": "स्वर, व्यंजन और मिलते-जुलते अक्षर (బ/భ, ద/ధ, ప/ఫ, ట/ఠ, శ/ష/స, న/ణ, ల/ళ)"
+        }
+      }
     },
     {
       "level": 2,
       "title": "గుణింతాలు",
       "concept": "కా కి కీ కు కూ కె కే కై కొ కో కౌ, కం (అనుస్వారం), కః (విసర్గం), కృ",
       "emoji": "🐰",
-      "color": "#ff6fa8"
+      "color": "#ff6fa8",
+      "i18n": {
+        "en": {
+          "title": "Vowel signs",
+          "concept": "కా కి కీ కు కూ కె కే కై కొ కో కౌ, కం (anusvara), కః (visarga), కృ"
+        },
+        "hi": {
+          "title": "मात्राएँ",
+          "concept": "కా కి కీ కు కూ కె కే కై కొ కో కౌ, కం (अनुस्वार), కః (विसर्ग), కృ"
+        }
+      }
     },
     {
       "level": 3,
       "title": "సరళ పదాలు",
       "concept": "2 నుండి 5+ అక్షరాల పదాలు (వత్తులు లేకుండా)",
       "emoji": "🐢",
-      "color": "#2bb673"
+      "color": "#2bb673",
+      "i18n": {
+        "en": {
+          "title": "Simple words",
+          "concept": "Words of 2 to 5+ letters (no double letters)"
+        },
+        "hi": {
+          "title": "सरल शब्द",
+          "concept": "2 से 5+ अक्षरों के शब्द (बिना संयुक्त अक्षर)"
+        }
+      }
     },
     {
       "level": 4,
       "title": "ద్విత్వాక్షరాలు",
       "concept": "క్క, గ్గ, చ్చ, జ్జ, ట్ట, డ్డ, ణ్ణ, త్త, ద్ద, న్న, ప్ప, బ్బ, మ్మ, య్య, ల్ల, వ్వ, స్స, ళ్ళ",
       "emoji": "🦋",
-      "color": "#7c5cff"
+      "color": "#7c5cff",
+      "i18n": {
+        "en": {
+          "title": "Double letters",
+          "concept": "క్క, గ్గ, చ్చ, జ్జ, ట్ట, డ్డ, ణ్ణ, త్త, ద్ద, న్న, ప్ప, బ్బ, మ్మ, య్య, ల్ల, వ్వ, స్స, ళ్ళ"
+        },
+        "hi": {
+          "title": "द्वित्व अक्षर",
+          "concept": "క్క, గ్గ, చ్చ, జ్జ, ట్ట, డ్డ, ణ్ణ, త్త, ద్ద, న్న, ప్ప, బ్బ, మ్మ, య్య, ల్ల, వ్వ, స్స, ళ్ళ"
+        }
+      }
     },
     {
       "level": 5,
       "title": "సంయుక్తాక్షరాలు",
       "concept": "ర, య, వ, ల, న, మ, ణ వత్తులు, రేఫ, మహాప్రాణ వత్తులు (చ్ఛ, ద్ధ, భ్య, ధ్య)",
       "emoji": "🐘",
-      "color": "#3b8fe8"
+      "color": "#3b8fe8",
+      "i18n": {
+        "en": {
+          "title": "Joined letters",
+          "concept": "ర, య, వ, ల, న, మ, ణ joins, reph, aspirated joins (చ్ఛ, ద్ధ, భ్య, ధ్య)"
+        },
+        "hi": {
+          "title": "संयुक्त अक्षर",
+          "concept": "ర, య, వ, ల, న, మ, ణ के संयोग, रेफ, महाप्राण संयोग (చ్ఛ, ద్ధ, భ్య, ధ్య)"
+        }
+      }
     },
     {
       "level": 6,
       "title": "క్లిష్ట అక్షరాలు",
       "concept": "క్ష, జ్ఞ, శ్ర, శ్చ, ష్ట, ష్ఠ, మూడు హల్లుల కలయికలు, సంధి / విసర్గ రూపాలు",
       "emoji": "🦁",
-      "color": "#f5a623"
+      "color": "#f5a623",
+      "i18n": {
+        "en": {
+          "title": "Tricky letters",
+          "concept": "క్ష, జ్ఞ, శ్ర, శ్చ, ష్ట, ష్ఠ, three-consonant joins, sandhi / visarga forms"
+        },
+        "hi": {
+          "title": "कठिन अक्षर",
+          "concept": "క్ష, జ్ఞ, శ్ర, శ్చ, ష్ట, ష్ఠ, तीन व्यंजनों के संयोग, संधि / विसर्ग रूप"
+        }
+      }
     },
     {
       "level": 7,
       "title": "వాక్యాలు",
       "concept": "చిన్న వాక్యాలు – గుణింతాలు, ద్విత్వ, సంయుక్తాక్షరాలతో",
       "emoji": "🐬",
-      "color": "#18b5c9"
+      "color": "#18b5c9",
+      "i18n": {
+        "en": {
+          "title": "Sentences",
+          "concept": "Short sentences with vowel signs, double and joined letters"
+        },
+        "hi": {
+          "title": "वाक्य",
+          "concept": "मात्राओं, द्वित्व और संयुक्त अक्षरों वाले छोटे वाक्य"
+        }
+      }
     },
     {
       "level": 8,
       "title": "క్లిష్ట వాక్యాలు",
       "concept": "ప్రశ్నలు, ఆశ్చర్యార్థకాలు, సామెతలు, 8–12 పదాల వాక్యాలు",
       "emoji": "🦉",
-      "color": "#a06bdc"
+      "color": "#a06bdc",
+      "i18n": {
+        "en": {
+          "title": "Harder sentences",
+          "concept": "Questions, exclamations, proverbs, 8–12 word sentences"
+        },
+        "hi": {
+          "title": "कठिन वाक्य",
+          "concept": "प्रश्न, विस्मयादिबोधक, कहावतें, 8–12 शब्दों के वाक्य"
+        }
+      }
     },
     {
       "level": 9,
       "title": "పేరాగ్రాఫ్ పఠనం",
       "concept": "2–4 వాక్యాల చిన్న పేరాలు, నీతి కథలు",
       "emoji": "🐼",
-      "color": "#4a5bd4"
+      "color": "#4a5bd4",
+      "i18n": {
+        "en": {
+          "title": "Paragraph reading",
+          "concept": "Short 2–4 sentence paragraphs, moral stories"
+        },
+        "hi": {
+          "title": "अनुच्छेद पठन",
+          "concept": "2–4 वाक्यों के छोटे अनुच्छेद, नैतिक कहानियाँ"
+        }
+      }
     },
     {
       "level": 10,
-      "title": "చివరి పరీక్ష",
+      "title": "పేరాగ్రాఫ్ పరీక్ష",
       "concept": "5 వాక్యాల పేరాగ్రాఫ్‌లు – అన్ని అంశాలు",
-      "emoji": "🏆",
-      "color": "#e8a400"
+      "emoji": "🎖️",
+      "color": "#e8a400",
+      "i18n": {
+        "en": {
+          "title": "Paragraph test",
+          "concept": "5-sentence paragraphs – everything together"
+        },
+        "hi": {
+          "title": "अनुच्छेद परीक्षा",
+          "concept": "5 वाक्यों के अनुच्छेद – सब कुछ एक साथ"
+        }
+      }
+    },
+    {
+      "level": 11,
+      "title": "కఠిన పదజాలం",
+      "concept": "పొడవైన, సంస్కృత మూల పదాలు – విజ్ఞానం, సమాజం, దేశం",
+      "emoji": "🦄",
+      "color": "#d0489c",
+      "i18n": {
+        "en": {
+          "title": "Advanced words",
+          "concept": "Long, Sanskrit-based words – science, society, country"
+        },
+        "hi": {
+          "title": "कठिन शब्द",
+          "concept": "लंबे, संस्कृत-आधारित शब्द – विज्ञान, समाज, देश"
+        }
+      }
+    },
+    {
+      "level": 12,
+      "title": "నాలుక మెలికలు",
+      "concept": "ఒకే అక్షరంతో మొదలయ్యే పదాల వాక్యాలు – వేగంగా, స్పష్టంగా",
+      "emoji": "🐙",
+      "color": "#ff7a59",
+      "i18n": {
+        "en": {
+          "title": "Tongue twisters",
+          "concept": "Sentences full of the same sounds – clear and quick"
+        },
+        "hi": {
+          "title": "जीभ के घुमाव",
+          "concept": "एक जैसी ध्वनियों वाले वाक्य – साफ़ और तेज़"
+        }
+      }
+    },
+    {
+      "level": 13,
+      "title": "సామెతలు, జాతీయాలు",
+      "concept": "తెలుగు సామెతలు – అర్థంతో సహా, భావంతో చదవడం",
+      "emoji": "🦊",
+      "color": "#c77d1a",
+      "i18n": {
+        "en": {
+          "title": "Proverbs and sayings",
+          "concept": "Telugu proverbs – read them with feeling and meaning"
+        },
+        "hi": {
+          "title": "कहावतें और मुहावरे",
+          "concept": "तेलुगु कहावतें – भाव और अर्थ के साथ पढ़ना"
+        }
+      }
+    },
+    {
+      "level": 14,
+      "title": "విజ్ఞాన పేరాలు",
+      "concept": "3 వాక్యాల విజ్ఞాన, చరిత్ర, పర్యావరణ పేరాలు",
+      "emoji": "🐳",
+      "color": "#2f6fe0",
+      "i18n": {
+        "en": {
+          "title": "Knowledge paragraphs",
+          "concept": "3-sentence paragraphs on science, history and nature"
+        },
+        "hi": {
+          "title": "ज्ञान के अनुच्छेद",
+          "concept": "विज्ञान, इतिहास और प्रकृति पर 3 वाक्यों के अनुच्छेद"
+        }
+      }
+    },
+    {
+      "level": 15,
+      "title": "మహా పరీక్ష",
+      "concept": "5 వాక్యాల పెద్ద పేరాలు – అన్ని అంశాలు, భావంతో చదవడం",
+      "emoji": "👑",
+      "color": "#b8860b",
+      "i18n": {
+        "en": {
+          "title": "Grand final",
+          "concept": "Long 5-sentence paragraphs – everything together, read with feeling"
+        },
+        "hi": {
+          "title": "महा परीक्षा",
+          "concept": "5 वाक्यों के लंबे अनुच्छेद – सब कुछ एक साथ, भाव से पढ़ना"
+        }
+      }
     }
   ]
 }

@@ -116,7 +116,7 @@ test('numbers are clamped and formulas are neutralised', () => {
   post({ ...base, name: '=HYPERLINK("x")', level: 99, stars: -5, firstTry: 999, answered: 10, best: [500, -1] });
   const r = ss.sheets.get('Students').rows[1];
   assert.equal(r[1], "'=HYPERLINK(\"x\")");
-  assert.equal(r[3], 10); // level clamped
+  assert.equal(r[3], 15); // level clamped
   assert.equal(r[6], 0); // stars clamped
   assert.equal(r[7], 10); // firstTry ≤ answered
   assert.equal(r[9], 100);
@@ -139,7 +139,7 @@ test('teacher GET needs the right key', () => {
   assert.equal(res.sheetUrl, 'https://docs.google.com/spreadsheets/d/TEST');
   assert.equal(res.students.length, 1);
   assert.equal(res.students[0].name, 'Ravi');
-  assert.equal(res.students[0].best.length, 10);
+  assert.equal(res.students[0].best.length, 15);
 });
 
 test('the default placeholder key never unlocks the data', () => {

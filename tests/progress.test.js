@@ -171,3 +171,31 @@ test('mastery: reaching the last question opens the next level even with no ques
   assert.deepEqual(r.failedIds, ['a', 'b']);
   assert.equal(P.isUnlocked(p, 2), true);
 });
+
+test('three languages: step state is kept, stars come from first-try language steps', () => {
+  const p = P.emptyProgress();
+  const ids = Array.from({ length: 30 }, (_, i) => `q${i}`);
+  P.startAttempt(p, 1, ids);
+  P.setStep(p, 1, { step: 1, tries: 2, langs: [{ lang: 'te', passed: true, tries: 1 }] });
+  assert.equal(p.levels[1].current.step, 1);
+  assert.equal(p.levels[1].current.tries, 2);
+  ids.forEach((id, i) => {
+    const langs = [
+      { lang: 'te', passed: true, tries: 1 },
+      { lang: 'en', passed: i !== 0, tries: i < 5 ? 7 : 1 }, // 5 English steps needed retries, 1 failed
+      { lang: 'hi', passed: true, tries: 1 },
+    ];
+    P.recordAnswer(p, 1, { id, passed: langs.every((x) => x.passed), tries: Math.max(...langs.map((x) => x.tries)), langs });
+  });
+  assert.equal(p.levels[1].current.step, 0);
+  const r = P.finishAttempt(p, 1, 24, { mastery: true });
+  assert.equal(r.passed, true);
+  assert.equal(r.totalLangs, 90);
+  assert.equal(r.firstTryLangs, 85);
+  assert.equal(r.stars, 3); // 85/90 ≥ 28/30
+  assert.equal(r.firstTry, 25); // questions with all three right first time
+  assert.deepEqual(r.failedLangs, { q0: ['en'] });
+  assert.deepEqual(r.failedIds, ['q0']);
+  assert.equal(P.isUnlocked(p, 2), true);
+  assert.equal(P.TOTAL_LEVELS, 15);
+});

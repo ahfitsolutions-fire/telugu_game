@@ -49,3 +49,34 @@ export async function speak(text, audioUrl) {
   }
   return playMp3(audioUrl);
 }
+
+const LOCALE = { te: 'te', en: 'en', hi: 'hi' };
+
+/** Best voice for a language: an Indian one (te-IN / en-IN / hi-IN) first, then any. */
+export async function findVoice(lang) {
+  const list = await voices();
+  const base = LOCALE[lang] ?? lang;
+  const re = new RegExp(`^${base}([-_]|$)`, 'i');
+  const all = list.filter((v) => re.test(v.lang));
+  return all.find((v) => /[-_]IN$/i.test(v.lang)) ?? all[0] ?? null;
+}
+
+/**
+ * Speak text in 'te' | 'en' | 'hi'. Telugu falls back to the MP3 like speak().
+ * Resolves true if something played.
+ */
+export async function speakIn(lang, text, audioUrl) {
+  if (lang === 'te') return speak(text, audioUrl);
+  const voice = await findVoice(lang);
+  if (!voice || !globalThis.SpeechSynthesisUtterance) return false;
+  return new Promise((resolve) => {
+    speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(text);
+    u.voice = voice;
+    u.lang = voice.lang;
+    u.rate = 0.85;
+    u.onend = () => resolve(true);
+    u.onerror = () => resolve(false);
+    speechSynthesis.speak(u);
+  });
+}

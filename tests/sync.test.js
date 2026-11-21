@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { buildPayload, syncEnabled, deviceId, report } from '../js/sync.js?v=9';
-import * as P from '../js/progress.js?v=9';
+import { buildPayload, syncEnabled, deviceId, report } from '../js/sync.js?v=10';
+import * as P from '../js/progress.js?v=10';
 
 test('syncEnabled only accepts an Apps Script web-app URL', () => {
   assert.equal(syncEnabled(''), false);
@@ -35,7 +35,7 @@ test('payload: current level/question, totals and best per level', () => {
   assert.deepEqual(x, {
     event: 'progress', classCode: '7B', name: 'Ravi', device: 'dev-123456',
     level: 2, question: 2, passed: 1, stars: 3, firstTry: 29, answered: 31,
-    best: [28, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    best: [28, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   });
 });
 

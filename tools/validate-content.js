@@ -33,6 +33,8 @@ function readJson(rel) {
 }
 
 function expectedRules(n) {
+  if (n === 11) return { taskType: 'word', passMark: 24, threshold: 0.85 };
+  if (n >= 12 && n <= 13) return { taskType: 'sentence', passMark: 23, threshold: 0.8 };
   if (n <= 3) return { taskType: 'word', passMark: 24, threshold: 0.8 };
   if (n <= 6) return { taskType: 'word', passMark: 24, threshold: 0.85 };
   if (n <= 8) return { taskType: 'sentence', passMark: 23, threshold: 0.8 };
@@ -58,7 +60,10 @@ if (!ladder) {
 const total = ladder.totalLevels ?? 10;
 const perLevel = ladder.questionsPerLevel ?? 30;
 if (!Array.isArray(ladder.levels) || ladder.levels.length !== total) err('ladder.json', `levels list should have ${total} entries`);
-ladder.levels?.forEach((l, i) => { if (l.level !== i + 1) err('ladder.json', `entry ${i + 1} has level ${l.level}`); });
+ladder.levels?.forEach((l, i) => {
+  if (l.level !== i + 1) err('ladder.json', `entry ${i + 1} has level ${l.level}`);
+  for (const lang of ['en', 'hi']) if (!l.i18n?.[lang]?.title || !l.i18n?.[lang]?.concept) err('ladder.json', `level ${l.level} needs i18n.${lang}.title and concept`);
+});
 
 const seenText = new Map(); // normalized text -> id
 const summary = { filled: [], stubs: [] };
@@ -120,6 +125,14 @@ for (let n = 1; n <= total; n++) {
     if (L.taskType === 'word' && words > 1) warn(where, `word task has ${words} words`);
     if (L.taskType !== 'word' && words < 2) warn(where, 'sentence task has only one word');
     if (L.taskType === 'paragraph' && !q.passage) err(where, 'paragraph question needs a passage id');
+    // translations: English (Latin) and Hindi (Devanagari) for the 3-language practice
+    if (typeof q.en !== 'string' || !/[A-Za-z]/.test(q.en) || /[ऀ-౿]/u.test(q.en)) err(where, 'en (English translation) is required, in Latin letters');
+    if (typeof q.hi !== 'string' || !/[ऀ-ॿ]/u.test(q.hi)) err(where, 'hi (Hindi translation) is required, in Devanagari');
+    for (const k of ['enAccept', 'hiAccept']) {
+      if (q[k] !== undefined && (!Array.isArray(q[k]) || q[k].some((a) => typeof a !== 'string' || !a.trim()))) err(where, `${k} must be a list of non-empty strings`);
+    }
+    if (q.passageTitle && (!q.passageTitleEn || !q.passageTitleHi)) err(where, 'passageTitleEn / passageTitleHi are required');
+    if (q.hint && (!q.hintEn || !q.hintHi)) err(where, 'hintEn / hintHi are required');
   });
 }
 

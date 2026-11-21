@@ -1,0 +1,310 @@
+{
+  "level": 12,
+  "title": "నాలుక మెలికలు",
+  "concept": "ఒకే అక్షరంతో మొదలయ్యే పదాల వాక్యాలు – వేగంగా, స్పష్టంగా",
+  "taskType": "sentence",
+  "passMark": 23,
+  "threshold": 0.8,
+  "questions": [
+    {
+      "id": "L12-Q01",
+      "difficulty": "easy",
+      "text": "కాకి కాకితో కబుర్లు చెప్పింది.",
+      "accept": [
+        "కాకి కాకితో కబుర్లు చెప్పింది."
+      ],
+      "en": "The crow chatted with another crow.",
+      "hi": "कौए ने दूसरे कौए से बातें कीं।"
+    },
+    {
+      "id": "L12-Q02",
+      "difficulty": "easy",
+      "text": "పచ్చని పచ్చికలో పాప పరుగెత్తింది.",
+      "accept": [
+        "పచ్చని పచ్చికలో పాప పరుగెత్తింది."
+      ],
+      "en": "The baby ran on the green grass.",
+      "hi": "बच्ची हरी घास पर दौड़ी।"
+    },
+    {
+      "id": "L12-Q03",
+      "difficulty": "easy",
+      "text": "చిలుక చిన్న చిన్న చింతకాయలు తిన్నది.",
+      "accept": [
+        "చిలుక చిన్న చిన్న చింతకాయలు తిన్నది."
+      ],
+      "en": "The parrot ate tiny tamarinds.",
+      "hi": "तोते ने छोटी-छोटी इमलियाँ खाईं।"
+    },
+    {
+      "id": "L12-Q04",
+      "difficulty": "easy",
+      "text": "తాత తోటలో తాటికాయలు తెచ్చారు.",
+      "accept": [
+        "తాత తోటలో తాటికాయలు తెచ్చారు."
+      ],
+      "en": "Grandfather brought palm fruits from the garden.",
+      "hi": "दादाजी बगीचे से ताड़ के फल लाए।"
+    },
+    {
+      "id": "L12-Q05",
+      "difficulty": "easy",
+      "text": "బుజ్జి బుజ్జి బాతులు బావిలో ఈదాయి.",
+      "accept": [
+        "బుజ్జి బుజ్జి బాతులు బావిలో ఈదాయి."
+      ],
+      "en": "The little ducks swam in the well.",
+      "hi": "छोटी-छोटी बत्तखें कुएँ में तैरीं।"
+    },
+    {
+      "id": "L12-Q06",
+      "difficulty": "easy",
+      "text": "మామ మామిడిపండ్లు మూటగట్టాడు.",
+      "accept": [
+        "మామ మామిడిపండ్లు మూటగట్టాడు."
+      ],
+      "en": "Uncle tied the mangoes in a bundle.",
+      "hi": "मामा ने आमों की गठरी बाँधी।"
+    },
+    {
+      "id": "L12-Q07",
+      "difficulty": "easy",
+      "text": "గుడిలో గంట గణగణా మోగింది.",
+      "accept": [
+        "గుడిలో గంట గణగణా మోగింది."
+      ],
+      "en": "The temple bell rang ding dong.",
+      "hi": "मंदिर की घंटी टन-टन बजी।"
+    },
+    {
+      "id": "L12-Q08",
+      "difficulty": "easy",
+      "text": "చల్లని చెరువులో చేపలు చిందులేశాయి.",
+      "accept": [
+        "చల్లని చెరువులో చేపలు చిందులేశాయి."
+      ],
+      "en": "Fish jumped in the cool pond.",
+      "hi": "ठंडे तालाब में मछलियाँ उछलीं।"
+    },
+    {
+      "id": "L12-Q09",
+      "difficulty": "easy",
+      "text": "రాము రాత్రి రైలులో రాజమండ్రి వెళ్ళాడు.",
+      "accept": [
+        "రాము రాత్రి రైలులో రాజమండ్రి వెళ్ళాడు."
+      ],
+      "en": "Ramu went to Rajahmundry by train at night.",
+      "hi": "रामू रात को ट्रेन से राजमुंद्री गया।"
+    },
+    {
+      "id": "L12-Q10",
+      "difficulty": "easy",
+      "text": "నీలి నెమలి నాట్యం నేర్చుకుంది.",
+      "accept": [
+        "నీలి నెమలి నాట్యం నేర్చుకుంది."
+      ],
+      "en": "The blue peacock learned to dance.",
+      "hi": "नीले मोर ने नाचना सीखा।"
+    },
+    {
+      "id": "L12-Q11",
+      "difficulty": "medium",
+      "text": "పక్క పక్క పడవల్లో పది మంది పిల్లలు పాటలు పాడారు.",
+      "accept": [
+        "పక్క పక్క పడవల్లో పది మంది పిల్లలు పాటలు పాడారు."
+      ],
+      "en": "Ten children sang songs in boats side by side.",
+      "hi": "पास-पास की नावों में दस बच्चों ने गाने गाए।"
+    },
+    {
+      "id": "L12-Q12",
+      "difficulty": "medium",
+      "text": "కొత్త కొబ్బరికాయ కొట్టి కొబ్బరి తిన్నాం.",
+      "accept": [
+        "కొత్త కొబ్బరికాయ కొట్టి కొబ్బరి తిన్నాం."
+      ],
+      "en": "We broke a new coconut and ate it.",
+      "hi": "हमने नया नारियल फोड़कर खाया।"
+    },
+    {
+      "id": "L12-Q13",
+      "difficulty": "medium",
+      "text": "తెల్లని తాబేలు తాపీగా తోటలో తిరిగింది.",
+      "accept": [
+        "తెల్లని తాబేలు తాపీగా తోటలో తిరిగింది."
+      ],
+      "en": "The white tortoise slowly walked around the garden.",
+      "hi": "सफ़ेद कछुआ आराम से बगीचे में घूमा।"
+    },
+    {
+      "id": "L12-Q14",
+      "difficulty": "medium",
+      "text": "చిట్టి చీమ చక్కెర ముక్క మోసుకెళ్ళింది.",
+      "accept": [
+        "చిట్టి చీమ చక్కెర ముక్క మోసుకెళ్ళింది."
+      ],
+      "en": "The little ant carried a piece of sugar.",
+      "hi": "नन्ही चींटी चीनी का टुकड़ा उठा ले गई।"
+    },
+    {
+      "id": "L12-Q15",
+      "difficulty": "medium",
+      "text": "బామ్మ బెల్లం బొబ్బట్లు బాగా వండింది.",
+      "accept": [
+        "బామ్మ బెల్లం బొబ్బట్లు బాగా వండింది."
+      ],
+      "en": "Grandma made tasty jaggery sweet rotis.",
+      "hi": "दादी ने गुड़ की बढ़िया मीठी रोटियाँ बनाईं।"
+    },
+    {
+      "id": "L12-Q16",
+      "difficulty": "medium",
+      "text": "గోడ మీద గోధుమ రంగు గొంగళిపురుగు గబగబా పాకింది.",
+      "accept": [
+        "గోడ మీద గోధుమ రంగు గొంగళిపురుగు గబగబా పాకింది."
+      ],
+      "en": "A brown caterpillar crawled fast on the wall.",
+      "hi": "दीवार पर भूरी इल्ली तेज़ी से रेंगी।"
+    },
+    {
+      "id": "L12-Q17",
+      "difficulty": "medium",
+      "text": "ఢమ ఢమ డప్పులతో దసరా ఊరేగింపు వచ్చింది.",
+      "accept": [
+        "ఢమ ఢమ డప్పులతో దసరా ఊరేగింపు వచ్చింది."
+      ],
+      "en": "The Dasara procession came with dum dum drums.",
+      "hi": "ढम-ढम ढोल के साथ दशहरे का जुलूस आया।"
+    },
+    {
+      "id": "L12-Q18",
+      "difficulty": "medium",
+      "text": "సన్నాయి సంగీతం సభలో సందడి చేసింది.",
+      "accept": [
+        "సన్నాయి సంగీతం సభలో సందడి చేసింది."
+      ],
+      "en": "Shehnai music filled the hall with joy.",
+      "hi": "शहनाई के संगीत ने सभा में रौनक ला दी।"
+    },
+    {
+      "id": "L12-Q19",
+      "difficulty": "medium",
+      "text": "వెన్న వేసిన వేడి వేడి వడలు వడ్డించారు.",
+      "accept": [
+        "వెన్న వేసిన వేడి వేడి వడలు వడ్డించారు."
+      ],
+      "en": "Hot hot vadas with butter were served.",
+      "hi": "मक्खन लगे गरम-गरम वड़े परोसे गए।"
+    },
+    {
+      "id": "L12-Q20",
+      "difficulty": "medium",
+      "text": "ఎర్రని ఎండ్రకాయ ఇసుకలో ఎగిరెగిరి దూకింది.",
+      "accept": [
+        "ఎర్రని ఎండ్రకాయ ఇసుకలో ఎగిరెగిరి దూకింది."
+      ],
+      "en": "The red crab jumped and jumped in the sand.",
+      "hi": "लाल केकड़ा रेत में उछल-उछलकर कूदा।"
+    },
+    {
+      "id": "L12-Q21",
+      "difficulty": "hard",
+      "text": "శ్రీశైలం శిఖరం మీద శ్రావణ మేఘాలు కమ్ముకున్నాయి.",
+      "accept": [
+        "శ్రీశైలం శిఖరం మీద శ్రావణ మేఘాలు కమ్ముకున్నాయి."
+      ],
+      "en": "Monsoon clouds covered the peak of Srisailam.",
+      "hi": "श्रीशैलम की चोटी पर सावन के बादल छा गए।"
+    },
+    {
+      "id": "L12-Q22",
+      "difficulty": "hard",
+      "text": "ప్రతి ప్రశ్నకు ప్రశాంతంగా ప్రత్యుత్తరం ఇవ్వాలి.",
+      "accept": [
+        "ప్రతి ప్రశ్నకు ప్రశాంతంగా ప్రత్యుత్తరం ఇవ్వాలి."
+      ],
+      "en": "We should answer every question calmly.",
+      "hi": "हर प्रश्न का शांति से उत्तर देना चाहिए।"
+    },
+    {
+      "id": "L12-Q23",
+      "difficulty": "hard",
+      "text": "స్వచ్ఛమైన స్ఫటికంలా స్వేచ్ఛగా నవ్వాలి.",
+      "accept": [
+        "స్వచ్ఛమైన స్ఫటికంలా స్వేచ్ఛగా నవ్వాలి."
+      ],
+      "en": "Laugh freely like a pure crystal.",
+      "hi": "स्वच्छ स्फटिक की तरह खुलकर हँसो।"
+    },
+    {
+      "id": "L12-Q24",
+      "difficulty": "hard",
+      "text": "కృష్ణా నదీ తీరంలో కృషీవలుడు కష్టపడ్డాడు.",
+      "accept": [
+        "కృష్ణా నదీ తీరంలో కృషీవలుడు కష్టపడ్డాడు."
+      ],
+      "en": "The farmer worked hard on the banks of the Krishna river.",
+      "hi": "कृष्णा नदी के किनारे किसान ने मेहनत की।"
+    },
+    {
+      "id": "L12-Q25",
+      "difficulty": "hard",
+      "text": "పెద్ద పెద్ద ద్రాక్ష గుత్తులు పచ్చని తీగలకు వేలాడుతున్నాయి.",
+      "accept": [
+        "పెద్ద పెద్ద ద్రాక్ష గుత్తులు పచ్చని తీగలకు వేలాడుతున్నాయి."
+      ],
+      "en": "Big bunches of grapes hang from the green vines.",
+      "hi": "बड़े-बड़े अंगूर के गुच्छे हरी बेलों पर लटक रहे हैं।"
+    },
+    {
+      "id": "L12-Q26",
+      "difficulty": "hard",
+      "text": "విజ్ఞాన విద్యార్థులు విశ్వ రహస్యాలు విప్పారు.",
+      "accept": [
+        "విజ్ఞాన విద్యార్థులు విశ్వ రహస్యాలు విప్పారు."
+      ],
+      "en": "Science students opened the secrets of the universe.",
+      "hi": "विज्ञान के विद्यार्थियों ने ब्रह्मांड के रहस्य खोले।"
+    },
+    {
+      "id": "L12-Q27",
+      "difficulty": "hard",
+      "text": "త్వరత్వరగా తిరిగే తిరగలి తెల్లని పిండి తీసింది.",
+      "accept": [
+        "త్వరత్వరగా తిరిగే తిరగలి తెల్లని పిండి తీసింది."
+      ],
+      "en": "The fast turning grinding stone made white flour.",
+      "hi": "तेज़ घूमती चक्की ने सफ़ेद आटा निकाला।"
+    },
+    {
+      "id": "L12-Q28",
+      "difficulty": "hard",
+      "text": "భక్తులు భజనలతో భద్రాచల రాముని భజించారు.",
+      "accept": [
+        "భక్తులు భజనలతో భద్రాచల రాముని భజించారు."
+      ],
+      "en": "Devotees worshipped Rama of Bhadrachalam with bhajans.",
+      "hi": "भक्तों ने भजनों से भद्राचलम के राम की आराधना की।"
+    },
+    {
+      "id": "L12-Q29",
+      "difficulty": "hard",
+      "text": "ఝుమ్మని తుమ్మెద ఝంకారంతో పువ్వుల చుట్టూ తిరిగింది.",
+      "accept": [
+        "ఝుమ్మని తుమ్మెద ఝంకారంతో పువ్వుల చుట్టూ తిరిగింది."
+      ],
+      "en": "The bee buzzed around the flowers.",
+      "hi": "भौंरा गुनगुनाते हुए फूलों के चारों ओर घूमा।"
+    },
+    {
+      "id": "L12-Q30",
+      "difficulty": "hard",
+      "text": "అక్షరం అక్షరం కలిపి అందమైన అక్షరమాల అల్లాం.",
+      "accept": [
+        "అక్షరం అక్షరం కలిపి అందమైన అక్షరమాల అల్లాం."
+      ],
+      "en": "Joining letter by letter, we made a beautiful alphabet garland.",
+      "hi": "अक्षर-अक्षर जोड़कर हमने सुंदर वर्णमाला बनाई।"
+    }
+  ]
+}

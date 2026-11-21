@@ -1,7 +1,7 @@
 // Level-complete celebration: a different bird (and flight path) for every level
 // flies in, chirps, says "congratulations, <name>" out loud and flies away.
 
-import { findTeluguVoice } from './tts.js?v=9';
+import { findVoice } from './tts.js?v=10';
 
 // level → bird emoji(s) and flight style (CSS class fly-<style>)
 export const BIRDS = {
@@ -14,8 +14,21 @@ export const BIRDS = {
   7: { birds: ['🦩'], style: 'zigzag' },     // flamingo zig-zag
   8: { birds: ['🦚'], style: 'rise' },       // peacock rising with a spin
   9: { birds: ['🐦', '🐦', '🐦', '🐦', '🐦'], style: 'flock' }, // a flock in V formation
-  10: { birds: ['🦜', '🕊️', '🦢', '🦩', '🦚', '🦅'], style: 'parade' }, // everyone celebrates
+  10: { birds: ['🐓'], style: 'loop' },     // rooster loop-the-loop
+  11: { birds: ['🦆', '🦆', '🦆'], style: 'flock' }, // three ducks in a row
+  12: { birds: ['🐧'], style: 'hop' },        // penguin hopping in
+  13: { birds: ['🦃'], style: 'zigzag' },     // turkey zig-zag
+  14: { birds: ['🐤', '🐥', '🐤', '🐥'], style: 'parade' }, // a ring of chicks
+  15: { birds: ['🦜', '🕊️', '🦢', '🦩', '🦚', '🦅', '🦉', '🐦'], style: 'parade' }, // everyone celebrates
 };
+
+// A different little bird on every question: 14 birds × 6 entrances, so no two
+// questions in a level (30 questions) get the same bird + entrance.
+export const CAST = ['🐦', '🦜', '🕊️', '🦅', '🦉', '🦢', '🦩', '🦚', '🐧', '🐤', '🐥', '🦆', '🐓', '🦃'];
+export const MOVES = ['swoop', 'drop', 'peek', 'hover', 'hop', 'glide'];
+export function questionBird(level, index) {
+  return { emoji: CAST[(index + level) % CAST.length], move: MOVES[(index * 5 + level) % MOVES.length] };
+}
 
 const REDUCED = () => globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
 
@@ -45,17 +58,20 @@ export function chirp() {
   } catch { /* sound is optional */ }
 }
 
-/** Say congratulations with the student's name (Telugu voice if the device has one, else English). */
-export async function sayCongrats(name, level, teluguText) {
+/**
+ * Say congratulations with the student's name in the website language
+ * (te / en / hi voice if the device has one, else English).
+ */
+export async function sayCongrats(name, level, text, lang = 'te') {
   const synth = globalThis.speechSynthesis;
   if (!synth || !globalThis.SpeechSynthesisUtterance) return;
   synth.cancel();
-  const te = await findTeluguVoice();
+  const voice = await findVoice(lang);
   let u;
-  if (te) {
-    u = new SpeechSynthesisUtterance(teluguText);
-    u.voice = te;
-    u.lang = te.lang;
+  if (voice) {
+    u = new SpeechSynthesisUtterance(text);
+    u.voice = voice;
+    u.lang = voice.lang;
   } else {
     // English fallback: a Telugu-script name can't be read by an English voice
     const latin = /^[\p{Script=Latin}\s.'-]+$/u.test(name ?? '') ? `, ${name}` : '';
@@ -71,9 +87,9 @@ export async function sayCongrats(name, level, teluguText) {
 
 /**
  * Show the flying-bird celebration. Resolves when it is over (about 6.5 s, or on tap).
- * @param {{h: Function, level: number, message: string, name: string, spoken: string}} opts
+ * @param {{h: Function, level: number, message: string, name: string, spoken: string, lang?: string}} opts
  */
-export function celebrate({ h, level, message, name, spoken }) {
+export function celebrate({ h, level, message, name, spoken, lang = 'te' }) {
   const cfg = BIRDS[level] ?? BIRDS[1];
   const many = cfg.birds.length > 1;
   const mid = (cfg.birds.length - 1) / 2;
@@ -102,7 +118,7 @@ export function celebrate({ h, level, message, name, spoken }) {
     overlay.addEventListener('click', close);
     document.body.append(overlay);
     chirp();
-    setTimeout(() => sayCongrats(name, level, spoken), 900);
+    setTimeout(() => sayCongrats(name, level, spoken, lang), 900);
     setTimeout(close, 6500);
   });
 }

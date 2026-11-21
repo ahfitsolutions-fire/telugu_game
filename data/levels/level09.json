@@ -16,7 +16,11 @@
       "passageTitle": "మా కుటుంబం",
       "accept": [
         "మా ఇంట్లో అమ్మ, నాన్న, అక్క, నేను ఉంటాం."
-      ]
+      ],
+      "en": "My mother, father, sister and I live in our house.",
+      "hi": "हमारे घर में माँ, पिताजी, दीदी और मैं रहते हैं।",
+      "passageTitleEn": "My family",
+      "passageTitleHi": "मेरा परिवार"
     },
     {
       "id": "L09-Q02",
@@ -26,7 +30,11 @@
       "passageTitle": "మా కుటుంబం",
       "accept": [
         "నాన్న ఉదయమే పనికి వెళ్తారు."
-      ]
+      ],
+      "en": "Father goes to work in the morning.",
+      "hi": "पिताजी सुबह काम पर जाते हैं।",
+      "passageTitleEn": "My family",
+      "passageTitleHi": "मेरा परिवार"
     },
     {
       "id": "L09-Q03",
@@ -36,7 +44,11 @@
       "passageTitle": "మా కుటుంబం",
       "accept": [
         "అమ్మ మా అందరికీ రుచికరమైన వంట చేస్తుంది."
-      ]
+      ],
+      "en": "Mother cooks tasty food for all of us.",
+      "hi": "माँ हम सबके लिए स्वादिष्ट खाना बनाती है।",
+      "passageTitleEn": "My family",
+      "passageTitleHi": "मेरा परिवार"
     },
     {
       "id": "L09-Q04",
@@ -46,7 +58,11 @@
       "passageTitle": "మా బడి",
       "accept": [
         "మా బడి ఊరి మధ్యలో ఉంది."
-      ]
+      ],
+      "en": "Our school is in the middle of the village.",
+      "hi": "हमारा स्कूल गाँव के बीच में है।",
+      "passageTitleEn": "Our school",
+      "passageTitleHi": "हमारा स्कूल"
     },
     {
       "id": "L09-Q05",
@@ -56,7 +72,11 @@
       "passageTitle": "మా బడి",
       "accept": [
         "బడి చుట్టూ పెద్ద చెట్లు ఉన్నాయి."
-      ]
+      ],
+      "en": "There are big trees around the school.",
+      "hi": "स्कूल के चारों ओर बड़े पेड़ हैं।",
+      "passageTitleEn": "Our school",
+      "passageTitleHi": "हमारा स्कूल"
     },
     {
       "id": "L09-Q06",
@@ -66,7 +86,11 @@
       "passageTitle": "మా బడి",
       "accept": [
         "మా ఉపాధ్యాయులు మాకు ప్రేమగా పాఠాలు చెబుతారు."
-      ]
+      ],
+      "en": "Our teachers teach us with love.",
+      "hi": "हमारे अध्यापक हमें प्यार से पढ़ाते हैं।",
+      "passageTitleEn": "Our school",
+      "passageTitleHi": "हमारा स्कूल"
     },
     {
       "id": "L09-Q07",
@@ -76,7 +100,11 @@
       "passageTitle": "నా స్నేహితుడు",
       "accept": [
         "రవి నా ప్రాణ స్నేహితుడు."
-      ]
+      ],
+      "en": "Ravi is my best friend.",
+      "hi": "रवि मेरा सबसे अच्छा दोस्त है।",
+      "passageTitleEn": "My friend",
+      "passageTitleHi": "मेरा दोस्त"
     },
     {
       "id": "L09-Q08",
@@ -86,7 +114,11 @@
       "passageTitle": "నా స్నేహితుడు",
       "accept": [
         "మేమిద్దరం కలిసి బడికి వెళ్తాం."
-      ]
+      ],
+      "en": "We both go to school together.",
+      "hi": "हम दोनों साथ में स्कूल जाते हैं।",
+      "passageTitleEn": "My friend",
+      "passageTitleHi": "मेरा दोस्त"
     },
     {
       "id": "L09-Q09",
@@ -96,7 +128,11 @@
       "passageTitle": "నా స్నేహితుడు",
       "accept": [
         "సాయంత్రం మైదానంలో క్రికెట్ ఆడుకుంటాం."
-      ]
+      ],
+      "en": "In the evening we play cricket in the ground.",
+      "hi": "शाम को हम मैदान में क्रिकेट खेलते हैं।",
+      "passageTitleEn": "My friend",
+      "passageTitleHi": "मेरा दोस्त"
     },
     {
       "id": "L09-Q10",
@@ -106,7 +142,11 @@
       "passageTitle": "మా ఆవు",
       "accept": [
         "మా ఇంట్లో ఒక తెల్లని ఆవు ఉంది."
-      ]
+      ],
+      "en": "We have a white cow at home.",
+      "hi": "हमारे घर में एक सफ़ेद गाय है।",
+      "passageTitleEn": "Our cow",
+      "passageTitleHi": "हमारी गाय"
     },
     {
       "id": "L09-Q11",
@@ -116,7 +156,11 @@
       "passageTitle": "మా ఆవు",
       "accept": [
         "దాని పేరు లక్ష్మి."
-      ]
+      ],
+      "en": "Her name is Lakshmi.",
+      "hi": "उसका नाम लक्ष्मी है।",
+      "passageTitleEn": "Our cow",
+      "passageTitleHi": "हमारी गाय"
     },
     {
       "id": "L09-Q12",
@@ -126,7 +170,11 @@
       "passageTitle": "మా ఆవు",
       "accept": [
         "అది రోజూ మాకు చిక్కని పాలు ఇస్తుంది."
-      ]
+      ],
+      "en": "She gives us thick milk every day.",
+      "hi": "वह हमें रोज़ गाढ़ा दूध देती है।",
+      "passageTitleEn": "Our cow",
+      "passageTitleHi": "हमारी गाय"
     },
     {
       "id": "L09-Q13",
@@ -136,7 +184,11 @@
       "passageTitle": "దాహం వేసిన కాకి",
       "accept": [
         "ఒక కాకికి బాగా దాహం వేసింది."
-      ]
+      ],
+      "en": "A crow was very thirsty.",
+      "hi": "एक कौए को बहुत प्यास लगी।",
+      "passageTitleEn": "The thirsty crow",
+      "passageTitleHi": "प्यासा कौआ"
     },
     {
       "id": "L09-Q14",
@@ -146,7 +198,11 @@
       "passageTitle": "దాహం వేసిన కాకి",
       "accept": [
         "కుండలో నీళ్ళు అడుగున ఉన్నాయి."
-      ]
+      ],
+      "en": "The water was at the bottom of the pot.",
+      "hi": "घड़े में पानी नीचे था।",
+      "passageTitleEn": "The thirsty crow",
+      "passageTitleHi": "प्यासा कौआ"
     },
     {
       "id": "L09-Q15",
@@ -156,7 +212,11 @@
       "passageTitle": "దాహం వేసిన కాకి",
       "accept": [
         "కాకి గులకరాళ్ళు వేసి నీళ్ళు పైకి తెచ్చుకుని తాగింది."
-      ]
+      ],
+      "en": "The crow dropped pebbles, brought the water up and drank it.",
+      "hi": "कौए ने कंकड़ डालकर पानी ऊपर लाया और पिया।",
+      "passageTitleEn": "The thirsty crow",
+      "passageTitleHi": "प्यासा कौआ"
     },
     {
       "id": "L09-Q16",
@@ -166,7 +226,11 @@
       "passageTitle": "కుందేలు, తాబేలు",
       "accept": [
         "కుందేలు, తాబేలు పరుగు పందెం వేసుకున్నాయి."
-      ]
+      ],
+      "en": "The rabbit and the tortoise had a race.",
+      "hi": "खरगोश और कछुए ने दौड़ लगाई।",
+      "passageTitleEn": "The rabbit and the tortoise",
+      "passageTitleHi": "खरगोश और कछुआ"
     },
     {
       "id": "L09-Q17",
@@ -176,7 +240,11 @@
       "passageTitle": "కుందేలు, తాబేలు",
       "accept": [
         "గర్వంతో కుందేలు దారిలో నిద్రపోయింది."
-      ]
+      ],
+      "en": "The proud rabbit fell asleep on the way.",
+      "hi": "घमंडी खरगोश रास्ते में सो गया।",
+      "passageTitleEn": "The rabbit and the tortoise",
+      "passageTitleHi": "खरगोश और कछुआ"
     },
     {
       "id": "L09-Q18",
@@ -186,7 +254,11 @@
       "passageTitle": "కుందేలు, తాబేలు",
       "accept": [
         "నెమ్మదిగా నడిచిన తాబేలు పందెం గెలిచింది."
-      ]
+      ],
+      "en": "The tortoise walked slowly and won the race.",
+      "hi": "धीरे चलने वाला कछुआ दौड़ जीत गया।",
+      "passageTitleEn": "The rabbit and the tortoise",
+      "passageTitleHi": "खरगोश और कछुआ"
     },
     {
       "id": "L09-Q19",
@@ -196,7 +268,11 @@
       "passageTitle": "వర్షం",
       "accept": [
         "ఆకాశంలో నల్లని మేఘాలు కమ్ముకున్నాయి."
-      ]
+      ],
+      "en": "Dark clouds covered the sky.",
+      "hi": "आसमान में काले बादल छा गए।",
+      "passageTitleEn": "Rain",
+      "passageTitleHi": "बारिश"
     },
     {
       "id": "L09-Q20",
@@ -206,7 +282,11 @@
       "passageTitle": "వర్షం",
       "accept": [
         "చల్లని గాలి వీస్తూ వాన మొదలైంది."
-      ]
+      ],
+      "en": "A cool wind blew and the rain began.",
+      "hi": "ठंडी हवा चली और बारिश शुरू हुई।",
+      "passageTitleEn": "Rain",
+      "passageTitleHi": "बारिश"
     },
     {
       "id": "L09-Q21",
@@ -216,7 +296,11 @@
       "passageTitle": "వర్షం",
       "accept": [
         "పిల్లలు కాగితం పడవలు చేసి నీటిలో వదిలారు."
-      ]
+      ],
+      "en": "The children made paper boats and floated them in the water.",
+      "hi": "बच्चों ने कागज़ की नावें बनाकर पानी में छोड़ीं।",
+      "passageTitleEn": "Rain",
+      "passageTitleHi": "बारिश"
     },
     {
       "id": "L09-Q22",
@@ -226,7 +310,11 @@
       "passageTitle": "సంక్రాంతి",
       "accept": [
         "సంక్రాంతి రైతుల పండుగ."
-      ]
+      ],
+      "en": "Sankranti is the festival of farmers.",
+      "hi": "संक्रांति किसानों का त्योहार है।",
+      "passageTitleEn": "Sankranti",
+      "passageTitleHi": "संक्रांति"
     },
     {
       "id": "L09-Q23",
@@ -236,7 +324,11 @@
       "passageTitle": "సంక్రాంతి",
       "accept": [
         "ఇంటి ముందు అందమైన ముగ్గులు వేస్తారు."
-      ]
+      ],
+      "en": "Beautiful rangoli is drawn in front of the houses.",
+      "hi": "घरों के सामने सुंदर रंगोली बनाते हैं।",
+      "passageTitleEn": "Sankranti",
+      "passageTitleHi": "संक्रांति"
     },
     {
       "id": "L09-Q24",
@@ -246,7 +338,11 @@
       "passageTitle": "సంక్రాంతి",
       "accept": [
         "పిల్లలు ఆకాశంలో గాలిపటాలు ఎగురవేస్తారు."
-      ]
+      ],
+      "en": "Children fly kites in the sky.",
+      "hi": "बच्चे आसमान में पतंग उड़ाते हैं।",
+      "passageTitleEn": "Sankranti",
+      "passageTitleHi": "संक्रांति"
     },
     {
       "id": "L09-Q25",
@@ -256,7 +352,11 @@
       "passageTitle": "గ్రంథాలయం",
       "accept": [
         "మా ఊరిలో ఒక గ్రంథాలయం ఉంది."
-      ]
+      ],
+      "en": "There is a library in our village.",
+      "hi": "हमारे गाँव में एक पुस्तकालय है।",
+      "passageTitleEn": "The library",
+      "passageTitleHi": "पुस्तकालय"
     },
     {
       "id": "L09-Q26",
@@ -266,7 +366,11 @@
       "passageTitle": "గ్రంథాలయం",
       "accept": [
         "అక్కడ ఎన్నో కథల పుస్తకాలు ఉన్నాయి."
-      ]
+      ],
+      "en": "There are many story books there.",
+      "hi": "वहाँ बहुत सी कहानी की किताबें हैं।",
+      "passageTitleEn": "The library",
+      "passageTitleHi": "पुस्तकालय"
     },
     {
       "id": "L09-Q27",
@@ -276,7 +380,11 @@
       "passageTitle": "గ్రంథాలయం",
       "accept": [
         "నేను ప్రతి ఆదివారం అక్కడికి వెళ్ళి చదువుకుంటాను."
-      ]
+      ],
+      "en": "Every Sunday I go there and read.",
+      "hi": "मैं हर रविवार वहाँ जाकर पढ़ता हूँ।",
+      "passageTitleEn": "The library",
+      "passageTitleHi": "पुस्तकालय"
     },
     {
       "id": "L09-Q28",
@@ -286,7 +394,11 @@
       "passageTitle": "నిజాయితీ",
       "accept": [
         "రాము దారిలో ఒక పర్సు చూశాడు."
-      ]
+      ],
+      "en": "Ramu saw a purse on the road.",
+      "hi": "रामू ने रास्ते में एक बटुआ देखा।",
+      "passageTitleEn": "Honesty",
+      "passageTitleHi": "ईमानदारी"
     },
     {
       "id": "L09-Q29",
@@ -296,7 +408,11 @@
       "passageTitle": "నిజాయితీ",
       "accept": [
         "అందులో చాలా డబ్బులు ఉన్నాయి."
-      ]
+      ],
+      "en": "It had a lot of money in it.",
+      "hi": "उसमें बहुत पैसे थे।",
+      "passageTitleEn": "Honesty",
+      "passageTitleHi": "ईमानदारी"
     },
     {
       "id": "L09-Q30",
@@ -306,7 +422,11 @@
       "passageTitle": "నిజాయితీ",
       "accept": [
         "రాము ఆ పర్సును పోలీసులకు అప్పగించాడు."
-      ]
+      ],
+      "en": "Ramu handed the purse to the police.",
+      "hi": "रामू ने बटुआ पुलिस को सौंप दिया।",
+      "passageTitleEn": "Honesty",
+      "passageTitleHi": "ईमानदारी"
     }
   ]
 }

@@ -1,0 +1,390 @@
+{
+  "level": 11,
+  "title": "కఠిన పదజాలం",
+  "concept": "పొడవైన, సంస్కృత మూల పదాలు – విజ్ఞానం, సమాజం, దేశం",
+  "taskType": "word",
+  "passMark": 24,
+  "threshold": 0.85,
+  "questions": [
+    {
+      "id": "L11-Q01",
+      "difficulty": "easy",
+      "text": "ప్రపంచం",
+      "split": "ప్ర + పం + చం",
+      "accept": [
+        "ప్రపంచం"
+      ],
+      "en": "world",
+      "hi": "दुनिया",
+      "hiAccept": [
+        "विश्व"
+      ]
+    },
+    {
+      "id": "L11-Q02",
+      "difficulty": "easy",
+      "text": "ప్రకృతి",
+      "split": "ప్ర + కృ + తి",
+      "accept": [
+        "ప్రకృతి"
+      ],
+      "en": "nature",
+      "hi": "प्रकृति"
+    },
+    {
+      "id": "L11-Q03",
+      "difficulty": "easy",
+      "text": "సంస్కృతి",
+      "split": "సం + స్కృ + తి",
+      "accept": [
+        "సంస్కృతి"
+      ],
+      "en": "culture",
+      "hi": "संस्कृति"
+    },
+    {
+      "id": "L11-Q04",
+      "difficulty": "easy",
+      "text": "పర్యావరణం",
+      "split": "ప + ర్యా + వ + ర + ణం",
+      "accept": [
+        "పర్యావరణం"
+      ],
+      "en": "environment",
+      "hi": "पर्यावरण"
+    },
+    {
+      "id": "L11-Q05",
+      "difficulty": "easy",
+      "text": "ప్రభుత్వం",
+      "split": "ప్ర + భు + త్వం",
+      "accept": [
+        "ప్రభుత్వం"
+      ],
+      "en": "government",
+      "hi": "सरकार"
+    },
+    {
+      "id": "L11-Q06",
+      "difficulty": "easy",
+      "text": "విమానం",
+      "split": "వి + మా + నం",
+      "accept": [
+        "విమానం"
+      ],
+      "en": "aeroplane",
+      "hi": "हवाई जहाज़",
+      "enAccept": [
+        "airplane",
+        "plane"
+      ],
+      "hiAccept": [
+        "विमान"
+      ]
+    },
+    {
+      "id": "L11-Q07",
+      "difficulty": "easy",
+      "text": "గ్రంథాలయం",
+      "split": "గ్రం + థా + ల + యం",
+      "accept": [
+        "గ్రంథాలయం"
+      ],
+      "en": "library",
+      "hi": "पुस्तकालय"
+    },
+    {
+      "id": "L11-Q08",
+      "difficulty": "easy",
+      "text": "వ్యవసాయం",
+      "split": "వ్య + వ + సా + యం",
+      "accept": [
+        "వ్యవసాయం"
+      ],
+      "en": "agriculture",
+      "hi": "खेती",
+      "enAccept": [
+        "farming"
+      ],
+      "hiAccept": [
+        "कृषि"
+      ]
+    },
+    {
+      "id": "L11-Q09",
+      "difficulty": "easy",
+      "text": "ఆరోగ్యం",
+      "split": "ఆ + రో + గ్యం",
+      "accept": [
+        "ఆరోగ్యం"
+      ],
+      "en": "health",
+      "hi": "स्वास्थ्य",
+      "hiAccept": [
+        "सेहत"
+      ]
+    },
+    {
+      "id": "L11-Q10",
+      "difficulty": "easy",
+      "text": "ప్రయాణం",
+      "split": "ప్ర + యా + ణం",
+      "accept": [
+        "ప్రయాణం"
+      ],
+      "en": "journey",
+      "hi": "यात्रा",
+      "enAccept": [
+        "travel"
+      ],
+      "hiAccept": [
+        "सफ़र"
+      ]
+    },
+    {
+      "id": "L11-Q11",
+      "difficulty": "medium",
+      "text": "ఉష్ణోగ్రత",
+      "split": "ఉ + ష్ణో + గ్ర + త",
+      "accept": [
+        "ఉష్ణోగ్రత"
+      ],
+      "en": "temperature",
+      "hi": "तापमान"
+    },
+    {
+      "id": "L11-Q12",
+      "difficulty": "medium",
+      "text": "విద్యుచ్ఛక్తి",
+      "split": "వి + ద్యు + చ్ఛ + క్తి",
+      "accept": [
+        "విద్యుచ్ఛక్తి"
+      ],
+      "en": "electricity",
+      "hi": "बिजली"
+    },
+    {
+      "id": "L11-Q13",
+      "difficulty": "medium",
+      "text": "అంతరిక్షం",
+      "split": "అం + త + రి + క్షం",
+      "accept": [
+        "అంతరిక్షం"
+      ],
+      "en": "space",
+      "hi": "अंतरिक्ष",
+      "enAccept": [
+        "outer space"
+      ]
+    },
+    {
+      "id": "L11-Q14",
+      "difficulty": "medium",
+      "text": "శాస్త్రవేత్త",
+      "split": "శా + స్త్ర + వే + త్త",
+      "accept": [
+        "శాస్త్రవేత్త"
+      ],
+      "en": "scientist",
+      "hi": "वैज्ञानिक"
+    },
+    {
+      "id": "L11-Q15",
+      "difficulty": "medium",
+      "text": "ప్రజాస్వామ్యం",
+      "split": "ప్ర + జా + స్వా + మ్యం",
+      "accept": [
+        "ప్రజాస్వామ్యం"
+      ],
+      "en": "democracy",
+      "hi": "लोकतंत्र"
+    },
+    {
+      "id": "L11-Q16",
+      "difficulty": "medium",
+      "text": "రాజ్యాంగం",
+      "split": "రా + జ్యాం + గం",
+      "accept": [
+        "రాజ్యాంగం"
+      ],
+      "en": "constitution",
+      "hi": "संविधान"
+    },
+    {
+      "id": "L11-Q17",
+      "difficulty": "medium",
+      "text": "ఉపగ్రహం",
+      "split": "ఉ + ప + గ్ర + హం",
+      "accept": [
+        "ఉపగ్రహం"
+      ],
+      "en": "satellite",
+      "hi": "उपग्रह"
+    },
+    {
+      "id": "L11-Q18",
+      "difficulty": "medium",
+      "text": "సముద్రతీరం",
+      "split": "స + ము + ద్ర + తీ + రం",
+      "accept": [
+        "సముద్రతీరం"
+      ],
+      "en": "seashore",
+      "hi": "समुद्र तट",
+      "enAccept": [
+        "beach",
+        "sea shore"
+      ],
+      "hiAccept": [
+        "समुद्र का किनारा"
+      ]
+    },
+    {
+      "id": "L11-Q19",
+      "difficulty": "medium",
+      "text": "భూకంపం",
+      "split": "భూ + కం + పం",
+      "accept": [
+        "భూకంపం"
+      ],
+      "en": "earthquake",
+      "hi": "भूकंप"
+    },
+    {
+      "id": "L11-Q20",
+      "difficulty": "medium",
+      "text": "జలవిద్యుత్తు",
+      "split": "జ + ల + వి + ద్యు + త్తు",
+      "accept": [
+        "జలవిద్యుత్తు"
+      ],
+      "en": "hydroelectricity",
+      "hi": "जलविद्युत",
+      "enAccept": [
+        "hydro electricity"
+      ],
+      "hiAccept": [
+        "पनबिजली"
+      ]
+    },
+    {
+      "id": "L11-Q21",
+      "difficulty": "hard",
+      "text": "కిరణజన్యసంయోగక్రియ",
+      "split": "కి + ర + ణ + జ + న్య + సం + యో + గ + క్రి + య",
+      "accept": [
+        "కిరణజన్యసంయోగక్రియ"
+      ],
+      "en": "photosynthesis",
+      "hi": "प्रकाश संश्लेषण"
+    },
+    {
+      "id": "L11-Q22",
+      "difficulty": "hard",
+      "text": "అగ్నిపర్వతం",
+      "split": "అ + గ్ని + ప + ర్వ + తం",
+      "accept": [
+        "అగ్నిపర్వతం"
+      ],
+      "en": "volcano",
+      "hi": "ज्वालामुखी"
+    },
+    {
+      "id": "L11-Q23",
+      "difficulty": "hard",
+      "text": "జీవవైవిధ్యం",
+      "split": "జీ + వ + వై + వి + ధ్యం",
+      "accept": [
+        "జీవవైవిధ్యం"
+      ],
+      "en": "biodiversity",
+      "hi": "जैव विविधता"
+    },
+    {
+      "id": "L11-Q24",
+      "difficulty": "hard",
+      "text": "గురుత్వాకర్షణ",
+      "split": "గు + రు + త్వా + క + ర్ష + ణ",
+      "accept": [
+        "గురుత్వాకర్షణ"
+      ],
+      "en": "gravity",
+      "hi": "गुरुत्वाकर्षण"
+    },
+    {
+      "id": "L11-Q25",
+      "difficulty": "hard",
+      "text": "స్వాతంత్ర్యదినోత్సవం",
+      "split": "స్వా + తం + త్ర్య + ది + నో + త్స + వం",
+      "accept": [
+        "స్వాతంత్ర్యదినోత్సవం"
+      ],
+      "en": "Independence Day",
+      "hi": "स्वतंत्रता दिवस"
+    },
+    {
+      "id": "L11-Q26",
+      "difficulty": "hard",
+      "text": "ప్రత్యక్షప్రసారం",
+      "split": "ప్ర + త్య + క్ష + ప్ర + సా + రం",
+      "accept": [
+        "ప్రత్యక్షప్రసారం"
+      ],
+      "en": "live telecast",
+      "hi": "सीधा प्रसारण",
+      "enAccept": [
+        "live broadcast"
+      ]
+    },
+    {
+      "id": "L11-Q27",
+      "difficulty": "hard",
+      "text": "సూక్ష్మదర్శిని",
+      "split": "సూ + క్ష్మ + ద + ర్శి + ని",
+      "accept": [
+        "సూక్ష్మదర్శిని"
+      ],
+      "en": "microscope",
+      "hi": "सूक्ष्मदर्शी"
+    },
+    {
+      "id": "L11-Q28",
+      "difficulty": "hard",
+      "text": "దూరదర్శిని",
+      "split": "దూ + ర + ద + ర్శి + ని",
+      "accept": [
+        "దూరదర్శిని"
+      ],
+      "en": "telescope",
+      "hi": "दूरबीन"
+    },
+    {
+      "id": "L11-Q29",
+      "difficulty": "hard",
+      "text": "ఆత్మవిశ్వాసం",
+      "split": "ఆ + త్మ + వి + శ్వా + సం",
+      "accept": [
+        "ఆత్మవిశ్వాసం"
+      ],
+      "en": "self-confidence",
+      "hi": "आत्मविश्वास",
+      "enAccept": [
+        "confidence"
+      ]
+    },
+    {
+      "id": "L11-Q30",
+      "difficulty": "hard",
+      "text": "అంతర్జాతీయం",
+      "split": "అం + త + ర్జా + తీ + యం",
+      "accept": [
+        "అంతర్జాతీయం"
+      ],
+      "en": "international",
+      "hi": "अंतरराष्ट्रीय",
+      "hiAccept": [
+        "अंतर्राष्ट्रीय"
+      ]
+    }
+  ]
+}

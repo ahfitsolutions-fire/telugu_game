@@ -1,0 +1,432 @@
+{
+  "level": 14,
+  "title": "విజ్ఞాన పేరాలు",
+  "concept": "3 వాక్యాల విజ్ఞాన, చరిత్ర, పర్యావరణ పేరాలు",
+  "taskType": "paragraph",
+  "passMark": 22,
+  "threshold": 0.75,
+  "passageMin": 0.6,
+  "structure": "10 paragraphs × 3 sentences",
+  "questions": [
+    {
+      "id": "L14-Q01",
+      "difficulty": "easy",
+      "text": "సూర్యుని వేడికి సముద్రంలోని నీరు ఆవిరి అవుతుంది.",
+      "passage": "P01",
+      "passageTitle": "నీటి చక్రం",
+      "passageTitleEn": "The water cycle",
+      "passageTitleHi": "जल चक्र",
+      "accept": [
+        "సూర్యుని వేడికి సముద్రంలోని నీరు ఆవిరి అవుతుంది."
+      ],
+      "en": "The sun's heat turns sea water into vapour.",
+      "hi": "सूरज की गर्मी से समुद्र का पानी भाप बनता है।"
+    },
+    {
+      "id": "L14-Q02",
+      "difficulty": "easy",
+      "text": "ఆ ఆవిరి పైకి వెళ్ళి మేఘాలుగా మారుతుంది.",
+      "passage": "P01",
+      "passageTitle": "నీటి చక్రం",
+      "passageTitleEn": "The water cycle",
+      "passageTitleHi": "जल चक्र",
+      "accept": [
+        "ఆ ఆవిరి పైకి వెళ్ళి మేఘాలుగా మారుతుంది."
+      ],
+      "en": "That vapour rises and turns into clouds.",
+      "hi": "वह भाप ऊपर जाकर बादल बन जाती है।"
+    },
+    {
+      "id": "L14-Q03",
+      "difficulty": "easy",
+      "text": "మేఘాలు చల్లబడి వర్షంగా భూమిపై కురుస్తాయి.",
+      "passage": "P01",
+      "passageTitle": "నీటి చక్రం",
+      "passageTitleEn": "The water cycle",
+      "passageTitleHi": "जल चक्र",
+      "accept": [
+        "మేఘాలు చల్లబడి వర్షంగా భూమిపై కురుస్తాయి."
+      ],
+      "en": "The clouds cool down and fall on the earth as rain.",
+      "hi": "बादल ठंडे होकर धरती पर बारिश बनकर बरसते हैं।"
+    },
+    {
+      "id": "L14-Q04",
+      "difficulty": "easy",
+      "text": "సౌరకుటుంబంలో ఎనిమిది గ్రహాలు ఉన్నాయి.",
+      "passage": "P02",
+      "passageTitle": "సౌరకుటుంబం",
+      "passageTitleEn": "The solar system",
+      "passageTitleHi": "सौरमंडल",
+      "accept": [
+        "సౌరకుటుంబంలో ఎనిమిది గ్రహాలు ఉన్నాయి."
+      ],
+      "en": "There are eight planets in the solar system.",
+      "hi": "सौरमंडल में आठ ग्रह हैं।"
+    },
+    {
+      "id": "L14-Q05",
+      "difficulty": "easy",
+      "text": "బృహస్పతి అన్నింటికంటే పెద్ద గ్రహం.",
+      "passage": "P02",
+      "passageTitle": "సౌరకుటుంబం",
+      "passageTitleEn": "The solar system",
+      "passageTitleHi": "सौरमंडल",
+      "accept": [
+        "బృహస్పతి అన్నింటికంటే పెద్ద గ్రహం."
+      ],
+      "en": "Jupiter is the biggest planet of all.",
+      "hi": "बृहस्पति सबसे बड़ा ग्रह है।"
+    },
+    {
+      "id": "L14-Q06",
+      "difficulty": "easy",
+      "text": "భూమి మీద మాత్రమే జీవులు నివసిస్తున్నాయి.",
+      "passage": "P02",
+      "passageTitle": "సౌరకుటుంబం",
+      "passageTitleEn": "The solar system",
+      "passageTitleHi": "सौरमंडल",
+      "accept": [
+        "భూమి మీద మాత్రమే జీవులు నివసిస్తున్నాయి."
+      ],
+      "en": "Living beings live only on the earth.",
+      "hi": "केवल पृथ्वी पर ही जीव रहते हैं।"
+    },
+    {
+      "id": "L14-Q07",
+      "difficulty": "easy",
+      "text": "మన గుండె రోజంతా రక్తాన్ని పంపిస్తుంది.",
+      "passage": "P03",
+      "passageTitle": "మన శరీరం",
+      "passageTitleEn": "Our body",
+      "passageTitleHi": "हमारा शरीर",
+      "accept": [
+        "మన గుండె రోజంతా రక్తాన్ని పంపిస్తుంది."
+      ],
+      "en": "Our heart pumps blood all day.",
+      "hi": "हमारा दिल दिनभर खून पंप करता है।"
+    },
+    {
+      "id": "L14-Q08",
+      "difficulty": "easy",
+      "text": "ఊపిరితిత్తులు మనకు ఆక్సిజన్ అందిస్తాయి.",
+      "passage": "P03",
+      "passageTitle": "మన శరీరం",
+      "passageTitleEn": "Our body",
+      "passageTitleHi": "हमारा शरीर",
+      "accept": [
+        "ఊపిరితిత్తులు మనకు ఆక్సిజన్ అందిస్తాయి."
+      ],
+      "en": "The lungs give us oxygen.",
+      "hi": "फेफड़े हमें ऑक्सीजन देते हैं।"
+    },
+    {
+      "id": "L14-Q09",
+      "difficulty": "easy",
+      "text": "మెదడు శరీరంలోని అన్ని పనులను నియంత్రిస్తుంది.",
+      "passage": "P03",
+      "passageTitle": "మన శరీరం",
+      "passageTitleEn": "Our body",
+      "passageTitleHi": "हमारा शरीर",
+      "accept": [
+        "మెదడు శరీరంలోని అన్ని పనులను నియంత్రిస్తుంది."
+      ],
+      "en": "The brain controls all the work of the body.",
+      "hi": "दिमाग़ शरीर के सारे काम नियंत्रित करता है।"
+    },
+    {
+      "id": "L14-Q10",
+      "difficulty": "easy",
+      "text": "చెట్లు మనకు స్వచ్ఛమైన గాలిని ఇస్తాయి.",
+      "passage": "P04",
+      "passageTitle": "చెట్లు",
+      "passageTitleEn": "Trees",
+      "passageTitleHi": "पेड़",
+      "accept": [
+        "చెట్లు మనకు స్వచ్ఛమైన గాలిని ఇస్తాయి."
+      ],
+      "en": "Trees give us fresh air.",
+      "hi": "पेड़ हमें साफ़ हवा देते हैं।"
+    },
+    {
+      "id": "L14-Q11",
+      "difficulty": "medium",
+      "text": "అవి నేల కోతను అడ్డుకుంటాయి.",
+      "passage": "P04",
+      "passageTitle": "చెట్లు",
+      "passageTitleEn": "Trees",
+      "passageTitleHi": "पेड़",
+      "accept": [
+        "అవి నేల కోతను అడ్డుకుంటాయి."
+      ],
+      "en": "They stop soil erosion.",
+      "hi": "वे मिट्टी के कटाव को रोकते हैं।"
+    },
+    {
+      "id": "L14-Q12",
+      "difficulty": "medium",
+      "text": "అందుకే ప్రతి ఒక్కరూ ఒక మొక్క నాటాలి.",
+      "passage": "P04",
+      "passageTitle": "చెట్లు",
+      "passageTitleEn": "Trees",
+      "passageTitleHi": "पेड़",
+      "accept": [
+        "అందుకే ప్రతి ఒక్కరూ ఒక మొక్క నాటాలి."
+      ],
+      "en": "So everyone should plant a sapling.",
+      "hi": "इसलिए हर किसी को एक पौधा लगाना चाहिए।"
+    },
+    {
+      "id": "L14-Q13",
+      "difficulty": "medium",
+      "text": "తేనెటీగలు పువ్వుల నుండి మకరందాన్ని సేకరిస్తాయి.",
+      "passage": "P05",
+      "passageTitle": "తేనెటీగలు",
+      "passageTitleEn": "Honeybees",
+      "passageTitleHi": "मधुमक्खियाँ",
+      "accept": [
+        "తేనెటీగలు పువ్వుల నుండి మకరందాన్ని సేకరిస్తాయి."
+      ],
+      "en": "Honeybees collect nectar from flowers.",
+      "hi": "मधुमक्खियाँ फूलों से मकरंद इकट्ठा करती हैं।"
+    },
+    {
+      "id": "L14-Q14",
+      "difficulty": "medium",
+      "text": "అవి తేనెపట్టులో తేనెను నిల్వ చేస్తాయి.",
+      "passage": "P05",
+      "passageTitle": "తేనెటీగలు",
+      "passageTitleEn": "Honeybees",
+      "passageTitleHi": "मधुमक्खियाँ",
+      "accept": [
+        "అవి తేనెపట్టులో తేనెను నిల్వ చేస్తాయి."
+      ],
+      "en": "They store honey in the honeycomb.",
+      "hi": "वे छत्ते में शहद जमा करती हैं।"
+    },
+    {
+      "id": "L14-Q15",
+      "difficulty": "medium",
+      "text": "పరాగసంపర్కంలో తేనెటీగలు రైతులకు ఎంతో సహాయం చేస్తాయి.",
+      "passage": "P05",
+      "passageTitle": "తేనెటీగలు",
+      "passageTitleEn": "Honeybees",
+      "passageTitleHi": "मधुमक्खियाँ",
+      "accept": [
+        "పరాగసంపర్కంలో తేనెటీగలు రైతులకు ఎంతో సహాయం చేస్తాయి."
+      ],
+      "en": "Bees help farmers a lot through pollination.",
+      "hi": "परागण में मधुमक्खियाँ किसानों की बहुत मदद करती हैं।"
+    },
+    {
+      "id": "L14-Q16",
+      "difficulty": "medium",
+      "text": "చలికాలంలో కొల్లేరు సరస్సుకు ఎన్నో వలస పక్షులు వస్తాయి.",
+      "passage": "P06",
+      "passageTitle": "వలస పక్షులు",
+      "passageTitleEn": "Migratory birds",
+      "passageTitleHi": "प्रवासी पक्षी",
+      "accept": [
+        "చలికాలంలో కొల్లేరు సరస్సుకు ఎన్నో వలస పక్షులు వస్తాయి."
+      ],
+      "en": "Many migratory birds come to Kolleru lake in winter.",
+      "hi": "सर्दियों में कोल्लेरु झील पर कई प्रवासी पक्षी आते हैं।"
+    },
+    {
+      "id": "L14-Q17",
+      "difficulty": "medium",
+      "text": "పెలికాన్లు వేల కిలోమీటర్లు ఎగిరి ఇక్కడికి చేరుకుంటాయి.",
+      "passage": "P06",
+      "passageTitle": "వలస పక్షులు",
+      "passageTitleEn": "Migratory birds",
+      "passageTitleHi": "प्रवासी पक्षी",
+      "accept": [
+        "పెలికాన్లు వేల కిలోమీటర్లు ఎగిరి ఇక్కడికి చేరుకుంటాయి."
+      ],
+      "en": "Pelicans fly thousands of kilometres to reach here.",
+      "hi": "पेलिकन हज़ारों किलोमीटर उड़कर यहाँ पहुँचते हैं।"
+    },
+    {
+      "id": "L14-Q18",
+      "difficulty": "medium",
+      "text": "ఈ పక్షులను కాపాడటం మనందరి బాధ్యత.",
+      "passage": "P06",
+      "passageTitle": "వలస పక్షులు",
+      "passageTitleEn": "Migratory birds",
+      "passageTitleHi": "प्रवासी पक्षी",
+      "accept": [
+        "ఈ పక్షులను కాపాడటం మనందరి బాధ్యత."
+      ],
+      "en": "Protecting these birds is everyone's duty.",
+      "hi": "इन पक्षियों की रक्षा करना हम सबकी ज़िम्मेदारी है।"
+    },
+    {
+      "id": "L14-Q19",
+      "difficulty": "medium",
+      "text": "అవసరం లేనప్పుడు దీపాలు, పంకాలు ఆపేయాలి.",
+      "passage": "P07",
+      "passageTitle": "విద్యుత్ ఆదా",
+      "passageTitleEn": "Saving electricity",
+      "passageTitleHi": "बिजली की बचत",
+      "accept": [
+        "అవసరం లేనప్పుడు దీపాలు, పంకాలు ఆపేయాలి."
+      ],
+      "en": "Switch off lights and fans when they are not needed.",
+      "hi": "ज़रूरत न हो तो बत्तियाँ और पंखे बंद करने चाहिए।"
+    },
+    {
+      "id": "L14-Q20",
+      "difficulty": "medium",
+      "text": "సౌరశక్తి కాలుష్యం లేని విద్యుత్తును ఇస్తుంది.",
+      "passage": "P07",
+      "passageTitle": "విద్యుత్ ఆదా",
+      "passageTitleEn": "Saving electricity",
+      "passageTitleHi": "बिजली की बचत",
+      "accept": [
+        "సౌరశక్తి కాలుష్యం లేని విద్యుత్తును ఇస్తుంది."
+      ],
+      "en": "Solar energy gives electricity without pollution.",
+      "hi": "सौर ऊर्जा बिना प्रदूषण के बिजली देती है।"
+    },
+    {
+      "id": "L14-Q21",
+      "difficulty": "hard",
+      "text": "విద్యుత్తును ఆదా చేయడం దేశానికి సేవ చేయడమే.",
+      "passage": "P07",
+      "passageTitle": "విద్యుత్ ఆదా",
+      "passageTitleEn": "Saving electricity",
+      "passageTitleHi": "बिजली की बचत",
+      "accept": [
+        "విద్యుత్తును ఆదా చేయడం దేశానికి సేవ చేయడమే."
+      ],
+      "en": "Saving electricity is serving the nation.",
+      "hi": "बिजली बचाना देश की सेवा है।"
+    },
+    {
+      "id": "L14-Q22",
+      "difficulty": "hard",
+      "text": "హైదరాబాదులోని చార్మినార్ నాలుగు వందల ఏళ్ళ నాటి కట్టడం.",
+      "passage": "P08",
+      "passageTitle": "చార్మినార్",
+      "passageTitleEn": "Charminar",
+      "passageTitleHi": "चारमीनार",
+      "accept": [
+        "హైదరాబాదులోని చార్మినార్ నాలుగు వందల ఏళ్ళ నాటి కట్టడం."
+      ],
+      "en": "The Charminar in Hyderabad is four hundred years old.",
+      "hi": "हैदराबाद का चारमीनार चार सौ साल पुरानी इमारत है।"
+    },
+    {
+      "id": "L14-Q23",
+      "difficulty": "hard",
+      "text": "దానికి నాలుగు ఎత్తైన మినార్లు ఉన్నాయి.",
+      "passage": "P08",
+      "passageTitle": "చార్మినార్",
+      "passageTitleEn": "Charminar",
+      "passageTitleHi": "चारमीनार",
+      "accept": [
+        "దానికి నాలుగు ఎత్తైన మినార్లు ఉన్నాయి."
+      ],
+      "en": "It has four tall minarets.",
+      "hi": "इसकी चार ऊँची मीनारें हैं।"
+    },
+    {
+      "id": "L14-Q24",
+      "difficulty": "hard",
+      "text": "దేశవిదేశాల నుండి పర్యాటకులు దాన్ని చూడటానికి వస్తారు.",
+      "passage": "P08",
+      "passageTitle": "చార్మినార్",
+      "passageTitleEn": "Charminar",
+      "passageTitleHi": "चारमीनार",
+      "accept": [
+        "దేశవిదేశాల నుండి పర్యాటకులు దాన్ని చూడటానికి వస్తారు."
+      ],
+      "en": "Tourists from India and abroad come to see it.",
+      "hi": "देश-विदेश से पर्यटक इसे देखने आते हैं।"
+    },
+    {
+      "id": "L14-Q25",
+      "difficulty": "hard",
+      "text": "అబ్దుల్ కలాంను భారత క్షిపణి పితామహుడు అంటారు.",
+      "passage": "P09",
+      "passageTitle": "అబ్దుల్ కలాం",
+      "passageTitleEn": "Abdul Kalam",
+      "passageTitleHi": "अब्दुल कलाम",
+      "accept": [
+        "అబ్దుల్ కలాంను భారత క్షిపణి పితామహుడు అంటారు."
+      ],
+      "en": "Abdul Kalam is called the Missile Man of India.",
+      "hi": "अब्दुल कलाम को भारत का मिसाइल मैन कहते हैं।"
+    },
+    {
+      "id": "L14-Q26",
+      "difficulty": "hard",
+      "text": "ఆయన చిన్నతనంలో వార్తాపత్రికలు అమ్మి చదువుకున్నారు.",
+      "passage": "P09",
+      "passageTitle": "అబ్దుల్ కలాం",
+      "passageTitleEn": "Abdul Kalam",
+      "passageTitleHi": "अब्दुल कलाम",
+      "accept": [
+        "ఆయన చిన్నతనంలో వార్తాపత్రికలు అమ్మి చదువుకున్నారు."
+      ],
+      "en": "As a child he sold newspapers to pay for his studies.",
+      "hi": "बचपन में उन्होंने अख़बार बेचकर पढ़ाई की।"
+    },
+    {
+      "id": "L14-Q27",
+      "difficulty": "hard",
+      "text": "కలలు కనండి, వాటిని నిజం చేసుకోండి అని ఆయన పిల్లలకు చెప్పారు.",
+      "passage": "P09",
+      "passageTitle": "అబ్దుల్ కలాం",
+      "passageTitleEn": "Abdul Kalam",
+      "passageTitleHi": "अब्दुल कलाम",
+      "accept": [
+        "కలలు కనండి, వాటిని నిజం చేసుకోండి అని ఆయన పిల్లలకు చెప్పారు."
+      ],
+      "en": "He told children to dream and make their dreams come true.",
+      "hi": "उन्होंने बच्चों से कहा, सपने देखो और उन्हें सच करो।"
+    },
+    {
+      "id": "L14-Q28",
+      "difficulty": "hard",
+      "text": "రోడ్డు దాటేటప్పుడు ఇరువైపులా చూడాలి.",
+      "passage": "P10",
+      "passageTitle": "రహదారి భద్రత",
+      "passageTitleEn": "Road safety",
+      "passageTitleHi": "सड़क सुरक्षा",
+      "accept": [
+        "రోడ్డు దాటేటప్పుడు ఇరువైపులా చూడాలి."
+      ],
+      "en": "Look both ways when crossing the road.",
+      "hi": "सड़क पार करते समय दोनों तरफ़ देखना चाहिए।"
+    },
+    {
+      "id": "L14-Q29",
+      "difficulty": "hard",
+      "text": "ఎర్ర దీపం వెలిగితే వాహనాలు ఆగాలి.",
+      "passage": "P10",
+      "passageTitle": "రహదారి భద్రత",
+      "passageTitleEn": "Road safety",
+      "passageTitleHi": "सड़क सुरक्षा",
+      "accept": [
+        "ఎర్ర దీపం వెలిగితే వాహనాలు ఆగాలి."
+      ],
+      "en": "Vehicles must stop when the red light is on.",
+      "hi": "लाल बत्ती जलने पर गाड़ियाँ रुकनी चाहिए।"
+    },
+    {
+      "id": "L14-Q30",
+      "difficulty": "hard",
+      "text": "ద్విచక్ర వాహనం నడిపేవారు శిరస్త్రాణం ధరించాలి.",
+      "passage": "P10",
+      "passageTitle": "రహదారి భద్రత",
+      "passageTitleEn": "Road safety",
+      "passageTitleHi": "सड़क सुरक्षा",
+      "accept": [
+        "ద్విచక్ర వాహనం నడిపేవారు శిరస్త్రాణం ధరించాలి."
+      ],
+      "en": "Two wheeler riders must wear a helmet.",
+      "hi": "दोपहिया चलाने वालों को हेलमेट पहनना चाहिए।"
+    }
+  ]
+}

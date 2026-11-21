@@ -1,0 +1,432 @@
+{
+  "level": 15,
+  "title": "మహా పరీక్ష",
+  "concept": "5 వాక్యాల పెద్ద పేరాలు – అన్ని అంశాలు, భావంతో చదవడం",
+  "taskType": "paragraph",
+  "passMark": 22,
+  "threshold": 0.75,
+  "passageMin": 0.6,
+  "structure": "6 paragraphs × 5 sentences",
+  "questions": [
+    {
+      "id": "L15-Q01",
+      "difficulty": "easy",
+      "text": "దేశభాషలందు తెలుగు లెస్స అని శ్రీకృష్ణదేవరాయలు కీర్తించారు.",
+      "passage": "P01",
+      "passageTitle": "మన తెలుగు",
+      "passageTitleEn": "Our Telugu",
+      "passageTitleHi": "हमारी तेलुगु",
+      "accept": [
+        "దేశభాషలందు తెలుగు లెస్స అని శ్రీకృష్ణదేవరాయలు కీర్తించారు."
+      ],
+      "en": "Sri Krishnadevaraya praised Telugu as the best of the languages of the land.",
+      "hi": "श्रीकृष्णदेवराय ने तेलुगु को देश की भाषाओं में श्रेष्ठ बताया।"
+    },
+    {
+      "id": "L15-Q02",
+      "difficulty": "easy",
+      "text": "తెలుగును ఇటాలియన్ ఆఫ్ ది ఈస్ట్ అని కూడా పిలుస్తారు.",
+      "passage": "P01",
+      "passageTitle": "మన తెలుగు",
+      "passageTitleEn": "Our Telugu",
+      "passageTitleHi": "हमारी तेलुगु",
+      "accept": [
+        "తెలుగును ఇటాలియన్ ఆఫ్ ది ఈస్ట్ అని కూడా పిలుస్తారు."
+      ],
+      "en": "Telugu is also called the Italian of the East.",
+      "hi": "तेलुगु को पूर्व की इतालवी भी कहते हैं।"
+    },
+    {
+      "id": "L15-Q03",
+      "difficulty": "easy",
+      "text": "మన భాషలో దాదాపు ప్రతి పదం అచ్చుతో ముగుస్తుంది.",
+      "passage": "P01",
+      "passageTitle": "మన తెలుగు",
+      "passageTitleEn": "Our Telugu",
+      "passageTitleHi": "हमारी तेलुगु",
+      "accept": [
+        "మన భాషలో దాదాపు ప్రతి పదం అచ్చుతో ముగుస్తుంది."
+      ],
+      "en": "In our language almost every word ends with a vowel.",
+      "hi": "हमारी भाषा में लगभग हर शब्द स्वर पर खत्म होता है।"
+    },
+    {
+      "id": "L15-Q04",
+      "difficulty": "easy",
+      "text": "నన్నయ, తిక్కన, ఎర్రన మహాభారతాన్ని తెలుగులోకి అనువదించారు.",
+      "passage": "P01",
+      "passageTitle": "మన తెలుగు",
+      "passageTitleEn": "Our Telugu",
+      "passageTitleHi": "हमारी तेलुगु",
+      "accept": [
+        "నన్నయ, తిక్కన, ఎర్రన మహాభారతాన్ని తెలుగులోకి అనువదించారు."
+      ],
+      "en": "Nannaya, Tikkana and Errana translated the Mahabharata into Telugu.",
+      "hi": "नन्नय, तिक्कन और एर्रन ने महाभारत का तेलुगु में अनुवाद किया।"
+    },
+    {
+      "id": "L15-Q05",
+      "difficulty": "easy",
+      "text": "మాతృభాషను గౌరవించడం మనందరి కర్తవ్యం.",
+      "passage": "P01",
+      "passageTitle": "మన తెలుగు",
+      "passageTitleEn": "Our Telugu",
+      "passageTitleHi": "हमारी तेलुगु",
+      "accept": [
+        "మాతృభాషను గౌరవించడం మనందరి కర్తవ్యం."
+      ],
+      "en": "Respecting our mother tongue is everyone's duty.",
+      "hi": "मातृभाषा का सम्मान करना हम सबका कर्तव्य है।"
+    },
+    {
+      "id": "L15-Q06",
+      "difficulty": "easy",
+      "text": "భూమి ఉపరితలంలో మూడు వంతులు నీరే ఉంది.",
+      "passage": "P02",
+      "passageTitle": "సముద్రం",
+      "passageTitleEn": "The ocean",
+      "passageTitleHi": "समुद्र",
+      "accept": [
+        "భూమి ఉపరితలంలో మూడు వంతులు నీరే ఉంది."
+      ],
+      "en": "Three fourths of the earth's surface is water.",
+      "hi": "पृथ्वी की सतह का तीन चौथाई हिस्सा पानी है।"
+    },
+    {
+      "id": "L15-Q07",
+      "difficulty": "easy",
+      "text": "సముద్రాలలో తిమింగలాలు, డాల్ఫిన్లు, రంగురంగుల చేపలు నివసిస్తాయి.",
+      "passage": "P02",
+      "passageTitle": "సముద్రం",
+      "passageTitleEn": "The ocean",
+      "passageTitleHi": "समुद्र",
+      "accept": [
+        "సముద్రాలలో తిమింగలాలు, డాల్ఫిన్లు, రంగురంగుల చేపలు నివసిస్తాయి."
+      ],
+      "en": "Whales, dolphins and colourful fish live in the seas.",
+      "hi": "समुद्रों में व्हेल, डॉल्फ़िन और रंग-बिरंगी मछलियाँ रहती हैं।"
+    },
+    {
+      "id": "L15-Q08",
+      "difficulty": "easy",
+      "text": "నీలి తిమింగలం ప్రపంచంలోనే అతి పెద్ద జీవి.",
+      "passage": "P02",
+      "passageTitle": "సముద్రం",
+      "passageTitleEn": "The ocean",
+      "passageTitleHi": "समुद्र",
+      "accept": [
+        "నీలి తిమింగలం ప్రపంచంలోనే అతి పెద్ద జీవి."
+      ],
+      "en": "The blue whale is the largest animal in the world.",
+      "hi": "नीली व्हेल दुनिया का सबसे बड़ा जीव है।"
+    },
+    {
+      "id": "L15-Q09",
+      "difficulty": "easy",
+      "text": "ప్లాస్టిక్ వ్యర్థాలు సముద్ర జీవులకు ప్రమాదకరం.",
+      "passage": "P02",
+      "passageTitle": "సముద్రం",
+      "passageTitleEn": "The ocean",
+      "passageTitleHi": "समुद्र",
+      "accept": [
+        "ప్లాస్టిక్ వ్యర్థాలు సముద్ర జీవులకు ప్రమాదకరం."
+      ],
+      "en": "Plastic waste is dangerous for sea creatures.",
+      "hi": "प्लास्टिक कचरा समुद्री जीवों के लिए ख़तरनाक है।"
+    },
+    {
+      "id": "L15-Q10",
+      "difficulty": "easy",
+      "text": "అందుకే ప్లాస్టిక్ వాడకాన్ని తగ్గించుకోవాలి.",
+      "passage": "P02",
+      "passageTitle": "సముద్రం",
+      "passageTitleEn": "The ocean",
+      "passageTitleHi": "समुद्र",
+      "accept": [
+        "అందుకే ప్లాస్టిక్ వాడకాన్ని తగ్గించుకోవాలి."
+      ],
+      "en": "That is why we must use less plastic.",
+      "hi": "इसलिए हमें प्लास्टिक का इस्तेमाल कम करना चाहिए।"
+    },
+    {
+      "id": "L15-Q11",
+      "difficulty": "medium",
+      "text": "కంప్యూటర్ మన జీవితంలో ఒక భాగమైపోయింది.",
+      "passage": "P03",
+      "passageTitle": "కంప్యూటర్ ప్రపంచం",
+      "passageTitleEn": "The computer world",
+      "passageTitleHi": "कंप्यूटर की दुनिया",
+      "accept": [
+        "కంప్యూటర్ మన జీవితంలో ఒక భాగమైపోయింది."
+      ],
+      "en": "The computer has become a part of our life.",
+      "hi": "कंप्यूटर हमारे जीवन का हिस्सा बन गया है।"
+    },
+    {
+      "id": "L15-Q12",
+      "difficulty": "medium",
+      "text": "అంతర్జాలం ద్వారా ఏ సమాచారమైనా క్షణాల్లో తెలుసుకోవచ్చు.",
+      "passage": "P03",
+      "passageTitle": "కంప్యూటర్ ప్రపంచం",
+      "passageTitleEn": "The computer world",
+      "passageTitleHi": "कंप्यूटर की दुनिया",
+      "accept": [
+        "అంతర్జాలం ద్వారా ఏ సమాచారమైనా క్షణాల్లో తెలుసుకోవచ్చు."
+      ],
+      "en": "Through the internet we can find any information in seconds.",
+      "hi": "इंटरनेट से कोई भी जानकारी पल भर में मिल सकती है।"
+    },
+    {
+      "id": "L15-Q13",
+      "difficulty": "medium",
+      "text": "కానీ తెలియని వ్యక్తులకు మన వివరాలు చెప్పకూడదు.",
+      "passage": "P03",
+      "passageTitle": "కంప్యూటర్ ప్రపంచం",
+      "passageTitleEn": "The computer world",
+      "passageTitleHi": "कंप्यूटर की दुनिया",
+      "accept": [
+        "కానీ తెలియని వ్యక్తులకు మన వివరాలు చెప్పకూడదు."
+      ],
+      "en": "But we must not share our details with strangers.",
+      "hi": "लेकिन अनजान लोगों को अपनी जानकारी नहीं देनी चाहिए।"
+    },
+    {
+      "id": "L15-Q14",
+      "difficulty": "medium",
+      "text": "ఎక్కువసేపు తెర చూస్తే కళ్ళు అలసిపోతాయి.",
+      "passage": "P03",
+      "passageTitle": "కంప్యూటర్ ప్రపంచం",
+      "passageTitleEn": "The computer world",
+      "passageTitleHi": "कंप्यूटर की दुनिया",
+      "accept": [
+        "ఎక్కువసేపు తెర చూస్తే కళ్ళు అలసిపోతాయి."
+      ],
+      "en": "Looking at a screen for too long tires the eyes.",
+      "hi": "ज़्यादा देर स्क्रीन देखने से आँखें थक जाती हैं।"
+    },
+    {
+      "id": "L15-Q15",
+      "difficulty": "medium",
+      "text": "సాంకేతికతను తెలివిగా, జాగ్రత్తగా వాడుకోవాలి.",
+      "passage": "P03",
+      "passageTitle": "కంప్యూటర్ ప్రపంచం",
+      "passageTitleEn": "The computer world",
+      "passageTitleHi": "कंप्यूटर की दुनिया",
+      "accept": [
+        "సాంకేతికతను తెలివిగా, జాగ్రత్తగా వాడుకోవాలి."
+      ],
+      "en": "We should use technology wisely and carefully.",
+      "hi": "तकनीक का समझदारी और सावधानी से इस्तेमाल करना चाहिए।"
+    },
+    {
+      "id": "L15-Q16",
+      "difficulty": "medium",
+      "text": "బతుకమ్మ తెలంగాణ ఆడపడుచుల పూల పండుగ.",
+      "passage": "P04",
+      "passageTitle": "బతుకమ్మ",
+      "passageTitleEn": "Bathukamma",
+      "passageTitleHi": "बतुकम्मा",
+      "accept": [
+        "బతుకమ్మ తెలంగాణ ఆడపడుచుల పూల పండుగ."
+      ],
+      "en": "Bathukamma is the flower festival of the women of Telangana.",
+      "hi": "बतुकम्मा तेलंगाना की महिलाओं का फूलों का त्योहार है।"
+    },
+    {
+      "id": "L15-Q17",
+      "difficulty": "medium",
+      "text": "తంగేడు, గునుగు పూలతో బతుకమ్మను అందంగా పేరుస్తారు.",
+      "passage": "P04",
+      "passageTitle": "బతుకమ్మ",
+      "passageTitleEn": "Bathukamma",
+      "passageTitleHi": "बतुकम्मा",
+      "accept": [
+        "తంగేడు, గునుగు పూలతో బతుకమ్మను అందంగా పేరుస్తారు."
+      ],
+      "en": "Bathukamma is stacked beautifully with tangedu and gunugu flowers.",
+      "hi": "तंगेडु और गुनुगु के फूलों से बतुकम्मा को सुंदर सजाते हैं।"
+    },
+    {
+      "id": "L15-Q18",
+      "difficulty": "medium",
+      "text": "మహిళలు చప్పట్లు కొడుతూ వలయంగా తిరుగుతూ పాటలు పాడతారు.",
+      "passage": "P04",
+      "passageTitle": "బతుకమ్మ",
+      "passageTitleEn": "Bathukamma",
+      "passageTitleHi": "बतुकम्मा",
+      "accept": [
+        "మహిళలు చప్పట్లు కొడుతూ వలయంగా తిరుగుతూ పాటలు పాడతారు."
+      ],
+      "en": "Women clap, move in a circle and sing songs.",
+      "hi": "महिलाएँ ताली बजाते हुए गोल घूमकर गीत गाती हैं।"
+    },
+    {
+      "id": "L15-Q19",
+      "difficulty": "medium",
+      "text": "తొమ్మిది రోజులు ఈ పండుగ ఘనంగా జరుగుతుంది.",
+      "passage": "P04",
+      "passageTitle": "బతుకమ్మ",
+      "passageTitleEn": "Bathukamma",
+      "passageTitleHi": "बतुकम्मा",
+      "accept": [
+        "తొమ్మిది రోజులు ఈ పండుగ ఘనంగా జరుగుతుంది."
+      ],
+      "en": "This festival is celebrated grandly for nine days.",
+      "hi": "यह त्योहार नौ दिन धूमधाम से मनाया जाता है।"
+    },
+    {
+      "id": "L15-Q20",
+      "difficulty": "medium",
+      "text": "చివరి రోజు బతుకమ్మను చెరువులో నిమజ్జనం చేస్తారు.",
+      "passage": "P04",
+      "passageTitle": "బతుకమ్మ",
+      "passageTitleEn": "Bathukamma",
+      "passageTitleHi": "बतुकम्मा",
+      "accept": [
+        "చివరి రోజు బతుకమ్మను చెరువులో నిమజ్జనం చేస్తారు."
+      ],
+      "en": "On the last day Bathukamma is immersed in the lake.",
+      "hi": "आख़िरी दिन बतुकम्मा को तालाब में विसर्जित करते हैं।"
+    },
+    {
+      "id": "L15-Q21",
+      "difficulty": "hard",
+      "text": "ఒక చీమ నదిలో పడి కొట్టుకుపోతోంది.",
+      "passage": "P05",
+      "passageTitle": "పావురం, చీమ",
+      "passageTitleEn": "The dove and the ant",
+      "passageTitleHi": "कबूतर और चींटी",
+      "accept": [
+        "ఒక చీమ నదిలో పడి కొట్టుకుపోతోంది."
+      ],
+      "en": "An ant fell into the river and was being swept away.",
+      "hi": "एक चींटी नदी में गिरकर बह रही थी।"
+    },
+    {
+      "id": "L15-Q22",
+      "difficulty": "hard",
+      "text": "చెట్టు మీది పావురం ఒక ఆకును నీటిలో వేసింది.",
+      "passage": "P05",
+      "passageTitle": "పావురం, చీమ",
+      "passageTitleEn": "The dove and the ant",
+      "passageTitleHi": "कबूतर और चींटी",
+      "accept": [
+        "చెట్టు మీది పావురం ఒక ఆకును నీటిలో వేసింది."
+      ],
+      "en": "A dove on the tree dropped a leaf into the water.",
+      "hi": "पेड़ पर बैठे कबूतर ने पानी में एक पत्ता गिराया।"
+    },
+    {
+      "id": "L15-Q23",
+      "difficulty": "hard",
+      "text": "చీమ ఆ ఆకు ఎక్కి ఒడ్డుకు చేరి ప్రాణాలు కాపాడుకుంది.",
+      "passage": "P05",
+      "passageTitle": "పావురం, చీమ",
+      "passageTitleEn": "The dove and the ant",
+      "passageTitleHi": "कबूतर और चींटी",
+      "accept": [
+        "చీమ ఆ ఆకు ఎక్కి ఒడ్డుకు చేరి ప్రాణాలు కాపాడుకుంది."
+      ],
+      "en": "The ant climbed onto the leaf, reached the bank and saved its life.",
+      "hi": "चींटी पत्ते पर चढ़कर किनारे पहुँची और उसकी जान बच गई।"
+    },
+    {
+      "id": "L15-Q24",
+      "difficulty": "hard",
+      "text": "తర్వాత వేటగాడు పావురానికి గురి పెట్టినప్పుడు చీమ అతని కాలు కుట్టింది.",
+      "passage": "P05",
+      "passageTitle": "పావురం, చీమ",
+      "passageTitleEn": "The dove and the ant",
+      "passageTitleHi": "कबूतर और चींटी",
+      "accept": [
+        "తర్వాత వేటగాడు పావురానికి గురి పెట్టినప్పుడు చీమ అతని కాలు కుట్టింది."
+      ],
+      "en": "Later, when a hunter aimed at the dove, the ant bit his leg.",
+      "hi": "बाद में जब शिकारी ने कबूतर पर निशाना साधा, तो चींटी ने उसके पैर में काट लिया।"
+    },
+    {
+      "id": "L15-Q25",
+      "difficulty": "hard",
+      "text": "ఉపకారానికి ప్రత్యుపకారం చేయడమే నిజమైన స్నేహం.",
+      "passage": "P05",
+      "passageTitle": "పావురం, చీమ",
+      "passageTitleEn": "The dove and the ant",
+      "passageTitleHi": "कबूतर और चींटी",
+      "accept": [
+        "ఉపకారానికి ప్రత్యుపకారం చేయడమే నిజమైన స్నేహం."
+      ],
+      "en": "Returning a kindness is true friendship.",
+      "hi": "उपकार का बदला उपकार से देना ही सच्ची दोस्ती है।"
+    },
+    {
+      "id": "L15-Q26",
+      "difficulty": "hard",
+      "text": "ప్రతి చిన్నారి మనసులో ఒక గొప్ప కల ఉంటుంది.",
+      "passage": "P06",
+      "passageTitle": "కలలు సాధిద్దాం",
+      "passageTitleEn": "Let us achieve our dreams",
+      "passageTitleHi": "आओ सपने पूरे करें",
+      "accept": [
+        "ప్రతి చిన్నారి మనసులో ఒక గొప్ప కల ఉంటుంది."
+      ],
+      "en": "Every child has a big dream in the heart.",
+      "hi": "हर बच्चे के मन में एक बड़ा सपना होता है।"
+    },
+    {
+      "id": "L15-Q27",
+      "difficulty": "hard",
+      "text": "ఆ కలను సాధించాలంటే పట్టుదల, క్రమశిక్షణ అవసరం.",
+      "passage": "P06",
+      "passageTitle": "కలలు సాధిద్దాం",
+      "passageTitleEn": "Let us achieve our dreams",
+      "passageTitleHi": "आओ सपने पूरे करें",
+      "accept": [
+        "ఆ కలను సాధించాలంటే పట్టుదల, క్రమశిక్షణ అవసరం."
+      ],
+      "en": "To achieve that dream, determination and discipline are needed.",
+      "hi": "उस सपने को पाने के लिए लगन और अनुशासन ज़रूरी है।"
+    },
+    {
+      "id": "L15-Q28",
+      "difficulty": "hard",
+      "text": "ఓటమి ఎదురైనా నిరాశ పడకుండా మళ్ళీ ప్రయత్నించాలి.",
+      "passage": "P06",
+      "passageTitle": "కలలు సాధిద్దాం",
+      "passageTitleEn": "Let us achieve our dreams",
+      "passageTitleHi": "आओ सपने पूरे करें",
+      "accept": [
+        "ఓటమి ఎదురైనా నిరాశ పడకుండా మళ్ళీ ప్రయత్నించాలి."
+      ],
+      "en": "Even if we fail, we should try again without losing hope.",
+      "hi": "हार मिलने पर भी निराश हुए बिना फिर कोशिश करनी चाहिए।"
+    },
+    {
+      "id": "L15-Q29",
+      "difficulty": "hard",
+      "text": "తల్లిదండ్రులను, గురువులను గౌరవిస్తే జీవితంలో విజయం తప్పక వస్తుంది.",
+      "passage": "P06",
+      "passageTitle": "కలలు సాధిద్దాం",
+      "passageTitleEn": "Let us achieve our dreams",
+      "passageTitleHi": "आओ सपने पूरे करें",
+      "accept": [
+        "తల్లిదండ్రులను, గురువులను గౌరవిస్తే జీవితంలో విజయం తప్పక వస్తుంది."
+      ],
+      "en": "If we respect parents and teachers, success will surely come in life.",
+      "hi": "माता-पिता और गुरुओं का सम्मान करने से जीवन में सफलता ज़रूर मिलती है।"
+    },
+    {
+      "id": "L15-Q30",
+      "difficulty": "hard",
+      "text": "నేర్చుకున్న ప్రతి అక్షరం మనల్ని ఉన్నత శిఖరాలకు చేరుస్తుంది.",
+      "passage": "P06",
+      "passageTitle": "కలలు సాధిద్దాం",
+      "passageTitleEn": "Let us achieve our dreams",
+      "passageTitleHi": "आओ सपने पूरे करें",
+      "accept": [
+        "నేర్చుకున్న ప్రతి అక్షరం మనల్ని ఉన్నత శిఖరాలకు చేరుస్తుంది."
+      ],
+      "en": "Every letter we learn takes us to great heights.",
+      "hi": "सीखा हुआ हर अक्षर हमें ऊँचाइयों तक पहुँचाता है।"
+    }
+  ]
+}

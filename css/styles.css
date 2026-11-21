@@ -26,8 +26,8 @@
   --bad-bg: #ffe5e2;
   --gold: #e09a00;
   --radius: 26px;
-  --font-fun: 'Baloo Tammudu 2', 'Noto Sans Telugu', 'Nirmala UI', system-ui, sans-serif;
-  --font-read: 'Noto Sans Telugu', 'Nirmala UI', 'Gautami', system-ui, sans-serif;
+  --font-fun: 'Baloo Tammudu 2', 'Noto Sans Telugu', 'Noto Sans Devanagari', 'Nirmala UI', system-ui, sans-serif;
+  --font-read: 'Noto Sans Telugu', 'Noto Sans Devanagari', 'Nirmala UI', 'Gautami', system-ui, sans-serif;
   /* chart tokens (validated reference palette) */
   --series-1: #2a78d6; --series-2: #eb6834; --series-6: #008300;
   --neutral: #c9cfdc;
@@ -610,3 +610,102 @@ table.roster { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
 .roster th, .roster td { text-align: left; padding: 9px 8px; border-bottom: 2px solid color-mix(in srgb, var(--neutral) 50%, transparent); white-space: nowrap; }
 .roster th { color: var(--muted); font-weight: 700; }
 .roster td.name { font-weight: 700; }
+
+/* ======================= three languages per question ======================= */
+:root { --series-7: #7c5cff; --series-8: #0f9fb3; }
+@media (prefers-color-scheme: dark) { :root { --series-7: #9b82ff; --series-8: #22b5c9; } }
+.stage-card { position: relative; }
+.trio-label { margin: 0 0 6px; font-family: var(--font-fun); font-weight: 700; color: var(--muted); }
+.trio { display: grid; gap: 10px; margin: 6px 0 4px; }
+.trio-row {
+  display: grid; grid-template-columns: auto 1fr auto auto; align-items: center; gap: 10px;
+  padding: 8px 12px; border-radius: 20px; border: 3px solid transparent;
+  background: color-mix(in srgb, var(--c) 7%, var(--card)); text-align: left;
+  transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+}
+.trio-row.now { border-color: var(--c); background: color-mix(in srgb, var(--c) 14%, var(--card)); transform: scale(1.02); box-shadow: 0 6px 0 color-mix(in srgb, var(--c) 35%, transparent); }
+.trio-row.wait { opacity: 0.72; }
+.trio-row.done { background: var(--ok-bg); }
+.trio-row.later { background: #fff3d6; }
+.trio-badge {
+  display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 999px;
+  font-family: var(--font-fun); font-weight: 800; font-size: 0.9rem; color: #fff; background: var(--c); white-space: nowrap;
+}
+.trio-badge b { display: inline-grid; place-items: center; width: 20px; height: 20px; border-radius: 50%; background: rgba(255, 255, 255, 0.3); font-size: 0.8rem; }
+.trio-row[data-lang=en] .trio-badge { background: #3b6fd8; }
+.trio-row[data-lang=hi] .trio-badge { background: #d1621a; }
+.trio-text { font-size: clamp(20px, 5vw, 28px); font-weight: 700; line-height: 1.45; word-break: break-word; }
+.trio-row.now .trio-text { font-size: clamp(30px, 8.5vw, 56px); }
+.trio-row.now .trio-text.long { font-size: clamp(24px, 6vw, 38px); }
+.trio-row.now .trio-text:lang(en), .trio-row.now .trio-text:lang(hi) { font-size: clamp(24px, 6.5vw, 42px); }
+.trio-say { min-height: 44px; min-width: 44px; padding: 4px 8px; border-radius: 14px; font-size: 1.2rem; }
+.trio-icon { font-size: 1.4rem; min-width: 1.4em; text-align: center; }
+.wd { display: inline-block; padding: 0 3px; border-radius: 8px; }
+.wd.ok { color: var(--ok); background: var(--ok-bg); }
+.wd.wrong { color: var(--bad); background: var(--bad-bg); text-decoration: underline wavy var(--bad); text-underline-offset: 0.18em; }
+.wd.missing { color: var(--bad); outline: 3px dashed var(--bad); outline-offset: -3px; }
+.wd.skip { opacity: 0.7; }
+.actions.two { grid-template-columns: 1.4fr 1fr; }
+.lang-steps { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+.lang-steps .ls { padding: 4px 12px; border-radius: 999px; color: #fff; font-family: var(--font-fun); font-weight: 700; background: var(--c); }
+.lang-steps .ls-en { background: #3b6fd8; }
+.lang-steps .ls-hi { background: #d1621a; }
+@media (max-width: 520px) {
+  .trio-row { grid-template-columns: 1fr auto auto; padding: 8px 10px; }
+  .trio-badge { grid-column: 1 / -1; justify-self: start; }
+}
+
+/* the bird sitting on every question card */
+.perch-bird {
+  position: absolute; top: -34px; right: 18px; z-index: 3; pointer-events: none;
+  font-size: 46px; line-height: 1; filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.25));
+}
+.perch-bird .pb-body { display: inline-block; animation: pb-bob 2.4s ease-in-out infinite; transform-origin: 50% 90%; }
+.perch-bird .pb-note { position: absolute; top: -8px; left: -10px; font-size: 22px; color: var(--gold); opacity: 0; }
+.perch-bird.move-swoop:not(.settled) { animation: pb-swoop 1.2s cubic-bezier(.2, .8, .3, 1) both; }
+.perch-bird.move-drop:not(.settled) { animation: pb-drop 1s cubic-bezier(.3, 1.4, .5, 1) both; }
+.perch-bird.move-peek:not(.settled) { animation: pb-peek 1.3s ease-out both; }
+.perch-bird.move-hover:not(.settled) { animation: pb-hover 1.6s ease-out both; }
+.perch-bird.move-hop:not(.settled) { animation: pb-hop 1.3s ease-out both; }
+.perch-bird.move-glide:not(.settled) { animation: pb-glide 1.5s ease-out both; }
+.perch-bird.happy .pb-body { animation: pb-happy 0.9s ease both; }
+.perch-bird.happy .pb-note { animation: pb-note 1.1s ease-out both; }
+.perch-bird.oops .pb-body { animation: pb-oops 0.7s ease both; }
+.perch-bird.listen .pb-body { animation: pb-listen 0.8s ease-in-out infinite alternate; }
+@keyframes pb-bob { 0%, 100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-4px) rotate(-4deg); } }
+@keyframes pb-swoop { 0% { transform: translate(-70vw, -40vh) rotate(-30deg) scale(0.6); opacity: 0; } 60% { transform: translate(-10vw, 10px) rotate(10deg); opacity: 1; } 100% { transform: none; } }
+@keyframes pb-drop { 0% { transform: translateY(-60vh); opacity: 0; } 70% { transform: translateY(8px); opacity: 1; } 100% { transform: none; } }
+@keyframes pb-peek { 0% { transform: translateY(40px) scale(0.3); opacity: 0; } 50% { transform: translateY(-14px) scale(1.15); opacity: 1; } 75% { transform: rotate(12deg); } 100% { transform: none; } }
+@keyframes pb-hover { 0% { transform: translate(-40vw, -12vh); opacity: 0; } 30% { opacity: 1; } 45% { transform: translate(-20vw, -18px) rotate(-8deg); } 60% { transform: translate(-12vw, -30px) rotate(8deg); } 75% { transform: translate(-4vw, -20px) rotate(-8deg); } 100% { transform: none; } }
+@keyframes pb-hop { 0% { transform: translateX(40vw); opacity: 0; } 20% { transform: translate(28vw, -40px); opacity: 1; } 40% { transform: translateX(18vw); } 60% { transform: translate(8vw, -30px); } 80% { transform: translateX(0); } 90% { transform: translateY(-10px); } 100% { transform: none; } }
+@keyframes pb-glide { 0% { transform: translate(50vw, -30vh) rotate(18deg); opacity: 0; } 40% { opacity: 1; } 100% { transform: none; } }
+@keyframes pb-happy { 0% { transform: none; } 30% { transform: translateY(-26px) rotate(-20deg) scale(1.2); } 55% { transform: translateY(-30px) rotate(200deg) scale(1.2); } 80% { transform: translateY(0) rotate(360deg); } 100% { transform: none; } }
+@keyframes pb-note { 0% { opacity: 0; transform: none; } 25% { opacity: 1; } 100% { opacity: 0; transform: translate(-20px, -46px) rotate(-20deg); } }
+@keyframes pb-oops { 0%, 100% { transform: none; } 25% { transform: rotate(-22deg); } 50% { transform: rotate(14deg); } 75% { transform: rotate(-8deg); } }
+@keyframes pb-listen { from { transform: rotate(-12deg) translateX(-3px); } to { transform: rotate(8deg) translateX(3px); } }
+
+/* language choice */
+.lang-pick { text-align: center; margin-top: 8vh; }
+.lang-pick h2 { font-size: clamp(1.3rem, 4vw, 1.9rem); }
+.lang-birds { font-size: 44px; letter-spacing: 10px; animation: pb-bob 2.4s ease-in-out infinite; }
+.lang-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 18px; }
+.lang-card {
+  display: grid; gap: 6px; justify-items: center; padding: 18px 10px; border-radius: 24px; min-height: 160px;
+  background: var(--card); border: 4px solid #d8def5; font-size: 1rem; color: var(--text);
+}
+.lang-card b { font-size: 1.7rem; }
+.lang-card span:last-child { color: var(--muted); font-size: 0.95rem; }
+.lang-card.on { border-color: var(--green); background: var(--ok-bg); }
+.lang-bird { font-size: 46px; }
+.lang-card:hover .lang-bird, .lang-card:focus-visible .lang-bird { animation: pb-happy 0.9s ease; }
+.lang-tab { margin-left: auto; }
+@media (max-width: 560px) {
+  .lang-grid { grid-template-columns: 1fr; }
+  .lang-card { min-height: 0; grid-template-columns: auto 1fr; text-align: left; justify-items: start; }
+  .lang-card .lang-bird { grid-row: span 2; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .perch-bird, .perch-bird *, .lang-birds { animation: none !important; }
+}
+.trio-text .ak { padding: 0 1px; }

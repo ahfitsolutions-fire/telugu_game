@@ -1,12 +1,13 @@
 // Teacher page (#/teacher): class progress from the Google Sheet (needs the teacher key).
 
-import { fetchClass, syncEnabled } from './sync.js?v=9';
-import { loadChartJs } from './progress-view.js?v=9';
+import { fetchClass, syncEnabled } from './sync.js?v=10';
+import { loadChartJs } from './progress-view.js?v=10';
 
 const KEY = 'telugu-ladder-teacher-key';
 const BANDS = [
   { from: 1, to: 2, key: 'band1' }, { from: 3, to: 4, key: 'band2' }, { from: 5, to: 6, key: 'band3' },
-  { from: 7, to: 8, key: 'band4' }, { from: 9, to: 10, key: 'band5' }, { done: true, key: 'band6' },
+  { from: 7, to: 8, key: 'band4' }, { from: 9, to: 10, key: 'band5' }, { from: 11, to: 13, key: 'band7' },
+  { from: 14, to: 15, key: 'band8' }, { done: true, key: 'band6' },
 ];
 let charts = [];
 
@@ -77,7 +78,7 @@ export async function renderTeacher(ctx) {
 }
 
 async function drawClass(ctx, out, data) {
-  const { h, t, total = 10 } = ctx;
+  const { h, t, total = 15 } = ctx;
   for (const c of charts) c.destroy();
   charts = [];
   const all = data.students ?? [];

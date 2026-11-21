@@ -3,7 +3,7 @@
 // logic can be unit-tested in Node.
 
 export const STORAGE_KEY = 'telugu-ladder-progress-v2';
-export const TOTAL_LEVELS = 10;
+export const TOTAL_LEVELS = 15;
 
 export function emptyProgress() {
   return { version: 1, student: '', levels: {} };
@@ -89,14 +89,30 @@ export function setTries(p, n, tries) {
   if (c) c.tries = tries;
 }
 
+/**
+ * Three-language practice: remember where the student is inside the current question
+ * (step 0 = Telugu, 1 = English, 2 = Hindi), the tries on that step and the finished steps.
+ */
+export function setStep(p, n, { step = 0, tries = 0, langs = [] } = {}) {
+  const c = p.levels[n]?.current;
+  if (!c) return;
+  c.step = step;
+  c.tries = tries;
+  c.langs = langs;
+}
+
 /** Store the final result of the current question and move on. */
-export function recordAnswer(p, n, { id, passed, score = 0, heard = '', tries = 0, skipped = false }) {
+export function recordAnswer(p, n, { id, passed, score = 0, heard = '', tries = 0, skipped = false, langs = null }) {
   const c = p.levels[n]?.current;
   if (!c) throw new Error(`No attempt in progress for level ${n}`);
   const r = { id, passed: !!passed, score: Math.round(score * 100) / 100, heard, tries };
   if (skipped) r.skipped = true;
+  // per-language results: [{ lang, passed, tries }]
+  if (Array.isArray(langs) && langs.length) r.langs = langs.map((x) => ({ lang: x.lang, passed: !!x.passed, tries: x.tries ?? 0 }));
   c.results.push(r);
   c.tries = 0;
+  c.step = 0;
+  c.langs = [];
   p.stats ??= { answered: 0, correct: 0 };
   if (!skipped) p.stats.answered += 1;
   if (r.passed && r.tries <= 1) p.stats.correct += 1; // accuracy = right on the first try
@@ -139,10 +155,27 @@ export function finishAttempt(p, n, passMark, { passageOf = null, passageMin = 0
     for (const [key, g] of groups) if (g.ok / g.total < passageMin) weakPassages.push(key);
   }
   const firstTry = c.results.filter((r) => r.passed && (r.tries ?? 1) <= 1).length;
+  // language steps right on the first try (a result without langs counts as one step)
+  let firstTryLangs = 0;
+  let totalLangs = 0;
+  const failedLangs = {};
+  for (const r of c.results) {
+    if (r.langs?.length) {
+      totalLangs += r.langs.length;
+      firstTryLangs += r.langs.filter((x) => x.passed && x.tries <= 1).length;
+      const bad = r.langs.filter((x) => !x.passed).map((x) => x.lang);
+      if (bad.length) failedLangs[r.id] = bad;
+    } else {
+      totalLangs += 1;
+      if (r.passed && (r.tries ?? 1) <= 1) firstTryLangs += 1;
+    }
+  }
+  const ratio = totalLangs ? firstTryLangs / totalLangs : 0;
   const passed = mastery
     ? c.results.length > 0 && c.results.length >= (c.order?.length ?? 0)
     : correct >= passMark && weakPassages.length === 0;
-  const stars = !passed ? 0 : mastery ? (firstTry >= 28 ? 3 : firstTry >= 25 ? 2 : 1) : starsFor(correct, passMark);
+  // mastery stars: share of steps right first time (28/30 → 3 ★, 25/30 → 2 ★, else 1 ★)
+  const stars = !passed ? 0 : mastery ? (ratio >= 28 / 30 - 1e-9 ? 3 : ratio >= 25 / 30 - 1e-9 ? 2 : 1) : starsFor(correct, passMark);
   L.attempts += 1;
   L.best = Math.max(L.best ?? 0, mastery ? firstTry : correct);
   L.stars = Math.max(L.stars ?? 0, stars);
@@ -154,6 +187,9 @@ export function finishAttempt(p, n, passMark, { passageOf = null, passageMin = 0
     passed,
     stars,
     firstTry,
+    firstTryLangs,
+    totalLangs,
+    failedLangs,
     retriedIds: c.results.filter((r) => r.passed && (r.tries ?? 1) > 1).map((r) => r.id),
     failedIds: c.results.filter((r) => !r.passed).map((r) => r.id),
     weakPassages,

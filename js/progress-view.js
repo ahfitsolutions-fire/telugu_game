@@ -1,7 +1,7 @@
 // "నా ప్రగతి" page (#/progress): the student's own growth, from local progress.
 // Doughnut: levels won / playing now / locked. Bar: best score per level. Line: levels won per day.
 
-import * as P from './progress.js?v=9';
+import * as P from './progress.js?v=10';
 
 const CHART_JS = 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js';
 let chartsLoading = null;
@@ -21,7 +21,7 @@ export function loadChartJs() {
 
 const css = (name) => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
 
-export async function renderProgress({ h, t, show, topBar, progress, levels, total = 10 }) {
+export async function renderProgress({ h, t, show, topBar, progress, levels, total = 15 }) {
   for (const c of charts) c.destroy();
   charts = [];
 
